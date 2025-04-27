@@ -1,0 +1,9 @@
+apiVersion: traefik.io/v1alpha1
+kind: ServersTransport
+metadata:
+  name: argocd-insecure-transport
+  namespace: argocd # Must be in the same namespace as the Ingress/Service
+spec:
+  # Disable TLS certificate verification for the backend server
+  # NOTE: This is insecure and only suitable for local testing.
+  insecureSkipVerify: true

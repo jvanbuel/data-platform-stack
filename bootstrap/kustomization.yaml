@@ -4,3 +4,5 @@ namespace: argocd
 resources:
   - namespace.yaml # Add the local namespace definition
   - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+  # ServersTransport removed as backend connection is now HTTP
+  - argocd-ingress.yaml # Add the Ingress for the ArgoCD UI

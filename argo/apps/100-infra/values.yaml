@@ -7,15 +7,26 @@ traefik:
       # Redirect HTTP traffic to the websecure (HTTPS) port
       redirectTo:
         port: websecure
+    websecure:
+      # Enable the websecure port for HTTPS traffic
+      enabled: true
+      # Use the default TLS options (self-signed certs for testing)
+      tls:
+        enabled: true
 
   # Enable dashboard access (consider security implications for production)
-  dashboard:
-    enabled: true
-    insecure: true # For local testing only
+  ingressRoute:
+    dashboard:
+      enabled: true
+      # Use the default entrypoint for the dashboard
+      entryPoints:
+        - websecure
+      # Specify the host for the dashboard
+      host: traefik.localhost
 
   # Enable Kubernetes providers
-  # providers:
-  #   kubernetesCRD:
-  #     enabled: true
+  providers:
+    kubernetesCRD:
+      enabled: true # Enable CRD provider (for IngressRoute, ServersTransport, etc.)
     kubernetesIngress:
       enabled: true
