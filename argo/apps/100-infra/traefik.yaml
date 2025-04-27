@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
   # Add finalizer to ensure that Helm release is deleted before the app
   finalizers:
-    - resources-finalizer.argocd.argoproj.io
+    - argocd.argoproj.io/resources-finalizer # Use domain-qualified finalizer
 spec:
   project: default
   source:
