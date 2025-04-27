@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: traefik
+  namespace: argocd
+  # Add finalizer to ensure that Helm release is deleted before the app
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://helm.traefik.io/traefik # Official Traefik Helm chart repository
+    chart: traefik
+    targetRevision: "v25.0.0" # Specify a stable chart version (check for latest)
+    helm:
+      releaseName: traefik
+      # Values to configure Traefik (optional, add as needed)
+      # Example: Enable dashboard (insecure by default, consider adding auth)
+      values: |
+        ports:
+          web:
+            redirectTo: websecure # Redirect HTTP to HTTPS
+        # Enable dashboard access (consider security implications for production)
+        # dashboard:
+        #   enabled: true
+        #   insecure: true # For local testing only
+        # providers:
+        #   kubernetesCRD:
+        #     enabled: true
+        #   kubernetesIngress:
+        #     enabled: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: traefik # Deploy Traefik into its own namespace
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true # Ensure the traefik namespace is created
