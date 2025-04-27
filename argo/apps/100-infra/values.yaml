@@ -1,0 +1,21 @@
+# Values for the traefik-wrapper chart
+
+# Values passed to the 'traefik' subchart (dependency)
+traefik:
+  ports:
+    web:
+      # Redirect HTTP traffic to the websecure (HTTPS) port
+      redirectTo:
+        port: websecure
+
+  # Enable dashboard access (consider security implications for production)
+  # dashboard:
+  #   enabled: true
+  #   insecure: true # For local testing only
+
+  # Enable Kubernetes providers
+  # providers:
+  #   kubernetesCRD:
+  #     enabled: true
+  #   kubernetesIngress:
+  #     enabled: true
