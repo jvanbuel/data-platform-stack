@@ -1,0 +1,10 @@
+apiVersion: v2
+name: vault-wrapper
+description: A wrapper Helm chart to deploy Hashicorp Vault with custom values.
+version: 0.1.0 # Version of this wrapper chart
+appVersion: "0.30.0" # Corresponds to the Vault chart version (check for latest stable)
+
+dependencies:
+  - name: vault
+    version: "0.30.0" # Specify the Vault chart version
+    repository: https://helm.releases.hashicorp.com # Official Hashicorp Helm repository
