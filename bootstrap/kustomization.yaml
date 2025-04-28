@@ -1,8 +1,14 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: argocd
-resources:
-  - namespace.yaml # Add the local namespace definition
-  - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
   # ServersTransport removed as backend connection is now HTTP
-  - argocd-ingress.yaml # Add the Ingress for the ArgoCD UI
+resources:
+- namespace.yaml
+- https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+- argocd-ingress.yaml
+
+# Patch the argocd-cm ConfigMap (for URL) using strategic merge
+patches:
+- path: argocd-cm-url-patch.yaml
+# Patch the argocd-cmd-params-cm ConfigMap (for server params) using strategic merge
+- path: argocd-cmd-params-cm-patch.yaml

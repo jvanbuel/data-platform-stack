@@ -1,0 +1,10 @@
+# Patch for the argocd-cmd-params-cm ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cmd-params-cm
+data:
+  # Allow Argo CD server to accept insecure connections (since TLS is terminated at Traefik)
+  server.insecure: "true"
+  # Ensure rootpath is correctly set (usually empty when accessed at the root of the domain)
+  server.rootpath: ""
