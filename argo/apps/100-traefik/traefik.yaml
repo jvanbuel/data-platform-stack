@@ -11,7 +11,7 @@ spec:
   source:
     # Source is the Git repository containing this Application manifest and the wrapper chart
     repoURL: https://github.com/jvanbuel/data-platform-stack.git
-    path: argo/apps/100-infra # Path to the wrapper chart directory within the Git repo
+    path: argo/apps/100-traefik # Path to the wrapper chart directory within the Git repo
     targetRevision: HEAD # Or your specific branch/tag
 
     # Helm configuration for the wrapper chart

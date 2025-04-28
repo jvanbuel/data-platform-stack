@@ -1,0 +1,48 @@
+# Values for the airflow-wrapper chart
+
+# Values passed to the 'airflow' subchart (dependency)
+airflow:
+  # Use KubernetesExecutor for running tasks as pods
+  executor: KubernetesExecutor
+
+  # Configuration specific to KubernetesExecutor
+  # kubernetes:
+  #   # Namespace where worker pods will run (defaults to Airflow's namespace)
+  #   namespace: airflow-workers
+
+  # Disable LoadBalancer service for webserver (we'll use Ingress)
+  webserver:
+    service:
+      type: ClusterIP
+
+  # Disable LoadBalancer service for flower (if using CeleryExecutor)
+  # flower:
+  #   service:
+  #     type: ClusterIP
+
+  # Persistence settings (example using default storage class)
+  # logs:
+  #   persistence:
+  #     enabled: true
+      # storageClassName: default
+      # size: 1Gi
+  # dags:
+  #   persistence:
+  #     enabled: true
+      # storageClassName: default
+      # size: 1Gi
+    # gitSync: # Alternative for DAGs
+    #   enabled: true
+    #   repo: <your-dags-repo>
+    #   branch: main
+
+  # Other common settings:
+  # defaultAirflowRepository: apache/airflow
+  # defaultAirflowTag: "2.8.1" # Specify Airflow image version if needed
+
+  createUserJob:
+    useHelmHooks: false
+    applyCustomEnv: false
+  migrateDatabaseJob:
+    useHelmHooks: false
+    applyCustomEnv: false
