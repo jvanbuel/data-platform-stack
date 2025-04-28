@@ -2,18 +2,6 @@
 
 # Values passed to the 'traefik' subchart (dependency)
 traefik:
-  ports:
-    web:
-      # Redirect HTTP traffic to the websecure (HTTPS) port
-      redirectTo:
-        port: websecure
-    websecure:
-      # Enable the websecure port for HTTPS traffic
-      enabled: true
-      # Use the default TLS options (self-signed certs for testing)
-      tls:
-        enabled: true
-
   # Enable dashboard access (consider security implications for production)
   ingressRoute:
     dashboard:
@@ -21,8 +9,8 @@ traefik:
       # Use the default entrypoint for the dashboard
       entryPoints:
         - websecure
-      # Specify the host for the dashboard
-      host: traefik.localhost
+      # Define the matching rule for the dashboard route
+      matchRule: Host(`traefik.localhost`)
 
   # Enable Kubernetes providers
   providers:
