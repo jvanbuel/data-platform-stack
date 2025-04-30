@@ -1,0 +1,3 @@
+# Custom values for the Trino Helm chart
+# Values placed under the 'trino:' key will be passed to the subchart.
+trino: {}

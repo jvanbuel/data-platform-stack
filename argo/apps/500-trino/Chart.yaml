@@ -1,0 +1,11 @@
+apiVersion: v2
+name: trino-wrapper
+description: A wrapper Helm chart to deploy Trino with custom values.
+version: 0.1.0 # Version of this wrapper chart
+appVersion: "1.39.0" # Corresponds to the Trino chart version we depend on
+
+dependencies:
+  - name: trino
+    version: "1.39.0" # The version of the Trino chart to use
+    repository: https://trinodb.github.io/charts/ # The repository of the dependency
+    # Values under the 'trino' key in our values.yaml will be passed to the subchart.
