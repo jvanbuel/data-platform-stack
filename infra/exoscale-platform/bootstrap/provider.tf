@@ -19,7 +19,7 @@ provider "aws" {
   access_key = var.exoscale_key
   secret_key = var.exoscale_secret
 
-  # Disable AWS-specific features
+  # Disable AWS-specific features: https://community.exoscale.com/community/storage/terraform/
   skip_credentials_validation = true
   skip_region_validation      = true
   skip_requesting_account_id  = true
