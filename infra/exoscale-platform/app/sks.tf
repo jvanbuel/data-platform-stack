@@ -6,6 +6,12 @@ resource "exoscale_security_group" "this" {
   name = "dp-sks-sg"
 }
 
+# Existing resources (<-> data sources)
+data "exoscale_security_group" "default" {
+  name = "default"
+}
+
+
 resource "exoscale_security_group_rule" "kubelet" {
   security_group_id = exoscale_security_group.this.id
   description       = "Kubelet"
@@ -39,6 +45,48 @@ resource "exoscale_security_group_rule" "nodeport_udp" {
   cidr = "0.0.0.0/0"
 }
 
+resource "exoscale_security_group_rule" "cilium_ping" {
+  security_group_id = exoscale_security_group.this.id
+  description       = "Cilium (ping health check)"
+  type              = "INGRESS"
+  protocol          = "ICMP"
+  icmp_type         = 8
+  icmp_code         = 0
+
+  # (between worker nodes only)
+  user_security_group_id = exoscale_security_group.this.id
+
+}
+
+resource "exoscale_security_group_rule" "cilium_vxlan" {
+  security_group_id = exoscale_security_group.this.id
+  description       = "Cilium (vxlan)"
+  type              = "INGRESS"
+  protocol          = "UDP"
+  start_port        = 8472
+  end_port          = 8472
+
+
+  # (between worker nodes only)
+  user_security_group_id = exoscale_security_group.this.id
+
+}
+
+resource "exoscale_security_group_rule" "cilium_health" {
+  security_group_id = exoscale_security_group.this.id
+  description       = "Cilium (health check)"
+  type              = "INGRESS"
+  protocol          = "TCP"
+  start_port        = 4240
+  end_port          = 4240
+
+
+  # (between worker nodes only)
+  user_security_group_id = exoscale_security_group.this.id
+
+}
+
+
 resource "exoscale_sks_cluster" "this" {
   zone = local.zone
   name = local.platform_name
@@ -54,7 +102,7 @@ resource "exoscale_sks_nodepool" "this" {
   zone                    = exoscale_sks_cluster.this.zone
   name                    = "${local.platform_name}-nodepool"
   anti_affinity_group_ids = [exoscale_anti_affinity_group.this.id]
-  security_group_ids      = [exoscale_security_group.this.id]
+  security_group_ids      = [exoscale_security_group.this.id, data.exoscale_security_group.default.id]
 
   instance_type = "standard.small"
   size          = 3
