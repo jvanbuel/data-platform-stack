@@ -1,3 +1,19 @@
 # Custom values for the Trino Helm chart
 # Values placed under the 'trino:' key will be passed to the subchart.
-trino: {}
+trino:
+  envFrom:
+    # - secretRef:
+    #     name: s3-credentials
+    # - secretRef:
+    #     name: pg-credentials
+  catalogs:
+    iceberg: |
+      connector.name=iceberg
+      iceberg.catalog.type=jdbc
+      iceberg.jdbc-catalog.catalog-name=catalog
+      iceberg.jdbc-catalog.driver-class=org.postgresql.Driver
+      iceberg.jdbc-catalog.connection-url=jdbc:postgresql://admin@dp-exoscale-postgres-exoscale-21270461-b41c-4657-ba25-2815e8afb.e.aivencloud.com:21699/catalog
+      iceberg.jdbc-catalog.connection-user=admin
+      iceberg.jdbc-catalog.connection-password=""
+      iceberg.jdbc-catalog.default-warehouse-dir=""
+

@@ -20,3 +20,20 @@ provider "exoscale" {
   key    = var.exoscale_key
   secret = var.exoscale_secret
 }
+
+
+provider "aws" {
+
+  endpoints {
+    s3 = "https://sos-${local.zone}.exo.io"
+  }
+
+  region     = local.zone
+  access_key = var.exoscale_key
+  secret_key = var.exoscale_secret
+
+  # Disable AWS-specific features: https://community.exoscale.com/community/storage/terraform/
+  skip_credentials_validation = true
+  skip_region_validation      = true
+  skip_requesting_account_id  = true
+}

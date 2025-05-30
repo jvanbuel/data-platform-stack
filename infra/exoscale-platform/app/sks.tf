@@ -105,7 +105,7 @@ resource "exoscale_sks_nodepool" "this" {
   security_group_ids      = [exoscale_security_group.this.id, data.exoscale_security_group.default.id]
 
   instance_type = "standard.medium"
-  size          = 2
+  size          = 3
 }
 
 
@@ -117,7 +117,7 @@ resource "exoscale_sks_kubeconfig" "this" {
   user   = "kubernetes-admin"
   groups = ["system:masters"]
 
-  ttl_seconds           = 3600
+  ttl_seconds           = 10800 # 3 hours
   early_renewal_seconds = 300
 }
 
