@@ -1,5 +1,5 @@
 
-data "exoscale_database_uri" "my_database" {
+data "exoscale_database_uri" "this" {
   name = exoscale_dbaas.this.name
   type = "pg"
   zone = local.zone
@@ -15,7 +15,9 @@ resource "kubernetes_secret" "pg_credentials" {
   data = {
     username = exoscale_dbaas.this.pg.admin_username
     password = exoscale_dbaas.this.pg.admin_password
-    uri = data.exoscale_database_uri.my_database.uri
+    host = data.exoscale_database_uri.this.host
+    port = data.exoscale_database_uri.this.port
+    uri = data.exoscale_database_uri.this.uri
   }
 
   type = "Opaque"
