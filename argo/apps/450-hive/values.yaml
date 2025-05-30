@@ -1,7 +1,7 @@
-hive:
+hive-metastore:
   image:
     repository: apache/hive
-    tag: latest
+    tag: 4.0.1
   postgres:
     host: "dp-exoscale-postgres-exoscale-21270461-b41c-4657-ba25-2815e8afb.e.aivencloud.com"
     port: 21699
