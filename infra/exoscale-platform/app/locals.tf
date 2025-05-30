@@ -1,1 +1,4 @@
-/Users/jvanbuel/dp-stack/infra/exoscale-platform/locals.tf
+locals {
+  platform_name = "dp-exoscale"
+  zone          = "ch-gva-2"
+}

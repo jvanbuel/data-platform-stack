@@ -12,3 +12,5 @@ patches:
 - path: argocd-cm-url-patch.yaml
 # Patch the argocd-cmd-params-cm ConfigMap (for server params) using strategic merge
 - path: argocd-cmd-params-cm-patch.yaml
+# Patch the argocd-ingress Ingress (for hostname) using strategic merge
+- path: argocd-ingress-host-patch.yaml
