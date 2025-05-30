@@ -2,18 +2,26 @@
 # Values placed under the 'trino:' key will be passed to the subchart.
 trino:
   envFrom:
-    # - secretRef:
-    #     name: s3-credentials
-    # - secretRef:
-    #     name: pg-credentials
+    - secretRef:
+        name: s3-credentials
+      prefix: S3_
+    - secretRef:
+        name: pg-credentials
+      prefix: PG_
   catalogs:
     iceberg: |
       connector.name=iceberg
       iceberg.catalog.type=jdbc
       iceberg.jdbc-catalog.catalog-name=catalog
       iceberg.jdbc-catalog.driver-class=org.postgresql.Driver
-      iceberg.jdbc-catalog.connection-url=jdbc:postgresql://admin@dp-exoscale-postgres-exoscale-21270461-b41c-4657-ba25-2815e8afb.e.aivencloud.com:21699/catalog
-      iceberg.jdbc-catalog.connection-user=admin
-      iceberg.jdbc-catalog.connection-password=""
-      iceberg.jdbc-catalog.default-warehouse-dir=""
+      iceberg.jdbc-catalog.connection-url=jdbc:postgresql://${ENV:PG_HOST}:${ENV:PG_PORT}/catalog
+      iceberg.jdbc-catalog.connection-user=${ENV:PG_USERNAME}
+      iceberg.jdbc-catalog.connection-password=${ENV:PG_PASSWORD}
+      iceberg.jdbc-catalog.default-warehouse-dir=s3://dp-stack-tf-os
+      fs.native-s3.enabled=true
+      s3.endpoint=${ENV:S3_ENDPOINT}
+      s3.region=${ENV:S3_REGION}
+      s3.aws-access-key=${ENV:S3_ACCESS_KEY_ID}
+      s3.aws-secret-key=${ENV:S3_SECRET_ACCESS_KEY}
+
 

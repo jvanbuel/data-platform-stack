@@ -13,28 +13,30 @@ resource "kubernetes_secret" "pg_credentials" {
   }
 
   data = {
-    username = exoscale_dbaas.this.pg.admin_username
-    password = exoscale_dbaas.this.pg.admin_password
-    host     = data.exoscale_database_uri.this.host
-    port     = data.exoscale_database_uri.this.port
-    uri      = data.exoscale_database_uri.this.uri
+    USERNAME = exoscale_dbaas.this.pg.admin_username
+    PASSWORD = exoscale_dbaas.this.pg.admin_password
+    HOST     = data.exoscale_database_uri.this.host
+    PORT     = data.exoscale_database_uri.this.port
+    URI      = data.exoscale_database_uri.this.uri
   }
 
   type = "Opaque"
 }
 
 
-resource "kubernetes_secret" "sos_credentials" {
+resource "kubernetes_secret" "s3_credentials" {
   metadata {
-    name      = "sos-credentials"
+    name      = "s3-credentials"
     namespace = "services"
   }
 
   data = {
-    access_key_id     = exoscale_iam_api_key.sos.key
-    secret_access_key = exoscale_iam_api_key.sos.secret
+    ACCESS_KEY_ID     = exoscale_iam_api_key.sos.key
+    SECRET_ACCESS_KEY = exoscale_iam_api_key.sos.secret
+    ENDPOINT          = "https://sos-${local.zone}.exo.io"
+    REGION            = local.zone
   }
 
   type = "Opaque"
-  
+
 }
