@@ -8,3 +8,13 @@ output "sks_connection" {
     local_sensitive_file.kubeconfig.filename,
   )
 }
+
+
+output "sos_credentials" {
+  sensitive = true
+  value = {
+    access_key_id     = exoscale_iam_api_key.sos.key
+    secret_access_key = exoscale_iam_api_key.sos.secret
+  }
+
+}

@@ -53,5 +53,5 @@ provider "aws" {
 
 provider "kubernetes" {
   config_path = local_sensitive_file.kubeconfig.filename
-  
+
 }
