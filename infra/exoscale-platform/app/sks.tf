@@ -104,8 +104,8 @@ resource "exoscale_sks_nodepool" "this" {
   anti_affinity_group_ids = [exoscale_anti_affinity_group.this.id]
   security_group_ids      = [exoscale_security_group.this.id, data.exoscale_security_group.default.id]
 
-  instance_type = "standard.small"
-  size          = 5
+  instance_type = "standard.medium"
+  size          = 2
 }
 
 
