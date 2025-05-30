@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hive
+  namespace: argocd
+  # Add finalizer to ensure that Helm release is deleted before the app
+  finalizers:
+    - argocd.argoproj.io/resources-finalizer # Use domain-qualified finalizer
+spec:
+  project: default
+  source:
+    # Source is the Git repository containing this Application manifest and the wrapper chart
+    repoURL: https://github.com/jvanbuel/data-platform-stack.git # Assuming the same repo
+    path: argo/apps/450-hive # Path to the Trino wrapper chart directory
+    targetRevision: HEAD # Or your specific branch/tag
+
+    # Helm configuration for the wrapper chart
+    helm:
+      releaseName: hive # Helm release name
+      # Values file is implicitly values.yaml within the source path
+      # valueFiles:
+      #  - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: services # Deploy Trino into its own namespace
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true # Ensure the trino namespace is created

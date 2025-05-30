@@ -105,7 +105,7 @@ resource "exoscale_sks_nodepool" "this" {
   security_group_ids      = [exoscale_security_group.this.id, data.exoscale_security_group.default.id]
 
   instance_type = "standard.small"
-  size          = 3
+  size          = 5
 }
 
 
