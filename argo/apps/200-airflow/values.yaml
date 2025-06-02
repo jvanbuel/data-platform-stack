@@ -15,6 +15,10 @@ airflow:
     service:
       type: ClusterIP
 
+  workers:
+    persistence:
+      size: 10Gi
+
   # Use the official chart's Ingress settings for the webserver
   ingress:
     web:

@@ -9,7 +9,7 @@ data "exoscale_database_uri" "this" {
 resource "kubernetes_secret" "pg_credentials" {
   metadata {
     name      = "pg-credentials"
-    namespace = "services"
+    namespace = kubernetes_namespace.services.metadata[0].name
   }
 
   data = {
@@ -27,7 +27,7 @@ resource "kubernetes_secret" "pg_credentials" {
 resource "kubernetes_secret" "s3_credentials" {
   metadata {
     name      = "s3-credentials"
-    namespace = "services"
+    namespace = kubernetes_namespace.services.metadata[0].name
   }
 
   data = {
@@ -38,5 +38,26 @@ resource "kubernetes_secret" "s3_credentials" {
   }
 
   type = "Opaque"
+
+}
+
+
+resource "kubernetes_annotations" "default_storage_class" {
+  kind        = "StorageClass"
+  api_version = "storage.k8s.io/v1"
+  metadata {
+    name = "exoscale-sbs"
+  }
+
+  annotations = {
+    "storageclass.kubernetes.io/is-default-class" = "true"
+  }
+
+}
+
+resource "kubernetes_namespace" "services" {
+  metadata {
+    name = "services"
+  }
 
 }

@@ -25,4 +25,4 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true # Ensure the airflow namespace is created
+      - CreateNamespace=true # Ensure the services namespace is created
