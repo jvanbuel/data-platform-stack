@@ -1,0 +1,11 @@
+lakekeeper:
+  postgresql:
+    enabled: false
+
+  externalDatabase:
+    type: postgresql
+    host: 
+    port: 5432
+    user: lakekeeper
+    password: lakekeeper_password # Use a secure method to manage this in production
+    database: lakekeeper

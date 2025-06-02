@@ -1,0 +1,11 @@
+apiVersion: v2
+name: lakekeeper-wrapper
+description: A wrapper Helm chart to deploy LakeKeeper with custom values.
+version: 0.1.0 # Version of this wrapper chart
+appVersion: "0.8.5" # Corresponds to the Trino chart version we depend on
+
+dependencies:
+  - name: lakekeeper
+    version: "0.6.0" # The version of the Trino chart to use
+    repository: https://lakekeeper.github.io/lakekeeper-charts/ # The repository of the dependency
+    # Values under the 'trino' key in our values.yaml will be passed to the subchart.
