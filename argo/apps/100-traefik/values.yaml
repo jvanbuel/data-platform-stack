@@ -19,20 +19,18 @@ traefik:
     kubernetesIngress:
       enabled: true
 
-  # Configure entrypoints
-  ports:
+  entryPoints:
     web:
-      port: 8000
-      protocol: TCP
-      # Redirect HTTP to HTTPS
-      redirectTo:
-        port: websecure
-        scheme: https
+      address: ":80"
+      # Use middleware for HTTPS redirect
+      http:
+        redirections:
+          entrypoint:
+            to: websecure
+            scheme: https
+            permanent: true
     websecure:
-      port: 8443
-      protocol: TCP
-      tls:
-        enabled: true
+      address: ":443"
 
   # Configure Let's Encrypt ACME
   certificatesResolvers:
@@ -55,3 +53,12 @@ traefik:
     size: 1Gi
     path: /data
     annotations: {}
+      # Additional configuration to ensure ACME works
+
+  additionalArguments:
+    - "--log.level=INFO"
+    - "--certificatesresolvers.letsencrypt.acme.httpchallenge=true"
+    - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
+    - "--certificatesresolvers.letsencrypt.acme.email=your-email@example.com"
+    - "--certificatesresolvers.letsencrypt.acme.storage=/data/acme.json"
+    - "--certificatesresolvers.letsencrypt.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
