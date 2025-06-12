@@ -42,7 +42,7 @@ spec:
             },
             "extensions": {
                 "search": {
-                    "enable": true,
+                    "enable": true
                 },
                 "ui": {
                     "enable": true
