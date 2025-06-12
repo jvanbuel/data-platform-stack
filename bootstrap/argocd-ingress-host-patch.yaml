@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
 spec:
   rules:
-  - host: argocd.example.com # Replace 'example.com' with your desired domain
+  - host: argocd.exoscale.robberthofman.com # Replace 'example.com' with your desired domain
     http:
       paths:
       - path: /
