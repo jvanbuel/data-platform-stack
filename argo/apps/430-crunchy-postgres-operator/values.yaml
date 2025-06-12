@@ -16,5 +16,5 @@ pgo:
   replicas: 1
   # pgoControllerLeaseName: "cpk-leader-election-lease"
 
-  # Disable upgrade checks for security
+  # Disable upgrade checks
   disable_check_for_upgrades: true
