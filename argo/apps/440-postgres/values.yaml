@@ -2,6 +2,9 @@
 
 # Values passed to the 'postgres' subchart (dependency)
 postgres:
+  image:
+    repository: docker.io/bitnami/postgresql
+    tag: 16.1.0-debian-11-r15
   primary:
     name: catalog
   auth:
