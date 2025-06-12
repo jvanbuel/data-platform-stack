@@ -19,6 +19,20 @@ traefik:
     kubernetesIngress:
       enabled: true
 
+  ports:
+    web:
+      port: 8000
+      protocol: TCP
+      expose: true
+      exposedPort: 80
+    websecure:
+      port: 8443
+      protocol: TCP
+      expose: true
+      exposedPort: 443
+      tls:
+        enabled: true
+
   entryPoints:
     web:
       address: ":80"
@@ -59,6 +73,6 @@ traefik:
     - "--log.level=INFO"
     - "--certificatesresolvers.letsencrypt.acme.httpchallenge=true"
     - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
-    - "--certificatesresolvers.letsencrypt.acme.email=your-email@example.com"
+    - "--certificatesresolvers.letsencrypt.acme.email=robbert.hofman@dataminded.com"
     - "--certificatesresolvers.letsencrypt.acme.storage=/data/acme.json"
     - "--certificatesresolvers.letsencrypt.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
