@@ -12,7 +12,7 @@ zot:
           "name": "s3",
           "rootdirectory": "/platform/zot",
           "region": "auto",
-          "bucket": "dp-stack-tf-os",
+          "bucket": "inno-days-bucket",
           "secure": true,
           "skipverify": false
         }
