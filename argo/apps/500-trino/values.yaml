@@ -43,7 +43,7 @@ trino:
         http-server.authentication.oauth2.client-id=${ENV:OAUTH2_CLIENT_ID}
         http-server.authentication.oauth2.client-secret=${ENV:OAUTH2_CLIENT_SECRET}
         coordinator=true
-        discovery.uri=http://trino.services.svc:8080
+        discovery.uri=http://localhost:8080
   worker:
     additionalConfigFiles:
       config.properties: |
