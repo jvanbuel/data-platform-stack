@@ -21,6 +21,11 @@ traefik:
 
   ports:
     web:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+          permanent: true
       port: 8000
       protocol: TCP
       exposedPort: 80
@@ -48,20 +53,6 @@ traefik:
       priority: 100
       middlewares:
         - skip-acme-redirect@internal
-
-
-  entryPoints:
-    web:
-      address: ":80"
-      # Use middleware for HTTPS redirect
-      http:
-        redirections:
-          entrypoint:
-            to: websecure
-            scheme: https
-            permanent: true
-    websecure:
-      address: ":443"
 
   # Configure Let's Encrypt ACME
   certificatesResolvers:
@@ -98,4 +89,4 @@ traefik:
   fsGroupChangePolicy: "OnRootMismatch"
 
   additionalArguments:
-    - "--log.level=DEBUG"
+    - "--log.level=INFO"
