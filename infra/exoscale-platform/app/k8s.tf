@@ -73,12 +73,17 @@ resource "kubernetes_secret" "zitadel_db" {
       Postgres:
         Host: ${data.exoscale_database_uri.this.host}
         Port: ${data.exoscale_database_uri.this.port}
+        Database: zitadel
+        User:
+          Username: ${exoscale_dbaas.this.pg.admin_username}
+          Password: ${exoscale_dbaas.this.pg.admin_password}
+          SSL:
+            Mode: disable
         Admin:
           Username: ${exoscale_dbaas.this.pg.admin_username}
           Password: ${exoscale_dbaas.this.pg.admin_password}
           SSL:
             Mode: disable
-        Database: zitadel
   EOF
   }
   type = "Opaque"
