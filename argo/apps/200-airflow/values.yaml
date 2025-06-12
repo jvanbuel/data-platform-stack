@@ -41,6 +41,8 @@ airflow:
         # traefik.ingress.kubernetes.io/service.scheme: http # Usually not needed if port is 80/8080
       host: airflow.cloudfleet.platform.5ha.re # Define the hostname
       path: / # Root path
+      tls:
+      - secretName: airflow-tls
 
   createUserJob:
     useHelmHooks: false

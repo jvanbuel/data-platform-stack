@@ -26,3 +26,5 @@ vault:
         # traefik.ingress.kubernetes.io/service.scheme: http # Usually not needed
       hosts:
       - host: vault.cloudfleet.platform.5ha.re
+      tls:
+      - secretName: vault-tls
