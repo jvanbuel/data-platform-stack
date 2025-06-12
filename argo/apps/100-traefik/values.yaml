@@ -72,7 +72,7 @@ traefik:
         # Email address used for registration
         email: robbert.hofman@dataminded.com
         # File or key used for certificates storage
-        storage: /acme/acme.json
+        storage: /data/acme.json
         # HTTP challenge
         httpChallenge:
           entryPoint: web
@@ -82,9 +82,17 @@ traefik:
     enabled: true
     accessMode: ReadWriteOnce
     size: 1Gi
-    path: /acme
+    path: /data
     annotations: {}
-      # Additional configuration to ensure ACME works
+  # lol you need to chmod 600 if you want acme.json to be accessible
+  deployment:
+    initContainers:
+      - name: volume-permissions
+        image: busybox:latest
+        command: ["sh", "-c", "ls -la /; touch /data/acme.json; chmod -v 600 /data/acme.json"]
+        volumeMounts:
+        - mountPath: /data
+          name: data
 
   additionalArguments:
     - "--log.level=DEBUG"
