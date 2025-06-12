@@ -26,6 +26,8 @@ trino:
       s3.region=${ENV:S3_REGION}
       s3.aws-access-key=${ENV:S3_ACCESS_KEY_ID}
       s3.aws-secret-key=${ENV:S3_SECRET_ACCESS_KEY}
+  auth:
+    passwordAuth: "admin:$2b$08$mJ4nVo8R63bcmJlBNxOsreqLaQF3ajVGAgvHZ28QAOOJ23VFgYTxG"
 
   # Configure ingress for Trino
   ingress:
