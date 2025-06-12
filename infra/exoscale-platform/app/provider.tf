@@ -17,12 +17,12 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "dp-stack-tf-state"
+    bucket = var.bucket_name
     key    = "exoscale-platform/terraform.tfstate"
     region = "ch-gva-2"
 
     # Configuration for Exoscale SOS: https://community.exoscale.com/community/storage/terraform/
-    skip_region_validation      = true
+    skip_region_validation      = true 
     skip_credentials_validation = true
     endpoint                    = "https://sos-${local.zone}.exo.io"
   }
