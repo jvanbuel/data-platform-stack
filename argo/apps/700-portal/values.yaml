@@ -1,0 +1,24 @@
+# Default values for zitadel.
+data-product-portal:
+  oidc:
+    enabled: false
+    client_id: ${var.cognito_config.client_id}
+    client_secret: ${var.cognito_config.client_secret}
+    authority: https://${var.cognito_config.endpoint}
+    redirect_uri: https://${var.account_config.hostname}.${var.account_config.hosted_zone}/
+  ingress:
+    enabled: true
+    className: traefik
+    hosts: 
+      - host: portal.exoscale.robberthofman.com
+        paths:
+          - path: /
+            pathType: Prefix
+  host: http://portal.exoscale.robberthofman.com
+  api_key: 
+    enabled: false
+  namespace_max_length: '!!string 30'
+  image:
+    tag: 'fc7b5ef'
+  frontendimage:
+    tag: 'fc7b5ef'

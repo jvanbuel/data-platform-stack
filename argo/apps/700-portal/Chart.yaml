@@ -1,0 +1,11 @@
+apiVersion: v2
+name: portal-wrapper
+description: A wrapper Helm chart to deploy Portal with custom values.
+version: 0.1.0 # Version of this wrapper chart
+appVersion: "0.3.1" # Corresponds to the Portal chart version we depend on
+
+dependencies:
+  - name: data-product-portal
+    version: "0.3.1" # The version of the Portal chart to use
+    repository: oci://public.ecr.aws/conveyordata/ # The repository of the dependency
+    # Values under the 'Zitadel' key in our values.yaml will be passed to the subchart.
