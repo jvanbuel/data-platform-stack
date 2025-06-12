@@ -25,7 +25,13 @@ zot:
         path: config.json
   - name: zot-sync-volume
     emptyDir: {}
-
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
+    limits:
+      cpu: 1000m
+      memory: 512Mi
   extraVolumeMounts:
   - name: zot-config-volume
     mountPath: /etc/zot/config.json
