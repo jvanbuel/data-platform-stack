@@ -9,8 +9,6 @@ trino:
     config:
       authenticationType: "PASSWORD"
   coordinator:
-    nodeSelector:
-      node.kubernetes.io/instance-type: "cpx41"
     resources:
       requests:
         cpu: 500m
