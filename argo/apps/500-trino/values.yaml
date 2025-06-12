@@ -45,14 +45,6 @@ trino:
         http-server.authentication.oauth2.client-secret=${ENV:OAUTH2_CLIENT_SECRET}
         coordinator=true
         discovery.uri=http://localhost:8080
-    readinessProbe:
-      httpGet:
-        path: /v1/info
-        port: 8080
-    livenessProbe:
-      httpGet:
-        path: /v1/info
-        port: 8080
 
   worker:
     additionalConfigFiles:
