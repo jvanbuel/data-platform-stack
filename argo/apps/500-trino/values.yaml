@@ -3,6 +3,8 @@
 trino:
   additionalConfigProperties:
   - http-server.process-forwarded=true
+  - http-server.authentication.type=PASSWORD
+  - internal-communication.shared-secret=dug5cTAEayZB6S6R+OghCfQBUXcE4pDrNe0Z6I4cqMEWDjn7xQFJrLq2xB8GBlvMp9FAL7E894wGCymJreMBaCUbH1VuWUf+HXTFG/gtgqhWRISR4d6ZK9mRoOlAjVQYkpg0P94phqfkRyCSAcx6Zvz+k3eRdTnh2059IRdTrOyT9VFuiU7WOWt21/dgnKgjmexKFPzxcY5Pxg6/e2J7k0Pk6R+gNALaCeRYNt/eMG7w/+EYnwtCTdiAJuvZcCQrk7qZzAj0NGLPr4VSEy+SI/vHQct5sYHTwLFeupe3kkWNPwKmDKxVIssJnoOznNCyFEMAGAwHdl4AuHR4ZosxckE4Pgn/PktCPOAi4fJVAzhsnoZcftDDR4OXG1LHIUZ50jZtpiDBSWY/pzDhgPUgDC5n6a4LWi4Z76qYVfxDg+irc1DSY9YphXCHOb0telJUvzrjp9+TMCq9DZsL+IT3EZCIBn8tClVtf7lfN4VEFgVYjQTV7VwSohY3aY3SyJr1k/PQkhSgUQ1kW+YfI/vsrWqkuchNCmqjt1N3ewdyNsRgeGoOT7nFUgDoNv5umlvM3bwdHKT/4RQpe7z+6N7xyaojMzq4PK0sCVj1wpkKuiRy35LxU5O6ulfWUI5REdzJE2ODn/qOmYRnnyM55m8vOpYgb9vg1ZlFNUymP/bojqY=
   server:
     workers: 3
     config:
