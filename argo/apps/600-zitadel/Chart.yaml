@@ -1,0 +1,11 @@
+apiVersion: v2
+name: zitadel-wrapper
+description: A wrapper Helm chart to deploy Zitadel with custom values.
+version: 0.1.0 # Version of this wrapper chart
+appVersion: "8.13.4" # Corresponds to the Zitadel chart version we depend on
+
+dependencies:
+  - name: zitadel
+    version: "8.13.4" # The version of the Zitadel chart to use
+    repository: https://charts.zitadel.com # The repository of the dependency
+    # Values under the 'Zitadel' key in our values.yaml will be passed to the subchart.

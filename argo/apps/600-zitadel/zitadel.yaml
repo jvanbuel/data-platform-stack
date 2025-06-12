@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: zitadel
+  namespace: argocd
+  # Add finalizer to ensure that Helm release is deleted before the app
+  finalizers:
+    - argocd.argoproj.io/resources-finalizer # Use domain-qualified finalizer
+spec:
+  project: default
+  source:
+    # Source is the Git repository containing this Application manifest and the wrapper chart
+    repoURL: https://github.com/datamindedbe/playground-data-platform-stack.git # Assuming the same repo
+    path: argo/apps/600-zitadel # Path to the zitadel wrapper chart directory
+    targetRevision: HEAD # Or your specific branch/tag
+
+    # Helm configuration for the wrapper chart
+    helm:
+      releaseName: zitadel # Helm release name
+      # Values file is implicitly values.yaml within the source path
+      # valueFiles:
+      #  - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: services # Deploy zitadel into its own namespace
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true # Ensure the zitadel namespace is created
