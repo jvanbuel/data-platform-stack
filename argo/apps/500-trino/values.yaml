@@ -1,9 +1,8 @@
 # Custom values for the Trino Helm chart
 # Values placed under the 'trino:' key will be passed to the subchart.
 trino:
-  server:
-    additionalConfigProperties:
-    - http-server.process-forwarded=true
+  additionalConfigProperties:
+  - http-server.process-forwarded=true
   envFrom:
   - secretRef:
       name: s3-credentials
