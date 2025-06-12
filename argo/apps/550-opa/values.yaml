@@ -1,0 +1,6 @@
+# Custom values for the OPA Helm chart
+# Refer to the official OPA Helm chart documentation for available options.
+
+# opa:
+  # Example:
+  # replicaCount: 1
