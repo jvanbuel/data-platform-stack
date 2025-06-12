@@ -14,6 +14,15 @@ spec:
     path: argo/apps # Directory containing the application manifests
     directory:
       recurse: true # Automatically discover apps in subdirectories
+      jsonnet:
+        tla:
+        # Top Level Argument
+        - name: discovered_resources
+          code: |
+            function(discovered_resources) {
+              local files = std.filter(function(f) f.kind == "Application", discovered_resources),
+              files
+            }
   destination:
     server: https://kubernetes.default.svc # Target the local cluster
     # Namespace is not needed here as child apps define their own destinations
