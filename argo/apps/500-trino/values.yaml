@@ -37,7 +37,7 @@ trino:
         internal-communication.shared-secret=123456
         http-server.http.enabled=true
         http-server.http.port=8080
-        http-server.authentication.type=oauth2
+        http-server.authentication.type=OAUTH2
         http-server.authentication.oauth2.oidc.discovery=true
         http-server.authentication.oauth2.issuer=http://zitadel.exoscale.robberthofman.com
         http-server.authentication.oauth2.client-id=${ENV:OAUTH2_CLIENT_ID}
