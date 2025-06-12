@@ -11,11 +11,11 @@ traefik:
       - websecure
       # Define the matching rule for the dashboard route
       matchRule: Host(`traefik.localhost`)
-    logs:
-      general:
-        level: DEBUG
-      access:
-        enabled: true
+  logs:
+    general:
+      level: DEBUG
+    access:
+      enabled: true
 
   # Enable Kubernetes providers
   providers:
