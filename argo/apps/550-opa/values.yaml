@@ -5,4 +5,4 @@ opa:
   authz:
   # Disable if you don't want authorization.
   # Mostly useful for debugging.
-  enabled: false
+    enabled: false
