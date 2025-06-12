@@ -11,6 +11,8 @@ traefik:
         - websecure
       # Define the matching rule for the dashboard route
       matchRule: Host(`traefik.exoscale.robberthofman.com`)
+    tls:
+      certResolver: letsencrypt
 
   # Enable Kubernetes providers
   providers:
