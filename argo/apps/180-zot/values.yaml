@@ -2,7 +2,6 @@
 # Values placed under the 'zot:' key will be passed to the subchart.
 zot:
   image:
-    # use zot multi-arch image
     repository: ghcr.io/project-zot/zot
     tag: "v2.1.4"
 
@@ -25,6 +24,8 @@ zot:
     subPath: config.json
     readOnly: true
   # Configure ingress for zot
+  service:
+    type: ClusterIP
   ingress:
     enabled: true
     className: traefik
