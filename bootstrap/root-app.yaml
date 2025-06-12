@@ -20,7 +20,9 @@ spec:
         - name: discovered_resources
           code: |
             function(discovered_resources) {
-              local files = std.filter(function(f) f.kind == "Application", discovered_resources),
+              local isApplication = function(f) f.kind == "Application",
+              local isNotInTemplates = function(f) !std.stringContains(f.path, "/templates/"),
+              local files = std.filter(function(f) isApplication(f) && isNotInTemplates(f), discovered_resources),
               files
             }
   destination:
