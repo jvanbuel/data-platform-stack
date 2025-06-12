@@ -3,7 +3,7 @@ zitadel:
   zitadel:
     masterkey: x123456789012345678901234567891y
     configmapConfig:
-      ExternalSecure: false
+      ExternalSecure: true
       ExternalDomain: zitadel.exoscale.robberthofman.com
       TLS:
         Enabled: false
@@ -23,6 +23,9 @@ zitadel:
   ingress:
     enabled: true
     className: traefik
+    annotations:
+      # Enable TLS with Let's Encrypt
+      traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt"
     hosts: 
       - host: zitadel.exoscale.robberthofman.com
         paths:

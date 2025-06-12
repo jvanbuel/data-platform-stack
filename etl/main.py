@@ -1,10 +1,15 @@
+from trino.auth import OAuth2Authentication
 from trino.dbapi import connect
 
 conn = connect(
-    host="localhost",
-    port=2000,
-    user="admin",
+    host="trino.exoscale.robberthofman.com",
+    port=443,
+    http_scheme="https",
+    user=None,
+    auth=OAuth2Authentication(),
+    verify=False,
 )
+
 cur = conn.cursor()
 cur.execute("SELECT * FROM system.runtime.nodes")
 rows = cur.fetchall()

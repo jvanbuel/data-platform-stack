@@ -1,0 +1,13 @@
+apiVersion: v2
+name: opa-wrapper
+description: A wrapper Helm chart to deploy OPA with custom values.
+version: 0.1.0 # Version of this wrapper chart
+appVersion: "9.1.0" # Corresponds to the OPA version
+
+dependencies:
+  - name: opa-kube-mgmt
+    version: "9.1.0" # The version of the OPA chart to use
+    repository: https://open-policy-agent.github.io/kube-mgmt/charts # The repository of the dependency
+    # We need to map the values from our local values.yaml to the subchart.
+    # By default, values under a key matching the dependency name are passed.
+    # So, values for 'opa' in our values.yaml will go to the opa subchart.
