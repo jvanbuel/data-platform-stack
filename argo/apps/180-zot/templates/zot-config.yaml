@@ -16,7 +16,7 @@ spec:
             "distSpecVersion": "1.1.0",
             "storage": {
               "rootDirectory": "/var/lib/registry",
-              "dedupe": true,true
+              "dedupe": true,
               "storageDriver": {
                 "name": "s3",
                 "rootdirectory": "/platform/zot",
