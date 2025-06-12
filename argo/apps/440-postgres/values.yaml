@@ -1,0 +1,8 @@
+# Values for the postgres-wrapper chart
+
+# Values passed to the 'postgres' subchart (dependency)
+postgres:
+  primary:
+    name: catalog
+  auth:
+    postgresPassword: "testadminpassword"

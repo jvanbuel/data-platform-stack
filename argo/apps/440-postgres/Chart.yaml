@@ -1,0 +1,13 @@
+apiVersion: v2
+name: postgres-wrapper
+description: A wrapper Helm chart to deploy Postgres with custom values.
+version: 0.1.0 # Version of this wrapper chart
+appVersion: "v25.0.0" # Corresponds to the Traefik chart version we depend on
+
+dependencies:
+  - name: postgres
+    version: "16.6.3" # The version of the Traefik chart to use
+    repository: oci://registry-1.docker.io/bitnamicharts/postgresql # The repository of the dependency
+    # We need to map the values from our local values.yaml to the subchart.
+    # By default, values under a key matching the dependency name are passed.
+    # So, values for 'traefik' in our values.yaml will go to the traefik subchart.
