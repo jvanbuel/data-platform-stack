@@ -18,7 +18,9 @@ airflow:
       timeoutSeconds: 60
       initialDelaySeconds: 60
     startupProbe:
-      timeoutSeconds: 60
+      timeoutSeconds: 120
+      periodSeconds: 20
+      failureThreshold: 6
 
   workers:
     persistence:
