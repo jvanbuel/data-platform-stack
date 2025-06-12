@@ -10,7 +10,7 @@ trino:
       authenticationType: "PASSWORD"
   coordinator:
     nodeSelector:
-      node.kubernetes.io/instance-type: "CX52"
+      node.kubernetes.io/instance-type: "cx52"
     resources:
       requests:
         cpu: 500m
@@ -20,7 +20,7 @@ trino:
         memory: 4Gi
   worker:
     nodeSelector:
-      node.kubernetes.io/instance-type: "CX52"
+      node.kubernetes.io/instance-type: "cx52"
     resources:
       requests:
         cpu: 500m
