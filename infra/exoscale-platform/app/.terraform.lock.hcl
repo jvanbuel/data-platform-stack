@@ -4,6 +4,7 @@
 provider "registry.opentofu.org/exoscale/exoscale" {
   version = "0.64.1"
   hashes = [
+    "h1:NIffH86pw84OPM7vCf7f9bsbB8KLATlwYtZkqXArhW4=",
     "h1:pgD0FnPeIi19hj861lm/c6nwAWT8+uuA/onoVRKWzY0=",
     "zh:22866a15ac4104f5671f379195f4b204f23a004757cce4e5e7eaf45f24f611e5",
     "zh:45c71360dcca260b472024d312068e93dfaf4f05a6497f8b2a4ed42064e7b1e0",
@@ -26,6 +27,7 @@ provider "registry.opentofu.org/hashicorp/aws" {
   version     = "5.0.0"
   constraints = "5.0.0"
   hashes = [
+    "h1:71myEE82Rm3Dff2tMZsV54OzlCWjUTrRrXncDNHmymE=",
     "h1:xwkiYoN13VtMbXbcdhQ3qdmIqfbWD8Rm/XLdfh7TcY8=",
     "zh:149536c4b35d9ed2db12fcf744c83bb66ffd5c62775001738ac45a2a59d22d70",
     "zh:41d674f462306e127d9779d33a4df4484a6f533faefc6ca72da97a935f65b8a5",
@@ -45,6 +47,7 @@ provider "registry.opentofu.org/hashicorp/kubernetes" {
   constraints = "2.37.1"
   hashes = [
     "h1:UWJPvQZxW9Q6mxtUvIdnapPE8s8o4a2HUo53OInq9p4=",
+    "h1:uQ6QiHEMu5dm39sbMNE3ANFUeqTjrqb2P/lxHtfkctE=",
     "zh:22031e9995b3dc7ae497305dc6c5b7bf1a585c378d46446e724601f992cd9e11",
     "zh:3614bc188ae5040d892671009c66f56cfcb3859e11f42ed7ffc1cee384b1275b",
     "zh:5d925944ac961bbe5fb4917a3e7e6d9bc0bef2f3198f26e8d4cd1793d5eadde3",
@@ -61,6 +64,7 @@ provider "registry.opentofu.org/hashicorp/local" {
   version = "2.5.3"
   hashes = [
     "h1:31Clmfoe7hzkcdgwuhUuGuPGfeG2Ksk+YWcJgzBTN7M=",
+    "h1:mC9+u1eaUILTjxey6Ivyf/3djm//RNNze9kBVX/trng=",
     "zh:32e1d4b0595cea6cda4ca256195c162772ddff25594ab4008731a2ec7be230bf",
     "zh:48c390af0c87df994ec9796f04ec2582bcac581fb81ed6bb58e0671da1c17991",
     "zh:4be7289c969218a57b40902e2f359914f8d35a7f97b439140cb711aa21e494bd",
@@ -79,6 +83,7 @@ provider "registry.opentofu.org/hashicorp/random" {
   constraints = "3.5.1"
   hashes = [
     "h1:+tcBIWVapnLZdDtupZ2w18oJOoAm1EKI7WzBIs0GyQ4=",
+    "h1:tW+G7lgqbHUtraKHPWuotYHlME1vcAf50YvOeHQlGHg=",
     "zh:0002dd4c79453da5bf1bb9c52172a25d042a571f6df131b7c9ced3d1f8f3eb44",
     "zh:49b0f8c2bd5632799aa6113e0e46acaa7d008f927665a41a1f8e8559fe6d8165",
     "zh:56df70fca236caa06d0e636c41ab71dd1ced05375f4ddcb905b0ed2105737048",

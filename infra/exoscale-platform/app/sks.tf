@@ -105,7 +105,7 @@ resource "exoscale_sks_nodepool" "this" {
   security_group_ids      = [exoscale_security_group.this.id, data.exoscale_security_group.default.id]
 
   instance_type = "standard.medium"
-  size          = 3
+  size          = 4
 }
 
 
@@ -126,3 +126,4 @@ resource "local_sensitive_file" "kubeconfig" {
   content         = exoscale_sks_kubeconfig.this.kubeconfig
   file_permission = "0600"
 }
+
