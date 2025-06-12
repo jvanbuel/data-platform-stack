@@ -1,44 +1,22 @@
-# apiVersion: traefik.containo.us/v1alpha1
+# apiVersion: middlewares.traefik.io/v1alpha1
 # kind: Middleware
 # metadata:
-#   name: zot-timeout
+#   name: zot-registry
 # spec:
-#   # Configure request buffering for large container image operations
+#   # Retry on network errors and timeouts
+#   retry:
+#     attempts: 3
+#     initialInterval: "100ms"
+# ---
+# apiVersion: middlewares.traefik.io/v1alpha1
+# kind: Middleware
+# metadata:
+#   name: zot-buffering
+# spec:
+#   # Configure buffering for large requests
 #   buffering:
-#     maxRequestBodyBytes: 0  # No limit on request body size for large images
-#     maxResponseBodyBytes: 0 # No limit on response body size
-#     memRequestBodyBytes: 1048576  # 1MB in memory buffer
-#     memResponseBodyBytes: 1048576 # 1MB in memory buffer
-#   forwardAuth:
-#     # Increase timeouts for large container image operations
-#     authRequestHeaders:
-#     - "X-Forwarded-Proto"
-#     - "X-Forwarded-Host"
-#   # Set request timeout to 1 hour for large image pushes
-#   timeout:
-#     readTimeout: "3600s"
-#     writeTimeout: "3600s"
-#     idleTimeout: "300s"
-
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: zot-registry
-spec:
-  # Retry on network errors and timeouts
-  retry:
-    attempts: 3
-    initialInterval: "100ms"
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: zot-buffering
-spec:
-  # Configure buffering for large requests
-  buffering:
-    maxRequestBodyBytes: 0  # Unlimited request body size
-    maxResponseBodyBytes: 0 # Unlimited response body size
-    memRequestBodyBytes: 2097152  # 2MB memory buffer
-    memResponseBodyBytes: 2097152 # 2MB memory buffer
-    retryExpression: "IsNetworkError() && Attempts() <= 2"
+#     maxRequestBodyBytes: 0  # Unlimited request body size
+#     maxResponseBodyBytes: 0 # Unlimited response body size
+#     memRequestBodyBytes: 2097152  # 2MB memory buffer
+#     memResponseBodyBytes: 2097152 # 2MB memory buffer
+#     retryExpression: "IsNetworkError() && Attempts() <= 2"

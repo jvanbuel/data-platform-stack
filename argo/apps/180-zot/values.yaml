@@ -1,7 +1,9 @@
 # Custom values for the zot Helm chart
 # Values placed under the 'zot:' key will be passed to the subchart.
 zot:
+  # Use the multi-arch image instead of the AMD64-specific one
   image:
+    # use zot multi-arch image
     repository: ghcr.io/project-zot/zot
     tag: "v2.1.4"
 
@@ -9,6 +11,10 @@ zot:
   # nodeSelector:
   #   kubernetes.io/arch: amd64
 
+  # Enable debug logging and access logs
+  env:
+  - name: ZOT_LOG_LEVEL
+    value: "debug"
   # Mount only the config.json key from the secret to the specific file
   extraVolumes:
   - name: zot-config-volume
@@ -23,7 +29,7 @@ zot:
     mountPath: /etc/zot/config.json
     subPath: config.json
     readOnly: true
-  # Configure ingress for zot
+  # Service configuration
   service:
     type: ClusterIP
     port: 5000
@@ -31,6 +37,7 @@ zot:
       # Configure service timeout for large uploads
       service.beta.kubernetes.io/timeout: "3600"
 
+  # Configure ingress for zot
   ingress:
     enabled: true
     className: traefik
