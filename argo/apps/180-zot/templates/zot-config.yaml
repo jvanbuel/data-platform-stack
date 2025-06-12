@@ -10,22 +10,22 @@ spec:
   target:
     name: zot-config
     template:
+      engineVersion: v2
+            #"distSpecVersion": "1.1.1",
       data:
-      # dedupe is not supported for external storage
         config.json: |
           {
-            "distSpecVersion": "1.1.0",
             "storage": {
               "rootDirectory": "/var/lib/registry",
               "dedupe": false,
               "storageDriver": {
                 "name": "s3",
                 "rootdirectory": "/platform/zot",
-                "region": "{{ .REGION }}",
-                "regionendpoint": "{{ .ENDPOINT }}",
+                "region": "{{`{{ .region }}`}}",
+                "regionendpoint": "{{`{{ .endpoint }}`}}",
                 "bucket": "inno-days-bucket",
-                "accesskey": "{{ .ACCESS_KEY_ID }}",
-                "secretkey": "{{ .SECRET_ACCESS_KEY }}",
+                "accesskey": "{{`{{ .access_key_id }}`}}",
+                "secretkey": "{{`{{ .secret_access_key }}`}}",
                 "secure": true,
                 "skipverify": false
               }
@@ -39,19 +39,19 @@ spec:
             }
           }
   data:
-   - secretKey: ACCESS_KEY_ID
-     remoteRef:
-       key: platform/s3-credentials
-       property: ACCESS_KEY_ID
-   - secretKey: SECRET_ACCESS_KEY
-     remoteRef:
-       key: platform/s3-credentials
-       property: SECRET_ACCESS_KEY
-   - secretKey: REGION
-     remoteRef:
-       key: platform/s3-credentials
-       property: REGION
-   - secretKey: ENDPOINT
-     remoteRef:
-       key: platform/s3-credentials
-       property: ENDPOINT
+  - secretKey: access_key_id
+    remoteRef:
+      key: platform/s3-credentials
+      property: ACCESS_KEY_ID
+  - secretKey: secret_access_key
+    remoteRef:
+      key: platform/s3-credentials
+      property: SECRET_ACCESS_KEY
+  - secretKey: region
+    remoteRef:
+      key: platform/s3-credentials
+      property: REGION
+  - secretKey: endpoint
+    remoteRef:
+      key: platform/s3-credentials
+      property: ENDPOINT
