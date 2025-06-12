@@ -4,8 +4,8 @@
 vault:
   # Run Vault in development mode (single node, in-memory storage - NOT FOR PRODUCTION)
   server:
-    dev:
-      enabled: true
+    injector:
+      enabled: false
 
     # Ensure HA mode is disabled when running in dev mode
     ha:
