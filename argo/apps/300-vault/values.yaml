@@ -8,29 +8,6 @@ vault:
       enabled: false
     dataStorage:
       enabled: true
-      size: 10Gi
-      storageClass: "standard"
-      accessMode: ReadWriteOnce
-    standalone:
-      config: |
-        storage "file" {
-          path = "/vault/data"
-        }
-        listener "tcp" {
-          address     = "0.0.0.0:8200"
-          tls_disable = 1
-        }
-        seal "file" {
-          path = "/vault/unseal/unseal.key"
-        }
-    extraVolumes:
-    - name: vault-unseal
-      secret:
-        secretName: vault-unseal-key
-    extraVolumeMounts:
-    - name: vault-unseal
-      mountPath: /vault/unseal
-      readOnly: true
     # Ensure HA mode is disabled when running in dev mode
     ha:
       enabled: false
