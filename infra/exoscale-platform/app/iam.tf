@@ -14,7 +14,6 @@ resource "exoscale_iam_role" "sos" {
 
 }
 
-
 resource "exoscale_iam_api_key" "sos" {
   name    = "sos-api-key"
   role_id = exoscale_iam_role.sos.id
