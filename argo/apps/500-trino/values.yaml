@@ -15,7 +15,6 @@ trino:
   server:
     config:
       authenticationType: OAUTH2
-      web-ui.enabled: true
   catalogs:
     iceberg: |
       connector.name=iceberg
@@ -45,6 +44,9 @@ trino:
         http-server.authentication.oauth2.client-secret=${ENV:OAUTH2_CLIENT_SECRET}
         coordinator=true
         discovery.uri=http://localhost:8080
+        # Allow forwarded headers for proxy support
+        http-server.process-forwarded=true
+        web-ui.enabled: true
 
   worker:
     additionalConfigFiles:
