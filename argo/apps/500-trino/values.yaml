@@ -36,6 +36,6 @@ trino:
         http-server.authentication.type=oauth2
         http-server.authentication.oauth2.oidc.discovery=true
         http-server.authentication.oauth2.issuer=zitadel.services.svc.cluster.local:8080
-        http-server.authentication.oauth2.client-id=${OAUTH2_CLIENT_ID}
-        http-server.authentication.oauth2.client-secret=${OAUTH2_CLIENT_SECRET}
+        http-server.authentication.oauth2.client-id=${ENV:OAUTH2_CLIENT_ID}
+        http-server.authentication.oauth2.client-secret=${ENV:OAUTH2_CLIENT_SECRET}
 
