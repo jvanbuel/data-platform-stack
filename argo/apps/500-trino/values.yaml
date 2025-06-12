@@ -3,6 +3,7 @@
 trino:
   additionalConfigProperties:
   - http-server.process-forwarded=true
+  - http-server.authentication.type=PASSWORD
   envFrom:
   - secretRef:
       name: s3-credentials
