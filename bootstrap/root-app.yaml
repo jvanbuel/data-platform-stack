@@ -14,17 +14,7 @@ spec:
     path: argo/apps # Directory containing the application manifests
     directory:
       recurse: true # Automatically discover apps in subdirectories
-      jsonnet:
-        tla:
-        # Top Level Argument
-        - name: discovered_resources
-          code: |
-            function(discovered_resources) {
-              local isApplication = function(f) f.kind == "Application",
-              local isNotInTemplates = function(f) !std.stringContains(f.path, "/templates/"),
-              local files = std.filter(function(f) isApplication(f) && isNotInTemplates(f), discovered_resources),
-              files
-            }
+      include: application.yaml # Only include files named application.yaml
   destination:
     server: https://kubernetes.default.svc # Target the local cluster
     # Namespace is not needed here as child apps define their own destinations
