@@ -8,19 +8,19 @@ spec:
     name: vault-backend
     kind: ClusterSecretStore
   data:
-   - secretKey: S3_ENDPOINT # Key in the Kubernetes Secret
+   - secretKey: ENDPOINT # Key in the Kubernetes Secret
      remoteRef:
        key: platform/s3-credentials  # Path in Vault
        property: ENDPOINT  # Property to extract from the Vault secret
-   - secretKey: S3_ACCESS_KEY_ID # Key in the Kubernetes Secret
+   - secretKey: ACCESS_KEY_ID # Key in the Kubernetes Secret
      remoteRef:
        key: platform/s3-credentials  # Path in Vault
        property: ACCESS_KEY_ID  # Property to extract from the Vault secret
-   - secretKey: S3_REGION # Key in the Kubernetes Secret
+   - secretKey: REGION # Key in the Kubernetes Secret
      remoteRef:
        key: platform/s3-credentials  # Path in Vault
        property: REGION  # Property to extract from the Vault secret
-   - secretKey: S3_SECRET_ACCESS_KEY # Key in the Kubernetes Secret
+   - secretKey: SECRET_ACCESS_KEY # Key in the Kubernetes Secret
      remoteRef:
        key: platform/s3-credentials  # Path in Vault
        property: SECRET_ACCESS_KEY  # Property to extract from the Vault secret
