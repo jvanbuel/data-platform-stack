@@ -59,5 +59,33 @@ resource "kubernetes_namespace" "services" {
   metadata {
     name = "services"
   }
+}
+
+resource "kubernetes_secret" "zitadel_db" {
+  metadata {
+    name = "zitadel-credentials"
+   namespace = kubernetes_namespace.services.metadata[0].name
+
+  }
+  //TODO: use TLS
+  data = { "config.yaml": <<EOF
+    Database:
+      Postgres:
+        Host: ${data.exoscale_database_uri.this.host}
+        Port: ${data.exoscale_database_uri.this.port}
+        Database: zitadel
+        User:
+          Username: ${exoscale_dbaas.this.pg.admin_username}
+          Password: ${exoscale_dbaas.this.pg.admin_password}
+          SSL:
+            Mode: disable
+        Admin:
+          Username: ${exoscale_dbaas.this.pg.admin_username}
+          Password: ${exoscale_dbaas.this.pg.admin_password}
+          SSL:
+            Mode: disable
+  EOF
+  }
+  type = "Opaque"
 
 }
