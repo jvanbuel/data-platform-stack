@@ -11,17 +11,21 @@ trino:
   catalogs:
     iceberg: |
       connector.name=iceberg
-      iceberg.catalog.type=jdbc
-      iceberg.jdbc-catalog.catalog-name=catalog
-      iceberg.jdbc-catalog.driver-class=org.postgresql.Driver
-      iceberg.jdbc-catalog.connection-url=jdbc:postgresql://${ENV:PG_HOST}:${ENV:PG_PORT}/catalog
-      iceberg.jdbc-catalog.connection-user=${ENV:PG_USERNAME}
-      iceberg.jdbc-catalog.connection-password=${ENV:PG_PASSWORD}
-      iceberg.jdbc-catalog.default-warehouse-dir=s3://dp-stack-tf-os
+      iceberg.catalog.type=rest
+      iceberg.rest-catalog.uri=http://lakekeeper.services.svc.cluster.local:8181/catalog
+      iceberg.rest-catalog.warehouse=dataminded
       fs.native-s3.enabled=true
       s3.endpoint=${ENV:S3_ENDPOINT}
       s3.region=${ENV:S3_REGION}
       s3.aws-access-key=${ENV:S3_ACCESS_KEY_ID}
       s3.aws-secret-key=${ENV:S3_SECRET_ACCESS_KEY}
-
-
+      iceberg.rest-catalog.security=NONE
+      iceberg.rest-catalog.vended-credentials-enabled=true
+#      connector.name=iceberg
+#      iceberg.catalog.type=jdbc
+#      iceberg.jdbc-catalog.catalog-name=catalog
+#      iceberg.jdbc-catalog.driver-class=org.postgresql.Driver
+#      iceberg.jdbc-catalog.connection-url=jdbc:postgresql://${ENV:PG_HOST}:${ENV:PG_PORT}/catalog
+#      iceberg.jdbc-catalog.connection-user=${ENV:PG_USERNAME}
+#      iceberg.jdbc-catalog.connection-password=${ENV:PG_PASSWORD}
+#      iceberg.jdbc-catalog.default-warehouse-dir=s3://dp-stack-tf-os

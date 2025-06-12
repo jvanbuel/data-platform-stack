@@ -1,7 +1,9 @@
 lakekeeper:
+  catalog:
+    image:
+      tag: latest-main
   postgresql:
     enabled: false
-
 
   externalDatabase:
     type: postgresql
