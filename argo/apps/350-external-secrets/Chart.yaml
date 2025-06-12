@@ -1,0 +1,11 @@
+apiVersion: v2
+name: external-secrets-wrapper
+description: A wrapper Helm chart to deploy Hashicorp Vault with custom values.
+version: 0.1.0 # Version of this wrapper chart
+appVersion: "0.17.0"
+
+dependencies:
+  - name: external-secrets
+    version: "0.17.0"
+    repository: https://charts.external-secrets.io
+

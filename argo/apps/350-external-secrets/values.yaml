@@ -1,0 +1,10 @@
+# Values for the vault-wrapper chart
+
+# Values passed to the 'vault' subchart (dependency)
+external-secrets:
+  serviceAccount:
+    name: external-secrets
+  extraEnv:
+    - name: VAULT_SKIP_VERIFY
+      value: "true"
+
