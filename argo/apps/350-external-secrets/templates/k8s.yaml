@@ -1,0 +1,69 @@
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ClusterSecretStore
+metadata:
+  name: k8s-services
+spec:
+  provider:
+    kubernetes:
+      remoteNamespace: services
+      server:
+        url: "https://kubernetes.default.svc.cluster.local"
+        caProvider:
+          type: ConfigMap
+          name: kube-root-ca.crt
+          key: ca.crt
+          namespace: services
+      auth:
+        serviceAccount:
+          name: "eso-k8s-services"
+          namespace: services
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: eso-k8s-services
+  namespace: services
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: eso-k8s-services
+  namespace: services
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+rules:
+- apiGroups: [""]
+  resources:
+  - secrets
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - authorization.k8s.io
+  resources:
+  - selfsubjectrulesreviews
+  verbs:
+  - create
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: eso-k8s-services
+  namespace: services
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: eso-k8s-services
+subjects:
+- kind: ServiceAccount
+  name: eso-k8s-services
+  namespace: services
