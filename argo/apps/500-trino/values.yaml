@@ -42,6 +42,14 @@ trino:
         http-server.authentication.oauth2.issuer=http://zitadel.exoscale.robberthofman.com
         http-server.authentication.oauth2.client-id=${ENV:OAUTH2_CLIENT_ID}
         http-server.authentication.oauth2.client-secret=${ENV:OAUTH2_CLIENT_SECRET}
+        coordinator=true
+        discovery-uri=http://coordinator:8080
+  worker:
+    additionalConfigFiles:
+      config.properties: |
+        discovery-server.enabled=true
+        internal-communication.shared-secret=123456
+        discovery-uri=http://coordinator:8080
 
   ingress:
     enabled: true
@@ -51,4 +59,3 @@ trino:
         paths:
           - path: /
             pathType: Prefix
-
