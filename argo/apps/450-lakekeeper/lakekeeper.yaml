@@ -12,7 +12,7 @@ spec:
     # Source is the Git repository containing this Application manifest and the wrapper chart
     repoURL: https://github.com/datamindedbe/playground-data-platform-stack.git # Assuming the same repo
     path: argo/apps/450-lakekeeper # Path to the Trino wrapper chart directory
-    targetRevision: HEAD # Or your specific branch/tag
+    targetRevision: upcloud-stuff # Or your specific branch/tag
 
     # Helm configuration for the wrapper chart
     helm:
