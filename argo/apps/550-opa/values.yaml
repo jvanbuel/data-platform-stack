@@ -9,5 +9,22 @@ opa:
   # Mostly useful for debugging.
     enabled: false
 
-  mgmt:
-    enabled: false
+  bootstrapPolicies: |
+    package system.authz
+    
+    # Allow health, metrics, and management endpoints
+    allow {
+      input.path = ["health"]
+    }
+    allow {
+      input.path = ["metrics"]
+    }
+    allow {
+      input.path = ["v1", "policies"]
+    }
+    allow {
+      input.path = ["v1", "data"]
+    }
+
+    # Explicit deny the rest
+    default allow = false
