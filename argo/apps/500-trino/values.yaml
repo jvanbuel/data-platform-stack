@@ -6,6 +6,8 @@ trino:
   - http-server.authentication.type=PASSWORD
   server:
     workers: 3
+    config:
+      authenticationType: "PASSWORD"
   coordinator:
     resources:
       requests:
