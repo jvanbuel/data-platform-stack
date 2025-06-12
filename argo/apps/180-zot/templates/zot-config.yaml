@@ -33,6 +33,7 @@ spec:
             "http": {
               "address": "0.0.0.0",
               "port": "5000",
+              "compat": ["docker2s2"],
               "accessControl": {
                 "repositories": {
                   "**": {
@@ -50,6 +51,11 @@ spec:
               "level": "debug",
               "output": "/dev/stdout",
               "audit": "/dev/stdout"
+            },
+            "extensions": {
+                "ui": {
+                    "enable": true
+                }
             }
           }
   data:
