@@ -15,3 +15,8 @@ resource "random_password" "db_admin_password" {
   length  = 16
   special = false
 }
+
+resource "upcloud_managed_database_logical_database" "lakekeeper_db" {
+  name    = "lakekeeper"
+  service = upcloud_managed_database_postgresql.this.id
+}

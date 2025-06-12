@@ -23,10 +23,10 @@ moved {
 
 # Create a cluster
 resource "upcloud_kubernetes_cluster" "this" {
-  name                    = "${var.prefix}-k8s-cluster"
-  network                 = upcloud_network.example.id
+  name    = "${var.prefix}-k8s-cluster"
+  network = upcloud_network.example.id
   control_plane_ip_filter = ["0.0.0.0/0"]
-  zone                    = local.zone
+  zone    = local.zone
 }
 
 resource "upcloud_kubernetes_node_group" "group" {
@@ -99,4 +99,24 @@ resource "kubernetes_secret" "pg_credentials" {
   }
 
   type = "Opaque"
+}
+
+resource "kubernetes_secret" "lakekeeper-custom-secrets" {
+  metadata {
+    name      = "lakekeeper-custom-secrets"
+    namespace = data.kubernetes_namespace.services.metadata[0].name
+  }
+
+  data = {
+    ICEBERG_REST__PG_HOST_R       = upcloud_managed_database_postgresql.this.service_host
+    ICEBERG_REST__PG_HOST_W       = upcloud_managed_database_postgresql.this.service_host
+    ICEBERG_REST__PG_PORT         = upcloud_managed_database_postgresql.this.service_port
+    ICEBERG_REST__PG_PASSWORD     = upcloud_managed_database_postgresql.this.service_password
+    ICEBERG_REST__PG_DATABASE     = upcloud_managed_database_logical_database.lakekeeper_db.name
+    ICEBERG_REST__PG_USER         = upcloud_managed_database_postgresql.this.service_username
+    ICEBERG_REST__SECRETS_BACKEND = "Postgres"
+    LAKEKEEPER__AUTHZ_BACKEND     = "allowall"
+  }
+  type = "Opaque"
+
 }
