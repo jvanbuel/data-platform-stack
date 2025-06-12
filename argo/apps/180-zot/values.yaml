@@ -34,6 +34,9 @@ zot:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       # Enable TLS termination at the router (Traefik handles certs)
       traefik.ingress.kubernetes.io/router.tls: "true"
+      # Set timeouts for large image pushes
+      traefik.http.routers.zot.timeout: "3600s"
+      traefik.http.services.zot.loadbalancer.responseforwarding.flushinterval: "1s"
     hosts:
     - host: zot.cloudfleet.platform.5ha.re
       paths:

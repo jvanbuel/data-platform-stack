@@ -1,0 +1,21 @@
+# apiVersion: traefik.containo.us/v1alpha1
+# kind: Middleware
+# metadata:
+#   name: zot-timeout
+# spec:
+#   # Configure request buffering for large container image operations
+#   buffering:
+#     maxRequestBodyBytes: 0  # No limit on request body size for large images
+#     maxResponseBodyBytes: 0 # No limit on response body size
+#     memRequestBodyBytes: 1048576  # 1MB in memory buffer
+#     memResponseBodyBytes: 1048576 # 1MB in memory buffer
+#   forwardAuth:
+#     # Increase timeouts for large container image operations
+#     authRequestHeaders:
+#     - "X-Forwarded-Proto"
+#     - "X-Forwarded-Host"
+#   # Set request timeout to 1 hour for large image pushes
+#   timeout:
+#     readTimeout: "3600s"
+#     writeTimeout: "3600s"
+#     idleTimeout: "300s"
