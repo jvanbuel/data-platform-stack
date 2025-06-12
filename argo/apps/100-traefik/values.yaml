@@ -15,10 +15,10 @@ traefik:
     web:
       transport:
         respondingTimeouts:
-          readTimeout: 3600
-          writeTimeout: 3600
-          idleTimeout: 3600
-        keepAliveMaxTime: 3600
+          readTimeout: 3600s
+          writeTimeout: 3600s
+          idleTimeout: 3600s
+        keepAliveMaxTime: 3600s
         keepAliveMaxRequests: 1000
 
   logs:
