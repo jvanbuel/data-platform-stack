@@ -9,4 +9,5 @@ zitadel:
         Enabled: false
     configSecretName: zitadel-credentials
     configSecretKey: config.yaml
+    dbSslCaCrtSecret: pg-certificate
       

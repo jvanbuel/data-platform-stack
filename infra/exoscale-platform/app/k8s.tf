@@ -82,10 +82,24 @@ resource "kubernetes_secret" "zitadel_db" {
         Admin:
           Username: ${exoscale_dbaas.this.pg.admin_username}
           Password: ${exoscale_dbaas.this.pg.admin_password}
+          ExistingDatabase: defaultdb
           SSL:
             Mode: disable
   EOF
   }
   type = "Opaque"
 
+}
+
+
+resource "kubernetes_secret" "db_certficate" {
+  metadata {
+    name      = "pg-certificate"
+    namespace = kubernetes_namespace.services.metadata[0].name
+  }
+
+  data = {
+    "ca.crt" = exoscale_dbaas.this.ca_certificate
+  }
+  type = "Opaque"
 }
