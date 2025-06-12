@@ -16,7 +16,7 @@ spec:
             "distSpecVersion": "1.1.0",
             "storage": {
               "rootDirectory": "/var/lib/registry",
-              "dedupe": true,
+              "dedupe": true,true
               "storageDriver": {
                 "name": "s3",
                 "rootdirectory": "/platform/zot",
@@ -53,4 +53,4 @@ spec:
    - secretKey: ENDPOINT
      remoteRef:
        key: platform/s3-credentials
-       property: ENDPOINT 
+       property: ENDPOINT

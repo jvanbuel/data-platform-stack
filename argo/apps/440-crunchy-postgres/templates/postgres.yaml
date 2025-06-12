@@ -5,7 +5,7 @@ metadata:
   namespace: services
 spec:
   postgresVersion: 17
-  
+
   instances:
   - name: instance1
     replicas: 1
@@ -15,7 +15,7 @@ spec:
       resources:
         requests:
           storage: 10Gi
-    
+
     resources:
       requests:
         cpu: 1000m
@@ -28,4 +28,4 @@ spec:
   - name: trino
     databases:
     - trino-catalog
-    options: "CREATEDB" 
+    options: "CREATEDB"

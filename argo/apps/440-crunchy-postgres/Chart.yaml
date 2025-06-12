@@ -6,4 +6,4 @@ appVersion: "16" # PostgreSQL version we're deploying
 type: application
 
 # This chart doesn't have dependencies as it creates custom resources directly
-# It requires the Crunchy Postgres Operator to be installed separately 
+# It requires the Crunchy Postgres Operator to be installed separately

@@ -8,4 +8,4 @@ spec:
     name: letsencrypt-prod
     kind: ClusterIssuer
   dnsNames:
-    - zot.cloudfleet.platform.5ha.re 
+    - zot.cloudfleet.platform.5ha.re

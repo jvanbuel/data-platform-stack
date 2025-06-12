@@ -24,4 +24,3 @@ spec:
      remoteRef:
        key: platform/s3-credentials  # Path in Vault
        property: SECRET_ACCESS_KEY  # Property to extract from the Vault secret
-

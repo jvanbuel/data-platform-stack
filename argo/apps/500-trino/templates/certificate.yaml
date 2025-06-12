@@ -8,4 +8,4 @@ spec:
     name: letsencrypt-prod
     kind: ClusterIssuer
   dnsNames:
-    - trino.cloudfleet.platform.5ha.re 
+    - trino.cloudfleet.platform.5ha.re

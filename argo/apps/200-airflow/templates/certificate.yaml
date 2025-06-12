@@ -8,4 +8,4 @@ spec:
     name: letsencrypt-prod
     kind: ClusterIssuer
   dnsNames:
-    - airflow.cloudfleet.platform.5ha.re 
+    - airflow.cloudfleet.platform.5ha.re

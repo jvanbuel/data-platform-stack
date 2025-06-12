@@ -19,4 +19,3 @@ zitadel:
               Mode: disable
     configSecretName: zitadel-credentials
     configSecretKey: config.yaml
-      

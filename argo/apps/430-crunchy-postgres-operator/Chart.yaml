@@ -10,4 +10,4 @@ dependencies:
   repository: oci://registry.developers.crunchydata.com/crunchydata # The OCI repository of the dependency
   # We need to map the values from our local values.yaml to the subchart.
   # By default, values under a key matching the dependency name are passed.
-  # So, values for 'pgo' in our values.yaml will go to the pgo subchart. 
+  # So, values for 'pgo' in our values.yaml will go to the pgo subchart.

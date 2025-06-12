@@ -8,4 +8,4 @@ spec:
     name: letsencrypt-prod
     kind: ClusterIssuer
   dnsNames:
-    - argocd.cloudfleet.platform.5ha.re 
+    - argocd.cloudfleet.platform.5ha.re

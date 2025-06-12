@@ -4,7 +4,7 @@ lakekeeper:
 
   externalDatabase:
     type: postgresql
-    host: 
+    host:
     port: 5432
     user: lakekeeper
     password: lakekeeper_password # Use a secure method to manage this in production
