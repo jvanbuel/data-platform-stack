@@ -15,7 +15,7 @@ trino:
     config:
       authenticationType: OAUTH2
   additionalConfigProperties:
-    http-server.authentication.oauth2.issuer: http://localhost:8080
+    http-server.authentication.oauth2.issuer: "http://localhost:8080"
     http-server.authentication.oauth2.client-id: ${OAUTH2_CLIENT_ID}
     http-server.authentication.oauth2.client-secret: ${OAUTH2_CLIENT_SECRET}
   catalogs:
