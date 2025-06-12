@@ -1,0 +1,20 @@
+# Values for the crunchy-postgres-operator-wrapper chart
+
+# Values passed to the 'pgo' subchart (dependency)
+pgo:
+  # Enable debug logging by default
+  debug: true
+
+  # Single namespace mode (set to false for multi-namespace)
+  singleNamespace: false
+
+  # Controller configuration
+  # controllerImages:
+  #   cluster: registry.developers.crunchydata.com/crunchydata/postgres-operator:ubi9-5.8.2-0
+
+  # High availability configuration
+  replicas: 1
+  # pgoControllerLeaseName: "cpk-leader-election-lease"
+
+  # Disable upgrade checks for security
+  disable_check_for_upgrades: true

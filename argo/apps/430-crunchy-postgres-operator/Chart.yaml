@@ -1,0 +1,13 @@
+apiVersion: v2
+name: crunchy-postgres-operator-wrapper
+description: A wrapper Helm chart to deploy Crunchy Postgres Operator with custom values.
+version: 0.1.0 # Version of this wrapper chart
+appVersion: "5.8.2" # Corresponds to the Crunchy Postgres Operator chart version we depend on
+
+dependencies:
+- name: pgo
+  version: "5.8.2" # The version of the Crunchy Postgres Operator chart to use
+  repository: oci://registry.developers.crunchydata.com/crunchydata # The OCI repository of the dependency
+  # We need to map the values from our local values.yaml to the subchart.
+  # By default, values under a key matching the dependency name are passed.
+  # So, values for 'pgo' in our values.yaml will go to the pgo subchart. 
