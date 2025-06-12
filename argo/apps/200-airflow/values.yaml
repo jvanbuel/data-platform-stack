@@ -42,7 +42,8 @@ airflow:
       host: airflow.cloudfleet.platform.5ha.re # Define the hostname
       path: / # Root path
       tls:
-      - secretName: airflow-tls
+        enabled: true
+        secretName: airflow-tls
 
   createUserJob:
     useHelmHooks: false

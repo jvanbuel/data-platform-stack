@@ -14,7 +14,7 @@ spec:
     path: argo/apps # Directory containing the application manifests
     directory:
       recurse: true # Automatically discover apps in subdirectories
-      include: application.yaml # Only include files named application.yaml
+      include: "**/application.yaml" # Only include files named application.yaml
   destination:
     server: https://kubernetes.default.svc # Target the local cluster
     # Namespace is not needed here as child apps define their own destinations
