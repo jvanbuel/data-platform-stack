@@ -8,9 +8,12 @@ traefik:
       enabled: true
       # Use the default entrypoint for the dashboard
       entryPoints:
-        - websecure
+      - websecure
       # Define the matching rule for the dashboard route
       matchRule: Host(`traefik.localhost`)
+    logs:
+      general:
+        level: DEBUG
 
   # Enable Kubernetes providers
   providers:
