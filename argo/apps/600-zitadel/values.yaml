@@ -20,6 +20,9 @@ zitadel:
     configSecretName: zitadel-credentials
     configSecretKey: config.yaml
     dbSslCaCrtSecret: pg-certificate
+    ingress:
+      enabled: true
+      className: traefik
+      hosts: 
+        - host: zitadel.exoscale.robberthofman.com
 
-
-          
