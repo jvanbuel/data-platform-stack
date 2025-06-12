@@ -6,6 +6,8 @@ vault:
   server:
     injector:
       enabled: false
+    dataStorage:
+      enabled: true
 
     # Ensure HA mode is disabled when running in dev mode
     ha:
