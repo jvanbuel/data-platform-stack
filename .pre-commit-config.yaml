@@ -1,0 +1,23 @@
+repos:
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: v0.6.9
+  hooks:
+  - id: ruff-format
+    name: ruff format yaml
+    files: \.(yaml|yml)$
+    args: [ --config=line-length=120 ]
+  - id: ruff
+    name: ruff lint yaml
+    files: \.(yaml|yml)$
+    args: [ --fix, --config=line-length=120 ]
+
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.6.0
+  hooks:
+  - id: trailing-whitespace
+    files: \.(yaml|yml)$
+  - id: end-of-file-fixer
+    files: \.(yaml|yml)$
+  - id: check-yaml
+    args: [ --multi, --unsafe ]
+  - id: check-added-large-files

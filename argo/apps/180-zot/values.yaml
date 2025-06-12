@@ -1,6 +1,14 @@
 # Custom values for the zot Helm chart
 # Values placed under the 'zot:' key will be passed to the subchart.
 zot:
+  image:
+    repository: ghcr.io/project-zot/zot
+    tag: "v2.1.4"
+
+  # Ensure zot runs on AMD64 nodes (or use ARM64 image instead)
+  # nodeSelector:
+  #   kubernetes.io/arch: amd64
+
   # Mount only the config.json key from the secret to the specific file
   extraVolumes:
   - name: zot-config-volume
