@@ -4,14 +4,14 @@ metadata:
   name: vault
   namespace: argocd
   finalizers:
-    - argocd.argoproj.io/resources-finalizer # Use domain-qualified finalizer
+  - argocd.argoproj.io/resources-finalizer # Use domain-qualified finalizer
 spec:
   project: default
   source:
     # Source is the Git repository containing this Application manifest and the wrapper chart
     repoURL: https://github.com/datamindedbe/playground-data-platform-stack.git # Ensure this is your repo URL
     path: argo/apps/300-vault # Path to the wrapper chart directory within the Git repo
-    targetRevision: HEAD # Or your specific branch/tag
+    targetRevision: cloudfleet # Or your specific branch/tag
 
     # Helm configuration for the wrapper chart
     helm:
@@ -25,4 +25,4 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true # Ensure the services namespace is created (if not already)
+    - CreateNamespace=true # Ensure the services namespace is created (if not already)

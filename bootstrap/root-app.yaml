@@ -5,12 +5,12 @@ metadata:
   namespace: argocd
   # Add finalizer to ensure that apps are deleted before the root app
   finalizers:
-    - argocd.argoproj.io/resources-finalizer # Use domain-qualified finalizer
+  - argocd.argoproj.io/resources-finalizer # Use domain-qualified finalizer
 spec:
   project: default
   source:
     repoURL: https://github.com/datamindedbe/playground-data-platform-stack.git # Replace if your repo URL is different
-    targetRevision: HEAD # Or specify a branch/tag
+    targetRevision: cloudfleet # Or specify a branch/tag
     path: argo/apps # Directory containing the application manifests
     directory:
       recurse: true # Automatically discover apps in subdirectories
@@ -19,7 +19,7 @@ spec:
     # Namespace is not needed here as child apps define their own destinations
   syncPolicy:
     automated:
-      prune: true    # Delete resources not defined in Git
+      prune: true # Delete resources not defined in Git
       selfHeal: true # Automatically sync if state deviates
     syncOptions:
-      - CreateNamespace=true # Automatically create namespaces for apps if they don't exist
+    - CreateNamespace=true # Automatically create namespaces for apps if they don't exist

@@ -13,7 +13,7 @@ vault:
       # raft: # Raft is the default integrated storage, disable if using dev mode
       #   enabled: false
 
-    # Configure Ingress for the UI
+      # Configure Ingress for the UI
     ingress:
       enabled: true
       # ingressClassName: traefik # Use this if you have a default IngressClass
@@ -25,5 +25,4 @@ vault:
         # Vault UI backend service uses HTTP (port 8200)
         # traefik.ingress.kubernetes.io/service.scheme: http # Usually not needed
       hosts:
-        - host: vault.localhost
-
+      - host: vault.cloudfleet.platform.5ha.re
