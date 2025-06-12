@@ -33,7 +33,9 @@ trino:
   coordinator:
     additionalConfigFiles:
       config.properties: |
-        http-server.authentication.oauth2.issuer=http://localhost:8080
+        http-server.authentication.type=oauth2,password,jwt
+        http-server.authentication.oauth2.oidc.discovery=true
+        http-server.authentication.oauth2.issuer=zitadel.services.svc.cluster.local:8080
         http-server.authentication.oauth2.client-id=${OAUTH2_CLIENT_ID}
         http-server.authentication.oauth2.client-secret=${OAUTH2_CLIENT_SECRET}
 
