@@ -72,7 +72,7 @@ traefik:
         # Email address used for registration
         email: robbert.hofman@dataminded.com
         # File or key used for certificates storage
-        storage: /data/acme.json
+        storage: /acme/acme.json
         # HTTP challenge
         httpChallenge:
           entryPoint: web
@@ -82,14 +82,9 @@ traefik:
     enabled: true
     accessMode: ReadWriteOnce
     size: 1Gi
-    path: /data
+    path: /acme
     annotations: {}
       # Additional configuration to ensure ACME works
 
   additionalArguments:
-    - "--log.level=INFO"
-    - "--certificatesresolvers.letsencrypt.acme.httpchallenge=true"
-    - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
-    - "--certificatesresolvers.letsencrypt.acme.email=robbert.hofman@dataminded.com"
-    - "--certificatesresolvers.letsencrypt.acme.storage=/data/acme.json"
-    - "--certificatesresolvers.letsencrypt.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
+    - "--log.level=DEBUG"
