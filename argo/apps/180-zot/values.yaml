@@ -1,0 +1,59 @@
+# Custom values for the zot Helm chart
+# Values placed under the 'zot:' key will be passed to the subchart.
+zot:
+  # Override the default configuration with S3 storage
+  configData: |
+    {
+      "distSpecVersion": "1.1.0",
+      "storage": {
+        "rootDirectory": "/var/lib/registry",
+        "dedupe": true,
+        "storageDriver": {
+          "name": "s3",
+          "rootdirectory": "/platform/zot",
+          "region": "auto",
+          "bucket": "dp-stack-tf-os",
+          "secure": true,
+          "skipverify": false
+        }
+      },
+      "http": {
+        "address": "0.0.0.0",
+        "port": "5000"
+      },
+      "log": {
+        "level": "info"
+      }
+    }
+
+  # Environment variables from S3 credentials secret using envFrom
+  envFrom:
+  - secretRef:
+      name: zot-s3-credentials
+  # Configure ingress for zot
+  ingress:
+    enabled: true
+    className: traefik
+    annotations:
+      # Use Traefik's websecure entrypoint for HTTPS
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      # Enable TLS termination at the router (Traefik handles certs)
+      traefik.ingress.kubernetes.io/router.tls: "true"
+    hosts:
+    - host: zot.cloudfleet.platform.5ha.re
+      paths:
+      - path: /
+        pathType: Prefix
+    tls:
+    - hosts:
+      - zot.cloudfleet.platform.5ha.re
+      secretName: zot-tls
+
+  # Resource limits
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi

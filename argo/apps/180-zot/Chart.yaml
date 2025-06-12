@@ -1,0 +1,11 @@
+apiVersion: v2
+name: zot-wrapper
+description: A wrapper Helm chart to deploy zot registry with custom values and S3 storage.
+version: 0.1.0 # Version of this wrapper chart
+appVersion: "v2.1.4" # Corresponds to the zot version we deploy
+
+dependencies:
+- name: zot
+  version: "0.1.60" # The version of the zot chart to use
+  repository: http://zotregistry.dev/helm-charts # The repository of the dependency
+  # Values under the 'zot' key in our values.yaml will be passed to the subchart. 

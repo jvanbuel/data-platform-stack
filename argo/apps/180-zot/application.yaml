@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: zot
+  namespace: argocd
+  # Add finalizer to ensure that Helm release is deleted before the app
+  finalizers:
+  - argocd.argoproj.io/resources-finalizer # Use domain-qualified finalizer
+spec:
+  project: default
+  source:
+    # Source is the Git repository containing this Application manifest and the wrapper chart
+    repoURL: https://github.com/datamindedbe/playground-data-platform-stack.git
+    path: argo/apps/180-zot # Path to the zot wrapper chart directory
+    targetRevision: cloudfleet # Or your specific branch/tag
+    # Helm configuration for the wrapper chart
+    helm:
+      releaseName: zot # Helm release name
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: services # Deploy zot into the services namespace
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true # Ensure the services namespace is created 
