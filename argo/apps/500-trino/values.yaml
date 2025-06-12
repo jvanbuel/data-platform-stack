@@ -2,7 +2,7 @@
 # Values placed under the 'trino:' key will be passed to the subchart.
 trino:
   additionalConfigProperties:
-    internal-communication.shared-secret=123456
+    - internal-communication.shared-secret=123456
   envFrom:
     - secretRef:
         name: s3-credentials
@@ -37,6 +37,6 @@ trino:
       config.properties: |
         http-server.authentication.type=oauth2
         http-server.authentication.oauth2.oidc.discovery=true
-        http-server.authentication.oauth2.issuer=zitadel.services.svc.cluster.local
+        http-server.authentication.oauth2.issuer=zitadel.services.svc.cluster.local:8080
         http-server.authentication.oauth2.client-id=${ENV:OAUTH2_CLIENT_ID}
         http-server.authentication.oauth2.client-secret=${ENV:OAUTH2_CLIENT_SECRET}
