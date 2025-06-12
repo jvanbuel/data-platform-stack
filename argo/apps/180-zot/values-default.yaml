@@ -28,6 +28,13 @@ service:
   clusterIP: null
 # Enabling this will publicly expose your zot server
 # Only enable this if you have security enabled on your cluster
+resources:
+  requests:
+    cpu: 500m
+    memory: 512Mi
+  limits:
+    cpu: 1000m
+    memory: 512Mi
 ingress:
   enabled: false
   annotations: {}
