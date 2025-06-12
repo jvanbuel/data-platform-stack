@@ -1,7 +1,7 @@
 apiVersion: postgres-operator.crunchydata.com/v1beta1
 kind: PostgresCluster
 metadata:
-  name: trino-catalog
+  name: my-cute-postgres-cluster
   namespace: services
 spec:
   postgresVersion: 17
@@ -18,14 +18,14 @@ spec:
     
     resources:
       requests:
-        cpu: 100m
-        memory: 256Mi
+        cpu: 1000m
+        memory: 512Mi
       limits:
-        cpu: 500m
-        memory: 1Gi
+        cpu: 2000m
+        memory: 2Gi
 
   users:
-  - name: app-user
+  - name: trino
     databases:
-    - catalog
+    - trino-catalog
     options: "CREATEDB" 
