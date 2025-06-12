@@ -8,6 +8,19 @@ trino:
     - secretRef:
         name: pg-credentials
       prefix: PG_
+    - secretRef:
+        name: trino-oidc
+      prefix: OAUTH2_
+  server:
+    config:
+      authenticationType: OAUTH2
+  additionalConfigProperties:
+    http-server.authentication.oauth2.client-id: ${ENV:OAUTH2_CLIENT_ID}
+    http-server.authentication.oauth2.client-secret: ${ENV:OAUTH2_CLIENT_SECRET}
+    http-server.authentication.oauth2.token-url: ${ENV:OAUTH2_TOKEN_URL}
+    http-server.authentication.oauth2.authorization-url: ${ENV:OAUTH2_AUTHORIZATION_URL}
+    http-server.authentication.oauth2.scope: ${ENV:OAUTH2_SCOPE}
+    http-server.authentication.oauth2.redirect-uri: ${ENV:OAUTH2_REDIRECT_URI}
   catalogs:
     iceberg: |
       connector.name=iceberg
