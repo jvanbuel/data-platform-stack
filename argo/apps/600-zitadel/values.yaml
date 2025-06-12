@@ -25,4 +25,7 @@ zitadel:
     className: traefik
     hosts: 
       - host: zitadel.exoscale.robberthofman.com
+        paths:
+          - path: /
+            pathType: Prefix
 
