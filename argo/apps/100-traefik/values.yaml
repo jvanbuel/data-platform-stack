@@ -20,7 +20,14 @@ traefik:
           idleTimeout: 3600s
         keepAliveMaxTime: 3600s
         keepAliveMaxRequests: 1000
-
+    websecure:
+      transport:
+        respondingTimeouts:
+          readTimeout: 3600s
+          writeTimeout: 3600s
+          idleTimeout: 3600s
+        keepAliveMaxTime: 3600s
+        keepAliveMaxRequests: 1000
   logs:
     general:
       level: DEBUG
