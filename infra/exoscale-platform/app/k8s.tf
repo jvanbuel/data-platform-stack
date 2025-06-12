@@ -103,3 +103,27 @@ resource "kubernetes_secret" "db_certficate" {
   }
   type = "Opaque"
 }
+
+data "exoscale_database_uri" "dbaas" {
+  name = exoscale_dbaas.this.name
+  type = "pg"
+  zone = local.zone
+}
+
+resource "kubernetes_secret" "database_secrets" {
+  metadata {
+    name = "lakekeeper-custom-secrets"
+    namespace = "services"
+  }
+  data = {
+    ICEBERG_REST__PG_HOST_R=data.exoscale_database_uri.dbaas.host
+    ICEBERG_REST__PG_HOST_W=data.exoscale_database_uri.dbaas.host
+    ICEBERG_REST__PG_PORT=data.exoscale_database_uri.dbaas.port
+    ICEBERG_REST__PG_PASSWORD=data.exoscale_database_uri.dbaas.password
+    ICEBERG_REST__PG_DATABASE="lakekeeper"
+    ICEBERG_REST__PG_USER=data.exoscale_database_uri.dbaas.username
+    ICEBERG_REST__SECRETS_BACKEND="Postgres"
+    LAKEKEEPER__AUTHZ_BACKEND="allowall"
+  }
+  depends_on = [kubernetes_namespace.services]
+}
