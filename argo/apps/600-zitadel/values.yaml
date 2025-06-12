@@ -6,7 +6,7 @@ zitadel:
       ExternalSecure: true
       ExternalDomain: zitadel.exoscale.robberthofman.com
       TLS:
-        Enabled: true
+        Enabled: false
       FirstInstance:
         Org:
           Human:
