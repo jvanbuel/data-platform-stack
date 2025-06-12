@@ -2,16 +2,16 @@ lakekeeper:
   catalog:
     image:
       tag: latest-main
+    extraEnvFrom:
+      - secretRef:
+          name: lakekeeper-custom-secrets #overwrite the external database credentials with our own settings
   postgresql:
     enabled: false
 
   externalDatabase:
     type: postgresql
-    host_read: dp-exoscale-postgres-exoscale-21270461-b41c-4657-ba25-2815e8afb.j.aivencloud.com
-    host_write: dp-exoscale-postgres-exoscale-21270461-b41c-4657-ba25-2815e8afb.j.aivencloud.com
-    port: 21699
-    user: admin
-    passwordSecret: pg-credentials
-    passwordSecretKey: PASSWORD
-    database: lakekeeper
-  
+    host_read: # used from lakekeeper-custom-secrets
+    port: # used from lakekeeper-custom-secrets
+    user: # used from lakekeeper-custom-secrets
+    database: # used from lakekeeper-custom-secrets
+
