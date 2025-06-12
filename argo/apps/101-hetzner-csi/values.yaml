@@ -1,0 +1,20 @@
+# Values for the traefik-wrapper chart
+
+# Values passed to the 'traefik' subchart (dependency)
+traefik:
+  # Enable dashboard access (consider security implications for production)
+  ingressRoute:
+    dashboard:
+      enabled: true
+      # Use the default entrypoint for the dashboard
+      entryPoints:
+        - websecure
+      # Define the matching rule for the dashboard route
+      matchRule: Host(`traefik.localhost`)
+
+  # Enable Kubernetes providers
+  providers:
+    kubernetesCRD:
+      enabled: true # Enable CRD provider (for IngressRoute, ServersTransport, etc.)
+    kubernetesIngress:
+      enabled: true
