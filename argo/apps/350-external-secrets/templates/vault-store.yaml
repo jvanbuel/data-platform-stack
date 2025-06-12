@@ -15,6 +15,7 @@ spec:
         tokenSecretRef:
           name: "eso-vault-secret"
           key: "token"
+          namespace: "services"
         # kubernetes:
         #   # Path where the Kubernetes authentication backend is mounted in Vault
         #   mountPath: "kubernetes"
