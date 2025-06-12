@@ -51,6 +51,7 @@ trino:
         http-server.process-forwarded=true
         web-ui.enabled: true
         web-ui.authentication.type=oauth2
+        http-server.authentication.oauth2.web-ui.enabled=true
 
   worker:
     additionalConfigFiles:
@@ -63,6 +64,9 @@ trino:
   ingress:
     enabled: true
     className: traefik
+    annotations:
+      # Enable TLS with Let's Encrypt (adjust based on your cert-manager setup)
+      cert-manager.io/cluster-issuer: "letsencrypt"
     hosts: 
       - host: trino.exoscale.robberthofman.com
         paths:
