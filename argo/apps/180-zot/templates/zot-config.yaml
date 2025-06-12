@@ -1,0 +1,56 @@
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: zot-config
+spec:
+  refreshInterval: 300s # Refresh every 5 minutes
+  secretStoreRef:
+    name: vault-backend
+    kind: ClusterSecretStore
+  target:
+    name: zot-config
+    template:
+      data:
+        config.json: |
+          {
+            "distSpecVersion": "1.1.0",
+            "storage": {
+              "rootDirectory": "/var/lib/registry",
+              "dedupe": true,
+              "storageDriver": {
+                "name": "s3",
+                "rootdirectory": "/platform/zot",
+                "region": "{{ .REGION }}",
+                "regionendpoint": "{{ .ENDPOINT }}",
+                "bucket": "inno-days-bucket",
+                "accesskey": "{{ .ACCESS_KEY_ID }}",
+                "secretkey": "{{ .SECRET_ACCESS_KEY }}",
+                "secure": true,
+                "skipverify": false
+              }
+            },
+            "http": {
+              "address": "0.0.0.0",
+              "port": "5000"
+            },
+            "log": {
+              "level": "info"
+            }
+          }
+  data:
+   - secretKey: ACCESS_KEY_ID
+     remoteRef:
+       key: platform/s3-credentials
+       property: ACCESS_KEY_ID
+   - secretKey: SECRET_ACCESS_KEY
+     remoteRef:
+       key: platform/s3-credentials
+       property: SECRET_ACCESS_KEY
+   - secretKey: REGION
+     remoteRef:
+       key: platform/s3-credentials
+       property: REGION
+   - secretKey: ENDPOINT
+     remoteRef:
+       key: platform/s3-credentials
+       property: ENDPOINT 
