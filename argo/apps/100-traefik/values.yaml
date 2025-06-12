@@ -18,3 +18,25 @@ traefik:
       enabled: true # Enable CRD provider (for IngressRoute, ServersTransport, etc.)
     kubernetesIngress:
       enabled: true
+
+  # Configure Let's Encrypt ACME
+  certificatesResolvers:
+    letsencrypt:
+      acme:
+        # ACME CA server to use
+        caServer: https://acme-v02.api.letsencrypt.org/directory
+        # Email address used for registration
+        email: robbert.hofman@dataminded.com
+        # File or key used for certificates storage
+        storage: /data/acme.json
+        # HTTP challenge
+        httpChallenge:
+          entryPoint: web
+  
+  # Persistence for ACME certificates
+  persistence:
+    enabled: true
+    accessMode: ReadWriteOnce
+    size: 128Mi
+    path: /data
+    annotations: {}
