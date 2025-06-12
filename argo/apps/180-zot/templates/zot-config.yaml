@@ -49,6 +49,7 @@ spec:
                 },
                 "sync": {
                     "enable": true,
+                    "downloadDir": "/tmp/zot-sync",
                     "registries": [
                         {
                         "urls": ["https://k8s.gcr.io"],

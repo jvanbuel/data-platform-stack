@@ -29,6 +29,9 @@ zot:
     mountPath: /etc/zot/config.json
     subPath: config.json
     readOnly: true
+  - name: zot-sync-volume
+    mountPath: /tmp/zot-sync
+    emptyDir: {}
   # Service configuration
   service:
     type: ClusterIP
