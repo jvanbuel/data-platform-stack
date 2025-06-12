@@ -78,13 +78,13 @@ resource "kubernetes_secret" "zitadel_db" {
           Username: ${exoscale_dbaas.this.pg.admin_username}
           Password: ${exoscale_dbaas.this.pg.admin_password}
           SSL:
-            Mode: disable
+            Mode: prefer
         Admin:
           Username: ${exoscale_dbaas.this.pg.admin_username}
           Password: ${exoscale_dbaas.this.pg.admin_password}
           ExistingDatabase: defaultdb
           SSL:
-            Mode: disable
+            Mode: prefer
   EOF
   }
   type = "Opaque"
