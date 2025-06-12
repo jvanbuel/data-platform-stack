@@ -31,6 +31,25 @@ traefik:
       tls:
         enabled: true
 
+  # add some middleware to serve the acme challenge over HTTP
+  middleware:
+    skip-acme-redirect:
+      redirectRegex:
+        regex: "^/\\.well-known/acme-challenge/(.*)"
+        replacement: "/.well-known/acme-challenge/$1"
+        permanent: false
+
+  routers:
+    acme-challenge:
+      entryPoints:
+        - web
+      rule: "PathPrefix(`/.well-known/acme-challenge/`)"
+      service: api@internal
+      priority: 100
+      middlewares:
+        - skip-acme-redirect@internal
+
+
   entryPoints:
     web:
       address: ":80"
