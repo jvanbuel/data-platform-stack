@@ -10,6 +10,11 @@ resource "upcloud_managed_object_storage" "this" {
   }
 }
 
+resource "upcloud_managed_object_storage_bucket" "example" {
+  service_uuid = upcloud_managed_object_storage.this.id
+  name         = "dp-stack-tf-os"
+}
+
 resource "random_string" "random" {
   length  = 16
   special = false

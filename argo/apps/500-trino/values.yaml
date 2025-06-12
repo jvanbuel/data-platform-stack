@@ -17,7 +17,7 @@ trino:
       iceberg.jdbc-catalog.connection-url=jdbc:postgresql://${ENV:PG_HOST}:${ENV:PG_PORT}/catalog
       iceberg.jdbc-catalog.connection-user=${ENV:PG_USERNAME}
       iceberg.jdbc-catalog.connection-password=${ENV:PG_PASSWORD}
-      iceberg.jdbc-catalog.default-warehouse-dir=s3://dp-stack-tf-os-ifco65m3xk674l3t
+      iceberg.jdbc-catalog.default-warehouse-dir=s3://dp-stack-tf-os
       fs.native-s3.enabled=true
       s3.endpoint=${ENV:S3_ENDPOINT}
       s3.region=${ENV:S3_REGION}
