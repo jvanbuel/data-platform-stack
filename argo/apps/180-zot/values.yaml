@@ -23,6 +23,8 @@ zot:
       items:
       - key: config.json
         path: config.json
+  - name: zot-sync-volume
+    emptyDir: {}
 
   extraVolumeMounts:
   - name: zot-config-volume
@@ -31,7 +33,7 @@ zot:
     readOnly: true
   - name: zot-sync-volume
     mountPath: /tmp/zot-sync
-    emptyDir: {}
+    readOnly: false
   # Service configuration
   service:
     type: ClusterIP
