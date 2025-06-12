@@ -37,6 +37,6 @@ traefik:
   persistence:
     enabled: true
     accessMode: ReadWriteOnce
-    size: 128Mi
+    size: 1Gi
     path: /data
     annotations: {}
