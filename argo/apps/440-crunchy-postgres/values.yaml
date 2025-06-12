@@ -1,0 +1,4 @@
+# Minimal values for the crunchy-postgres-cluster chart
+
+postgresCluster:
+  name: trino-catalog

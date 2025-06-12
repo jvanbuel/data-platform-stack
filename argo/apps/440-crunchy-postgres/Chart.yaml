@@ -1,0 +1,9 @@
+apiVersion: v2
+name: crunchy-postgres-cluster
+description: A Helm chart to deploy a PostgreSQL cluster using Crunchy PostgresCluster custom resources.
+version: 0.1.0 # Version of this chart
+appVersion: "16" # PostgreSQL version we're deploying
+type: application
+
+# This chart doesn't have dependencies as it creates custom resources directly
+# It requires the Crunchy Postgres Operator to be installed separately 
