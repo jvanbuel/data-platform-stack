@@ -117,7 +117,7 @@ resource "exoscale_sks_kubeconfig" "this" {
   user   = "kubernetes-admin"
   groups = ["system:masters"]
 
-  ttl_seconds           = 10800 # 3 hours
+  ttl_seconds           = 26600 # 3 hours
   early_renewal_seconds = 300
 }
 

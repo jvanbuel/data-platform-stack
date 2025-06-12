@@ -37,6 +37,7 @@ trino:
       config.properties: |
         internal-communication.shared-secret=123456
         http-server.http.enabled=true
+        http-server.http.port=8080
         http-server.authentication.type=oauth2
         http-server.authentication.oauth2.oidc.discovery=true
         http-server.authentication.oauth2.issuer=http://zitadel.exoscale.robberthofman.com
@@ -59,6 +60,7 @@ trino:
         internal-communication.shared-secret=123456
         discovery.uri=http://trino.services.svc:8080
         http-server.http.enabled=true
+        http-server.http.port=8080
 
   ingress:
     enabled: true

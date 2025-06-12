@@ -16,6 +16,7 @@ metadata:
 spec:
   # Define TLS section for the host (required when router.tls is true)
   # Traefik might generate a default cert if none is specified
+  ingressClassName: traefik # Specify the ingress class if needed
   rules:
   - host: argocd.exoscale.robberthofman.com # Replace with your ArgoCD server host
     http:
