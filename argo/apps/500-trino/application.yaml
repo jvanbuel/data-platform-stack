@@ -13,7 +13,6 @@ spec:
     repoURL: https://github.com/datamindedbe/playground-data-platform-stack.git # Assuming the same repo
     path: argo/apps/500-trino # Path to the Trino wrapper chart directory
     targetRevision: cloudfleet # Or your specific branch/tag
-
     # Helm configuration for the wrapper chart
     helm:
       releaseName: trino # Helm release name
