@@ -4,3 +4,4 @@ terraform.tfvars
 .env
 terraform.tfstate*
 *.kubeconfig
+token.json
