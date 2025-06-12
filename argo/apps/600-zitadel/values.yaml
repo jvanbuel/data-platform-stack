@@ -7,7 +7,19 @@ zitadel:
       ExternalDomain: localhost
       TLS:
         Enabled: false
+      FirstInstance:
+        Org:
+          Human:
+            Username: "admin"
+            Password: "SecureP@ssw0rd!"
+            FirstName: "Default"
+            LastName: "Admin"
+            Email:
+              Address: "admin@dataminded.com"
+              Verified: true
     configSecretName: zitadel-credentials
     configSecretKey: config.yaml
     dbSslCaCrtSecret: pg-certificate
-      
+
+
+          
