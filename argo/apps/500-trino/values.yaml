@@ -4,6 +4,24 @@ trino:
   additionalConfigProperties:
   - http-server.process-forwarded=true
   - http-server.authentication.type=PASSWORD
+  server:
+    workers: 3
+  coordinator:
+    resources:
+      requests:
+        cpu: 1000m
+        memory: 2Gi
+      limits:
+        cpu: 2000m
+        memory: 4Gi
+  worker:
+    resources:
+      requests:
+        cpu: 1000m
+        memory: 4Gi
+      limits:
+        cpu: 2000m
+        memory: 8Gi
   envFrom:
   - secretRef:
       name: s3-credentials
