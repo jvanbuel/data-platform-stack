@@ -5,10 +5,11 @@ lakekeeper:
 
   externalDatabase:
     type: postgresql
-    host: dp-exoscale-postgres-exoscale-21270461-b41c-4657-ba25-2815e8afb.j.aivencloud.com
+    host_read: dp-exoscale-postgres-exoscale-21270461-b41c-4657-ba25-2815e8afb.j.aivencloud.com
+    host_write: dp-exoscale-postgres-exoscale-21270461-b41c-4657-ba25-2815e8afb.j.aivencloud.com
     port: 21699
     user: admin
     passwordSecret: pg-credentials
-    passwordSecretKey: password
+    passwordSecretKey: PASSWORD
     database: lakekeeper
   
