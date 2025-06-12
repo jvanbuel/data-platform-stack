@@ -9,7 +9,6 @@ zitadel:
         Enabled: false
       Database:
         Postgres:
-          Host: db-postgresql
           Port: 5432
           Database: zitadel
           MaxOpenConns: 20
@@ -24,3 +23,6 @@ zitadel:
             Username: postgres
             SSL:
               Mode: disable
+    configSecretName: zitadel-credentials
+    configSecretKey: config.yaml
+      
