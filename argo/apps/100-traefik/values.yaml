@@ -11,12 +11,13 @@ traefik:
       - websecure
       # Define the matching rule for the dashboard route
       matchRule: Host(`traefik.localhost`)
-  web:
-    transport:
-      respondingTimeouts:
-        readTimeout: 3600
-        writeTimeout: 3600
-        idleTimeout: 3600
+  ports:
+    web:
+      transport:
+        respondingTimeouts:
+          readTimeout: 3600
+          writeTimeout: 3600
+          idleTimeout: 3600
 
   logs:
     general:
