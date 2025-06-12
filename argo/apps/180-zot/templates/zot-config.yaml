@@ -33,19 +33,7 @@ spec:
             "http": {
               "address": "0.0.0.0",
               "port": "5000",
-              "compat": ["docker2s2"],
-              "accessControl": {
-                "repositories": {
-                  "**": {
-                    "policies": [
-                      {
-                        "users": ["*"],
-                        "actions": ["read", "create", "update", "delete"]
-                      }
-                    ]
-                  }
-                }
-              }
+              "compat": ["docker2s2"]
             },
             "log": {
               "level": "debug",
@@ -54,7 +42,7 @@ spec:
             },
             "extensions": {
                 "search": {
-                    "enable": true
+                    "enable": true,
                 },
                 "ui": {
                     "enable": true
