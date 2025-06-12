@@ -46,7 +46,7 @@ spec:
                 },
                 "ui": {
                     "enable": true
-                }
+                },
                 "sync": {
                     "enable": true,
                     "registries": [
