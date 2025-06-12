@@ -13,6 +13,8 @@ metadata:
     # Traefik will connect to the backend using HTTP (default scheme)
     # You might need a cert-manager annotation here too if using it for proper certs
     ingress.kubernetes.io/ssl-redirect: "false"
+    # Enable TLS with Let's Encrypt
+    traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt"
 spec:
   # Define TLS section for the host (required when router.tls is true)
   # Traefik might generate a default cert if none is specified
