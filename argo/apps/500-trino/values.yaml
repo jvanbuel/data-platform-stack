@@ -9,6 +9,8 @@ trino:
     config:
       authenticationType: "PASSWORD"
   coordinator:
+    annotations:
+      node.kubernetes.io/instance-type: "CX52"
     resources:
       requests:
         cpu: 500m
@@ -17,6 +19,8 @@ trino:
         cpu: 2000m
         memory: 4Gi
   worker:
+    annotations:
+      node.kubernetes.io/instance-type: "CX52"
     resources:
       requests:
         cpu: 500m
