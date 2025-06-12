@@ -19,6 +19,21 @@ traefik:
     kubernetesIngress:
       enabled: true
 
+  # Configure entrypoints
+  ports:
+    web:
+      port: 8000
+      protocol: TCP
+      # Redirect HTTP to HTTPS
+      redirectTo:
+        port: websecure
+        scheme: https
+    websecure:
+      port: 8443
+      protocol: TCP
+      tls:
+        enabled: true
+
   # Configure Let's Encrypt ACME
   certificatesResolvers:
     letsencrypt:
@@ -32,7 +47,7 @@ traefik:
         # HTTP challenge
         httpChallenge:
           entryPoint: web
-  
+
   # Persistence for ACME certificates
   persistence:
     enabled: true
