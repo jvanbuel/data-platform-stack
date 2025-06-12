@@ -11,12 +11,13 @@ spec:
     name: zot-config
     template:
       data:
+      # dedupe is not supported for external storage
         config.json: |
           {
             "distSpecVersion": "1.1.0",
             "storage": {
               "rootDirectory": "/var/lib/registry",
-              "dedupe": true,
+              "dedupe": false,
               "storageDriver": {
                 "name": "s3",
                 "rootdirectory": "/platform/zot",
