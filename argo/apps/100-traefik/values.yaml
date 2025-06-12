@@ -10,7 +10,7 @@ traefik:
       entryPoints:
         - websecure
       # Define the matching rule for the dashboard route
-      matchRule: Host(`traefik.localhost`)
+      matchRule: Host(`traefik.exoscale.robberthofman.com`)
 
   # Enable Kubernetes providers
   providers:
