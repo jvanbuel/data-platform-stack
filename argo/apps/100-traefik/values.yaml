@@ -23,12 +23,10 @@ traefik:
     web:
       port: 8000
       protocol: TCP
-      expose: true
       exposedPort: 80
     websecure:
       port: 8443
       protocol: TCP
-      expose: true
       exposedPort: 443
       tls:
         enabled: true
