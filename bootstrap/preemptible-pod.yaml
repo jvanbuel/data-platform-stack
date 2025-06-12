@@ -1,0 +1,47 @@
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: low-priority
+value: -1000
+globalDefault: false
+description: "Priority class for pods that can be easily evicted"
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: preemptible-pods
+spec:
+  serviceName: preemptible-pods
+  replicas: 4
+  selector:
+    matchLabels:
+      app: preemptible
+  template:
+    metadata:
+      labels:
+        app: preemptible
+    spec:
+      priorityClassName: low-priority
+      containers:
+      - name: preemptible-container
+        image: busybox
+        command: [ "sleep", "infinity" ]
+        resources:
+          requests:
+            cpu: "1"
+            memory: "2Gi"
+          limits:
+            cpu: "1"
+            memory: "2Gi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: preemptible-pods
+spec:
+  ports:
+  - port: 80
+    name: http
+  clusterIP: None
+  selector:
+    app: preemptible

@@ -1,0 +1,9 @@
+apiVersion: v2
+name: argocd-ingress
+description: A Helm chart for ArgoCD ingress configuration
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+maintainers:
+- name: Dataminded
+  email: jonathan.merlevede@dataminded.com
