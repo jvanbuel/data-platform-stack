@@ -19,3 +19,26 @@
 #     readTimeout: "3600s"
 #     writeTimeout: "3600s"
 #     idleTimeout: "300s"
+
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: zot-registry
+spec:
+  # Retry on network errors and timeouts
+  retry:
+    attempts: 3
+    initialInterval: "100ms"
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: zot-buffering
+spec:
+  # Configure buffering for large requests
+  buffering:
+    maxRequestBodyBytes: 0  # Unlimited request body size
+    maxResponseBodyBytes: 0 # Unlimited response body size
+    memRequestBodyBytes: 2097152  # 2MB memory buffer
+    memResponseBodyBytes: 2097152 # 2MB memory buffer
+    retryExpression: "IsNetworkError() && Attempts() <= 2"

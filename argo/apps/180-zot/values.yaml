@@ -26,6 +26,11 @@ zot:
   # Configure ingress for zot
   service:
     type: ClusterIP
+    port: 5000
+    annotations:
+      # Configure service timeout for large uploads
+      service.beta.kubernetes.io/timeout: "3600"
+
   ingress:
     enabled: true
     className: traefik
@@ -34,9 +39,8 @@ zot:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       # Enable TLS termination at the router (Traefik handles certs)
       traefik.ingress.kubernetes.io/router.tls: "true"
-      # Set timeouts for large image pushes
-      traefik.http.routers.zot.timeout: "3600s"
-      traefik.http.services.zot.loadbalancer.responseforwarding.flushinterval: "1s"
+      # Increase body size limit and disable buffering
+      # traefik.ingress.kubernetes.io/router.middlewares: services-zot-registry@kubernetescrd
     hosts:
     - host: zot.cloudfleet.platform.5ha.re
       paths:
