@@ -1,6 +1,6 @@
 resource "upcloud_managed_object_storage" "this" {
   name              = "dp-stack-tf-os-${random_string.random.result}"
-  region            = "europe-1"
+  region            = "europe-2"
   configured_status = "started"
 
   network {

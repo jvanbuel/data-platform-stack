@@ -8,3 +8,9 @@ resource "upcloud_managed_object_storage_user_access_key" "this" {
   service_uuid = upcloud_managed_object_storage.this.id
   status       = "Active"
 }
+
+resource "upcloud_managed_object_storage_user_policy" "this" {
+  username     = upcloud_managed_object_storage_user.this.username
+  service_uuid = upcloud_managed_object_storage.this.id
+  name         = "ECSS3FullAccess"
+}

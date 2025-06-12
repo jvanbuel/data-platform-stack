@@ -77,7 +77,7 @@ resource "kubernetes_secret" "s3_credentials" {
   data = {
     ACCESS_KEY_ID     = upcloud_managed_object_storage_user_access_key.this.access_key_id
     SECRET_ACCESS_KEY = upcloud_managed_object_storage_user_access_key.this.secret_access_key
-    ENDPOINT          = "https://vk21u.upcloudobjects.com"
+    ENDPOINT          = "https://${tolist(upcloud_managed_object_storage.this.endpoint)[0].domain_name}"
     REGION            = local.zone
   }
 
