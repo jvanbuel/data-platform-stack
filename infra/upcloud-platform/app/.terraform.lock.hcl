@@ -4,6 +4,7 @@
 provider "registry.terraform.io/hashicorp/random" {
   version = "3.7.2"
   hashes = [
+    "h1:356j/3XnXEKr9nyicLUufzoF4Yr6hRy481KIxRVpK0c=",
     "h1:KG4NuIBl1mRWU0KD/BGfCi1YN/j3F7H4YgeeM7iSdNs=",
     "zh:14829603a32e4bc4d05062f059e545a91e27ff033756b48afbae6b3c835f508f",
     "zh:1527fb07d9fea400d70e9e6eb4a2b918d5060d604749b6f1c361518e7da546dc",
@@ -24,6 +25,7 @@ provider "registry.terraform.io/upcloudltd/upcloud" {
   version     = "5.22.1"
   constraints = "5.22.1"
   hashes = [
+    "h1:OVoDgUh4tgrsNjV9QROBjmxWse0WJswPzYxV+5TFTQ4=",
     "h1:gV+6fLs5Rh/DoezlyDxgAJ4a4X5D2UDcipXx7BAzysI=",
     "zh:260bd275fae24c869b2044177bc4acc5f826201edc0a1e2f27556258187161ce",
     "zh:2b43d73cc024dbc51eff105fb81386f91d99f92adee3f34afdceeafa5ffcb172",
