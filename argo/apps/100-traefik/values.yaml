@@ -18,6 +18,8 @@ traefik:
           readTimeout: 3600
           writeTimeout: 3600
           idleTimeout: 3600
+        keepAliveMaxTime: 3600
+        keepAliveMaxRequests: 1000
 
   logs:
     general:
