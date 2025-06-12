@@ -35,7 +35,7 @@ resource "upcloud_kubernetes_node_group" "group" {
   cluster    = upcloud_kubernetes_cluster.this.id
   node_count = 3
 
-  plan = "8xCPU-32GB"
+  plan = "6xCPU-16GB"
 
   anti_affinity = false
 
