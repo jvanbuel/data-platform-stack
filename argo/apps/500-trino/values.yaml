@@ -36,18 +36,20 @@ trino:
     additionalConfigFiles:
       config.properties: |
         internal-communication.shared-secret=123456
+        http-server.http.enabled=true
         http-server.authentication.type=oauth2
         http-server.authentication.oauth2.oidc.discovery=true
         http-server.authentication.oauth2.issuer=http://zitadel.exoscale.robberthofman.com
         http-server.authentication.oauth2.client-id=${ENV:OAUTH2_CLIENT_ID}
         http-server.authentication.oauth2.client-secret=${ENV:OAUTH2_CLIENT_SECRET}
         coordinator=true
-        discovery.uri=http://trino:8080
+        discovery.uri=http://trino.services.svc:8080
   worker:
     additionalConfigFiles:
       config.properties: |
         internal-communication.shared-secret=123456
-        discovery.uri=http://trino:8080
+        discovery.uri=http://trino.services.svc:8080
+        http-server.http.enabled=true
 
   ingress:
     enabled: true
