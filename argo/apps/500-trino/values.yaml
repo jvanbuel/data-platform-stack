@@ -65,8 +65,8 @@ trino:
     enabled: true
     className: traefik
     annotations:
-      # Enable TLS with Let's Encrypt (adjust based on your cert-manager setup)
-      cert-manager.io/cluster-issuer: "letsencrypt"
+      # Enable TLS with Let's Encrypt
+      traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt"
     hosts: 
       - host: trino.exoscale.robberthofman.com
         paths:
