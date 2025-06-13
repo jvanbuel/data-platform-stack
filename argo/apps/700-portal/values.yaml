@@ -1,7 +1,7 @@
 # Default values for portal.
 data-product-portal:
   oidc:
-    enabled: false
+    enabled: true
   smtp:
     port: '!!string 2587'
   from_mail_address: portal@exoscale.robberthofman.com
