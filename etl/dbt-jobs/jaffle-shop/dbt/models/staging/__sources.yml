@@ -4,7 +4,8 @@ sources:
   - name: ecom
     schema: "{{target.schema}}"
     description: E-commerce data
-
+    meta:
+      external_location: "s3://{{ env_var('S3_BUCKET') }}/dbt-e2e/raw/{name}.csv"
     tables:
       - name: raw_customers
         description: One record per person who has purchased one or more items
