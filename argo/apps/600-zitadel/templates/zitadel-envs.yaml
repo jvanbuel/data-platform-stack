@@ -32,7 +32,7 @@ spec:
                 ZITADEL_DATABASE_POSTGRES_ADMIN_SSL_MODE: "disable"
                 ZITADEL_FIRSTINSTANCE_ORG_HUMAN_USERNAME: "admin"
                 ZITADEL_FIRSTINSTANCE_ORG_HUMAN_PASSWORD: "SecureP@ssw0rd!"
-                ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_SMTP_HOST: "{{`{{ .smtp_host }}`}}"
+                ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_SMTP_HOST: "{{`{{ .smtp_host }}:{{ .smtp_port }}`}}"
                 ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_SMTP_USERNAME: "{{`{{ .smtp_username }}`}}"
                 ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_SMTP_PASSWORD: "{{`{{ .smtp_password }}`}}"
                 ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_FROM: "cloudfleet@5ha.re"
@@ -83,6 +83,10 @@ spec:
         remoteRef:
             key: platform/smtp-credentials
             property: host
+      - secretKey: smtp_port
+        remoteRef:
+            key: platform/smtp-credentials
+            property: port
       - secretKey: smtp_username
         remoteRef:
             key: platform/smtp-credentials
