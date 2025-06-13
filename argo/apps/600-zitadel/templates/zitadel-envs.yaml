@@ -1,7 +1,7 @@
 apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
-    name: zitadel-config
+    name: zitadel-envs
 spec:
     refreshInterval: 300s # Refresh every 5 minutes
     secretStoreRef:
