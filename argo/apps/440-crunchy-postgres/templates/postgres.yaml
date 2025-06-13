@@ -40,4 +40,4 @@ spec:
   - name: zitadel
     databases:
     - zitadel
-    options: "CREATEDB"
+    options: "CREATEDB,CREATEROLE"
