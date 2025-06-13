@@ -21,10 +21,11 @@ resource "kubernetes_secret" "portal_secrets" {
   }
 
   data = {
-    OIDC_CLIENT_ID     =  var.portal_oidc_client_id
+    OIDC_CLIENT_ID     = var.portal_oidc_client_id
     OIDC_CLIENT_SECRET = var.portal_oidc_client_secret
-    SMTP_USERNAME = var.portal_smtp_username 
-    SMTP_PASSWORD = var.portal_smtp_password
+    OIDC_AUDIENCE      = "324195878824837124"
+    SMTP_USERNAME      = var.portal_smtp_username
+    SMTP_PASSWORD      = var.portal_smtp_password
 
   }
   type = "Opaque"
@@ -37,7 +38,7 @@ resource "kubernetes_config_map" "trino_frontend_oidc" {
   }
 
   data = {
-    "config.js": <<EOF
+    "config.js" : <<EOF
       const config = (() => {
       return {
           API_BASE_URL: "https://portal.exoscale.robberthofman.com",
