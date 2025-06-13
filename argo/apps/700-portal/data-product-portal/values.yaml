@@ -11,6 +11,7 @@ global:
       port: "!!string 5432"
       server: data-product-portal-postgresql
       username: postgres
+env_secret_name: "data-product-portal-secrets"
 smtp:
   host: localhost
   port: "!!string 1025"

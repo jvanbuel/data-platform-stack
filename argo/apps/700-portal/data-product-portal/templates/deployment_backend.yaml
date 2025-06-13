@@ -41,6 +41,10 @@ spec:
                 name: {{ include "data-product-portal.fullname" . }}
             - secretRef:
                 name: {{ include "data-product-portal.fullname" . }}
+            {{- if .Values.env_secret_name }}
+            - secretRef:
+                name: {{ .Values.env_secret_name }}
+            {{- end }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}

@@ -2,6 +2,9 @@
 data-product-portal:
   oidc:
     enabled: false
+  smtp:
+    port: '!!string 2587'
+  from_mail_address: portal@exoscale.robberthofman.com
   ingress:
     enabled: true
     className: traefik
