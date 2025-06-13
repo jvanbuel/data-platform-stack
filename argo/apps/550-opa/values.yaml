@@ -3,7 +3,14 @@
 opa:
   opa:
     args:
+      - "run"
+      - "--server" 
+      - "--addr=0.0.0.0:8181"
+      - "--log-level=info"
+      - "--log-format=json"
       - "--authorization=off"
+      - "--ignore=.*"
+      - "/bootstrap"
   useHttps: false
 
   authz:
