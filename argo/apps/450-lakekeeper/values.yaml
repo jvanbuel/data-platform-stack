@@ -2,6 +2,14 @@ lakekeeper:
   catalog:
     image:
       tag: latest-main
+    ingress:
+      enabled: true
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt"
+      host: lakekeeper.upcloud.playground.dataminded.cloud
+      ingressClassName: traefik
+      path: /
     extraEnvFrom:
       - secretRef:
           name: lakekeeper-custom-secrets #overwrite the external database credentials with our own settings
