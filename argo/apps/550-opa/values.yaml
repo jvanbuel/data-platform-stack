@@ -8,3 +8,6 @@ opa-kube-mgmt:
   # Mostly useful for debugging.
     enabled: false
 
+  mgmt:
+    enabled: false
+
