@@ -33,16 +33,17 @@ with DAG(
     # Define task using KubernetesPodOperator
     run_in_k8s = KubernetesPodOperator(
         namespace='services',  # or your airflow namespace
-        image='nilli9990/dbt-exoscale',
-        # cmds=["sh", "-c"],
-        arguments=["-target", "exoscale"],
+        image='nilli9990/dbt-duckdb',
         labels={"app": "airflow"},
-        name="example-pod-task",
-        task_id="run_echo_task",
+        name="run-dbt",
+        task_id="dbt_run_task",
         env_vars={
-            'TARGET': 'exoscale',
+            'TARGET': 'cloud',
             'AWS_ACCESS_KEY_ID': Variable.get("AWS_ACCESS_KEY_ID"),
             'AWS_SECRET_ACCESS_KEY': Variable.get("AWS_SECRET_ACCESS_KEY"),
+            'S3_BUCKET': "",
+            'S3_REGION': "",
+            'S3_ENDPOINT': "",
         },
         get_logs=True,
         is_delete_operator_pod=True,  # Clean up after running
