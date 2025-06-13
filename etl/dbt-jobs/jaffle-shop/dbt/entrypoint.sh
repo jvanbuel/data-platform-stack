@@ -11,6 +11,7 @@ if [[ -z "$TARGET" ]]; then
   else
     echo "dbt run failed."
     exit 1
+  fi
 else
   if dbt run --target "$TARGET"; then
     echo "dbt run succeeded."
