@@ -16,7 +16,7 @@ zitadel:
 
       # configSecretKey: config.yaml
       # dbSslCaCrtSecret: pg-certificate
-    envSecretName: zitadel-envs
+    envVarsSecret: zitadel-envs
   ingress:
     enabled: true
     className: traefik
