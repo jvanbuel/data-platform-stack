@@ -76,4 +76,4 @@ trino:
     type: properties
     properties: |
       access-control.name=opa
-      opa.policy.uri=https://opa.services.svc:8181/v1/data/trino/allow
+      opa.policy.uri=https://opa.opa.svc:8181/v1/data/trino/allow
