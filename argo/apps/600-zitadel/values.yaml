@@ -4,7 +4,7 @@ zitadel:
     masterkey: x123456789012345678901234567891y
     configmapConfig:
       ExternalSecure: true
-      ExternalDomain: zitadel.exoscale.robberthofman.com
+      ExternalDomain: zitadel.cloudfleet.platform.5ha.re
       TLS:
         Enabled: false
       FirstInstance:
@@ -17,6 +17,9 @@ zitadel:
             Email:
               Address: "admin@dataminded.com"
               Verified: true
+    # Use External Secret with template that combines:
+    # - PostgreSQL credentials from k8s-services ClusterSecretStore (Crunchy-generated secret)
+    # - SMTP credentials from vault-backend ClusterSecretStore
     configSecretName: zitadel-credentials
     configSecretKey: config.yaml
     dbSslCaCrtSecret: pg-certificate
@@ -24,10 +27,16 @@ zitadel:
     enabled: true
     className: traefik
     annotations:
-      # Enable TLS with Let's Encrypt
-      traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt"
+      # Use Traefik's websecure entrypoint for HTTPS
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      # Enable TLS termination at the router (Traefik handles certs)
+      traefik.ingress.kubernetes.io/router.tls: "true"
     hosts:
-      - host: zitadel.exoscale.robberthofman.com
-        paths:
-          - path: /
-            pathType: Prefix
+    - host: zitadel.cloudfleet.platform.5ha.re
+      paths:
+      - path: /
+        pathType: Prefix
+    tls:
+    - hosts:
+      - zitadel.cloudfleet.platform.5ha.re
+      secretName: zitadel-tls

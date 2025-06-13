@@ -29,3 +29,7 @@ spec:
     databases:
     - trino-catalog
     options: "CREATEDB"
+  - name: zitadel
+    databases:
+    - zitadel
+    options: "CREATEDB"
