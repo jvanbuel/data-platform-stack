@@ -2,8 +2,11 @@
 data-product-portal:
   oidc:
     enabled: true
+    authority: https://zitadel.exoscale.robberthofman.com
+    redirect_uri: https://portal.exoscale.robberthofman.com/
   smtp:
-    port: '!!string 2587'
+    host: smtp.tem.scaleway.com
+    port: '!!string 587'
   from_mail_address: portal@exoscale.robberthofman.com
   ingress:
     enabled: true
