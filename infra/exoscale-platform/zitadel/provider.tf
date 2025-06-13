@@ -10,9 +10,9 @@ terraform {
 provider "zitadel" {
   # Configuration options
   domain           = "zitadel.exoscale.robberthofman.com"
-  insecure         = false
-  port             = "443"
+  insecure         = "true"
   jwt_profile_file = "token.json"
+  # token = "token.json"
 }
 
 provider "kubernetes" {
