@@ -13,7 +13,7 @@ spec:
             data:
                 ZITADEL_LOG_LEVEL: "info"
                 ZITADEL_EXTERNALPORT: "443"
-                ZITADEL_EXTERNALSECURE: "false"
+                ZITADEL_EXTERNALSECURE: "true"
                 ZITADEL_EXTERNALDOMAIN: "zitadel.cloudfleet.platform.5ha.re"
                 ZITADEL_TLS_ENABLED: "false"
                 ZITADEL_DATABASE_POSTGRES_HOST: "{{`{{ .postgres_host }}`}}"

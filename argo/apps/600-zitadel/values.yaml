@@ -3,7 +3,7 @@ zitadel:
   zitadel:
     masterkey: x123456789012345678901234567891y
     configmapConfig:
-      # ExternalSecure: false
+      ExternalSecure: true
       ExternalDomain: "zitadel.cloudfleet.platform.5ha.re"
       # TLS:
       #   Enabled: false # TLS termination at ingress level
