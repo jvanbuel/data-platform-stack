@@ -1,0 +1,14 @@
+duckdb:
+  outputs:
+    cloud:
+      type: duckdb
+      external_root: "s3://{{ env_var('S3_BUCKET') }}/dbt-e2e/clean"
+      extension:
+        - httpfs
+      settings:
+        s3_region: "{{ env_var('S3_REGION') }}"
+        s3_endpoint:  "{{ env_var('S3_ENDPOINT') }}"
+        s3_access_key_id: "{{ env_var('AWS_ACCESS_KEY_ID') }}"
+        s3_secret_access_key: "{{ env_var('AWS_SECRET_ACCESS_KEY') }}"
+
+  target: cloud
