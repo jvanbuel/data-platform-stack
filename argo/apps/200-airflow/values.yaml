@@ -12,6 +12,10 @@ airflow:
 
   # Disable LoadBalancer service for webserver (we'll use Ingress)
   webserver:
+    resources:
+      requests:
+        cpu: 500m
+        memory: 1024Mi
     service:
       type: ClusterIP
 
