@@ -4,7 +4,7 @@ zitadel:
     masterkey: x123456789012345678901234567891y
     configmapConfig:
       # ExternalSecure: false
-      # ExternalDomain: "zitadel.cloudfleet.platform.5ha.re"
+      ExternalDomain: "zitadel.cloudfleet.platform.5ha.re"
       # TLS:
       #   Enabled: false # TLS termination at ingress level
       # ExternalPort: 443
@@ -14,8 +14,8 @@ zitadel:
       # - SMTP credentials from vault-backend ClusterSecretStore
       # configSecretName: zitadel-config
 
-    # configSecretKey: config.yaml
-    # dbSslCaCrtSecret: pg-certificate
+      # configSecretKey: config.yaml
+      # dbSslCaCrtSecret: pg-certificate
     envSecretName: zitadel-envs
   ingress:
     enabled: true
