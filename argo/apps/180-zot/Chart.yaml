@@ -6,6 +6,6 @@ appVersion: "v2.1.4" # Corresponds to the zot version we deploy
 
 dependencies:
 - name: zot
-  version: "0.1.60" # The version of the zot chart to use
+  version: "0.1.72" # The version of the zot chart to use
   repository: http://zotregistry.dev/helm-charts # The repository of the dependency
   # Values under the 'zot' key in our values.yaml will be passed to the subchart.
