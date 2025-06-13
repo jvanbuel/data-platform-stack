@@ -54,12 +54,17 @@ resource "upcloud_kubernetes_node_group" "group" {
 
 data "upcloud_kubernetes_cluster" "this" {
   id = upcloud_kubernetes_cluster.this.id
+  depends_on = [
+    upcloud_kubernetes_cluster.this
+  ]
 }
 
 resource "local_sensitive_file" "kubeconfig" {
   filename        = "${path.module}/.kubeconfig.yml"
   content         = data.upcloud_kubernetes_cluster.this.kubeconfig
   file_permission = "0600"
+
+
 }
 
 data "kubernetes_namespace" "services" {

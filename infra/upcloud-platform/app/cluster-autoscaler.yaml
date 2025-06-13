@@ -36,7 +36,7 @@ spec:
             - --v=4
           env:
             - name: UPCLOUD_CLUSTER_ID
-              value: "0d6b6f93-bb85-423c-8d37-a20be894dc22"
+              value: "0d808790-de23-4d32-adb6-f9609b6c7d9b"
             - name: UPCLOUD_USERNAME
               valueFrom:
                 secretKeyRef:
