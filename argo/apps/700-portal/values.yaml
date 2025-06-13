@@ -30,9 +30,9 @@ data-product-portal:
     enabled: false
   namespace_max_length: '!!string 30'
   image:
-    tag: 'fc7b5ef'
+    tag: '620e619'
   frontendimage:
-    tag: 'fc7b5ef'
+    tag: '620e619'
   global:
     postgresql:
       auth:
