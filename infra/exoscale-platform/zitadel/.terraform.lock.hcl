@@ -5,6 +5,7 @@ provider "registry.opentofu.org/hashicorp/kubernetes" {
   version = "2.37.1"
   hashes = [
     "h1:UWJPvQZxW9Q6mxtUvIdnapPE8s8o4a2HUo53OInq9p4=",
+    "h1:uQ6QiHEMu5dm39sbMNE3ANFUeqTjrqb2P/lxHtfkctE=",
     "zh:22031e9995b3dc7ae497305dc6c5b7bf1a585c378d46446e724601f992cd9e11",
     "zh:3614bc188ae5040d892671009c66f56cfcb3859e11f42ed7ffc1cee384b1275b",
     "zh:5d925944ac961bbe5fb4917a3e7e6d9bc0bef2f3198f26e8d4cd1793d5eadde3",
@@ -22,6 +23,7 @@ provider "registry.opentofu.org/zitadel/zitadel" {
   constraints = "2.2.0"
   hashes = [
     "h1:CBePLJIVhzYPpSUjyFeuZBZzdabR1FMO2qrY5sBrLw0=",
+    "h1:uKVlDeQVu9QIkMnlq/Wxb+Sc6vyzC4A22SnjcFXqVKg=",
     "zh:040620c9601262a44694a965808ed1d01f8310b037ffad9dcb5c20c522f5964c",
     "zh:1626a9951917bd184e67ab0c0566e51e05001b36a2e3ee12065a4b3d051c96f7",
     "zh:1bc3d6a98a87d6f43b635fa652fe7c2eff076035b1d4686231942149a65a151b",
