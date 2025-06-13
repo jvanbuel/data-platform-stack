@@ -25,5 +25,5 @@ vault:
         # Vault UI backend service uses HTTP (port 8200)
         # traefik.ingress.kubernetes.io/service.scheme: http # Usually not needed
       hosts:
-        - host: vault.localhost
+        - host: vault.ovh.playground.dataminded.cloud
 

@@ -42,7 +42,7 @@ trino:
         http-server.http.port=8080
         http-server.authentication.type=OAUTH2
         http-server.authentication.oauth2.oidc.discovery=true
-        http-server.authentication.oauth2.issuer=https://zitadel.exoscale.robberthofman.com
+        http-server.authentication.oauth2.issuer=https://zitadel.ovh.playground.dataminded.cloud
         http-server.authentication.oauth2.client-id=${ENV:OAUTH2_CLIENT_ID}
         http-server.authentication.oauth2.client-secret=${ENV:OAUTH2_CLIENT_SECRET}
         coordinator=true
@@ -67,7 +67,7 @@ trino:
       # Enable TLS with Let's Encrypt
       traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt"
     hosts: 
-      - host: trino.exoscale.robberthofman.com
+      - host: trino.ovh.playground.dataminded.cloud
         paths:
           - path: /
             pathType: Prefix
