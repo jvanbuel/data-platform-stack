@@ -3,22 +3,9 @@ zitadel:
   zitadel:
     masterkey: x123456789012345678901234567891y
     configmapConfig:
-      ExternalSecure: true
-      ExternalDomain: zitadel.cloudfleet.platform.5ha.re
-      TLS:
-        Enabled: false
-      FirstInstance:
-        Org:
-          Human:
-            Username: "admin"
-            Password: "SecureP@ssw0rd!"
-            FirstName: "Default"
-            LastName: "Admin"
-            Email:
-              Address: "cloudfleet@5ha.re"
-              Verified: true
-    # Use External Secret with template that combines:
-    # - PostgreSQL credentials from k8s-services ClusterSecretStore (Crunchy-generated secret)
+      # Use External Secret with template that combines:
+      # - PostgreSQL credentials from k8s-services ClusterSecretStore (Crunchy-generated secret)
+
     # - SMTP credentials from vault-backend ClusterSecretStore
     configSecretName: zitadel-config
     configSecretKey: config.yaml

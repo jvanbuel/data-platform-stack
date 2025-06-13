@@ -12,6 +12,16 @@ spec:
             engineVersion: v2
             data:
                 config.yaml: |
+                    FirstInstance:
+                        Org:
+                        Human:
+                            Username: "admin"
+                            Password: "SecureP@ssw0rd!"
+                            FirstName: "Default"
+                            LastName: "Admin"
+                            Email:
+                            Address: "cloudfleet@5ha.re"
+                            Verified: true
                     Log:
                         Level: debug
                         Formatter:
@@ -41,7 +51,6 @@ spec:
                     ExternalSecure: true
                     ExternalDomain: "zitadel.cloudfleet.platform.5ha.re"
                     ExternalPort: 443
-
                     TLS:
                         Enabled: false  # TLS termination at ingress level
 
