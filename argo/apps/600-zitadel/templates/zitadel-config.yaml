@@ -28,6 +28,7 @@ spec:
                                 SSL:
                                     Mode: disable
                             Admin:
+                                ExistingDatabase: zitadel
                                 Username: "{{`{{ .postgres_user }}`}}"
                                 Password: "{{`{{ .postgres_password }}`}}"
                                 SSL:
