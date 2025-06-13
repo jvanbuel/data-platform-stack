@@ -27,6 +27,6 @@ data-product-portal:
         password: admin1234
         database: data-product-portal
         port: "!!string 5432"
-        server: data-product-portal-postgresql
+        server: portal-postgresql
         username: postgres
   postgres_enabled: true
