@@ -8,9 +8,11 @@ spec:
 
   authentication:
     rules:
-    - connection: host
-      databases: # all
-      hba: "host all all all md5"
+    - hba: "host all all all md5"
+    # - connection: host
+    #   databases: # all
+    #   users:
+    #   hba: "host all all all md5"
 
   instances:
   - name: instance1
