@@ -35,6 +35,9 @@ airflow:
         # traefik.ingress.kubernetes.io/service.scheme: http # Usually not needed if port is 80/8080
       host: airflow.upcloud.playground.dataminded.cloud # Define the hostname
       path: / # Root path
+      tls:
+        - hosts:
+            - airflow.upcloud.playground.dataminded.cloud
 
   dags:
     persistence:
