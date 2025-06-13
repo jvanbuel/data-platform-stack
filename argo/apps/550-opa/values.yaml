@@ -1,6 +1,5 @@
 # Custom values for the OPA Helm chart
 # Refer to the official OPA Helm chart documentation for available options.
-
 opa:
   opa: {}
   useHttps: false
@@ -10,22 +9,23 @@ opa:
   # Mostly useful for debugging.
     enabled: false
 
-  bootstrapPolicies: |
-    package system.authz
-    
-    # Allow health, metrics, and management endpoints
-    allow {
-      input.path = ["health"]
-    }
-    allow {
-      input.path = ["metrics"]
-    }
-    allow {
-      input.path = ["v1", "policies"]
-    }
-    allow {
-      input.path = ["v1", "data"]
-    }
+  bootstrapPolicies: 
+    - |
+      package system.authz
+      
+      # Allow health, metrics, and management endpoints
+      allow {
+        input.path = ["health"]
+      }
+      allow {
+        input.path = ["metrics"]
+      }
+      allow {
+        input.path = ["v1", "policies"]
+      }
+      allow {
+        input.path = ["v1", "data"]
+      }
 
-    # Explicit deny the rest
-    default allow = true
+      # Explicit deny the rest
+      default allow = true
