@@ -1,15 +1,16 @@
-expose:
-  type: ingress
-  tls:
-    enabled: false
-  ingress:
-    className: traefik
-    hosts:
-      core: harbor.upcloud.playground.dataminded.cloud
-    annotations:
-      traefik.ingress.kubernetes.io/router.entrypoints: web
-      nginx.ingress.kubernetes.io/ssl-redirect: "false"
+harbor:
+  expose:
+    type: ingress
+    tls:
+      enabled: false
+    ingress:
+      className: traefik
+      hosts:
+        core: harbor.upcloud.playground.dataminded.cloud
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: web
+        nginx.ingress.kubernetes.io/ssl-redirect: "false"
 
-externalURL: http://harbor.upcloud.playground.dataminded.cloud
+  externalURL: http://harbor.upcloud.playground.dataminded.cloud
 
-harborAdminPassword: "Harbor12345"  # changeme
+  harborAdminPassword: "Harbor12345"  # changeme
