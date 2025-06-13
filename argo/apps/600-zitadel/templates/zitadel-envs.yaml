@@ -36,7 +36,7 @@ spec:
                 ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_SMTP_USERNAME: "{{`{{ .smtp_username }}`}}"
                 ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_SMTP_PASSWORD: "{{`{{ .smtp_password }}`}}"
                 ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_FROM: "cloudfleet@5ha.re"
-                ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_FROM_NAME: "Gergely and Jonathan from the Best EU Cloud Project"
+                ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_FROM_NAME: "Gergely and Jonathan"
                 ZITADEL_DEFAULTINSTANCE_SMTPCONFIGURATION_REPLYTOADDRESS: "jan.vanbuel@dataminded.com"
     data:
       - secretKey: postgres_host
