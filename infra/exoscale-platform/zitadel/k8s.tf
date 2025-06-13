@@ -13,6 +13,8 @@ resource "kubernetes_secret" "trino_oidc" {
   type = "Opaque"
 }
 
+resource "random_uuid" "portal_api_key" {
+}
 
 resource "kubernetes_secret" "portal_secrets" {
   metadata {
@@ -26,6 +28,7 @@ resource "kubernetes_secret" "portal_secrets" {
     OIDC_AUDIENCE      = "324195878824837124"
     SMTP_USERNAME      = var.portal_smtp_username
     SMTP_PASSWORD      = var.portal_smtp_password
+    PORTAL_API_KEY     = random_uuid.portal_api_key.result
 
   }
   type = "Opaque"
