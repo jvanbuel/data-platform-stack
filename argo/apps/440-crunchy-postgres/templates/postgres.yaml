@@ -33,6 +33,8 @@ spec:
         memory: 2Gi
 
   users:
+  - name: admin
+    options: "SUPERUSER"
   - name: trino
     databases:
     - trino-catalog
