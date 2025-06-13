@@ -3,19 +3,31 @@ zitadel:
   zitadel:
     masterkey: x123456789012345678901234567891y
     configmapConfig:
-      ExternalSecure: false
-      ExternalDomain: 127.0.0.1.sslip.io
+      ExternalSecure: true
+      ExternalDomain: zitadel.exoscale.robberthofman.com
       TLS:
         Enabled: false
-      Database:
-        Postgres:
-          MaxOpenConns: 20
-          MaxIdleConns: 10
-          MaxConnLifetime: 30m
-          MaxConnIdleTime: 5m
-          User:
-            Username: postgres
-            SSL:
-              Mode: disable
+      FirstInstance:
+        Org:
+          Human:
+            Username: "admin"
+            Password: "SecureP@ssw0rd!"
+            FirstName: "Default"
+            LastName: "Admin"
+            Email:
+              Address: "admin@dataminded.com"
+              Verified: true
     configSecretName: zitadel-credentials
     configSecretKey: config.yaml
+    dbSslCaCrtSecret: pg-certificate
+  ingress:
+    enabled: true
+    className: traefik
+    annotations:
+      # Enable TLS with Let's Encrypt
+      traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt"
+    hosts:
+      - host: zitadel.exoscale.robberthofman.com
+        paths:
+          - path: /
+            pathType: Prefix
