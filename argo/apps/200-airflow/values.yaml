@@ -32,7 +32,7 @@ airflow:
         traefik.ingress.kubernetes.io/router.tls: "true"
         # Backend service uses HTTP (Airflow webserver default)
         # traefik.ingress.kubernetes.io/service.scheme: http # Usually not needed if port is 80/8080
-      host: airflow.lb-0a840ca8d6e5471db575af70d56a7e62-1.upcloudlb.com # Define the hostname
+      host: airflow.upcloud.playground.dataminded.cloud # Define the hostname
       path: / # Root path
 
   dags:
