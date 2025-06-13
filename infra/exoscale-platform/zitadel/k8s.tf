@@ -14,16 +14,42 @@ resource "kubernetes_secret" "trino_oidc" {
 }
 
 
-resource "kubernetes_secret" "portal_oidc" {
+resource "kubernetes_secret" "portal_secrets" {
   metadata {
-    name      = "portal-oidc"
+    name      = "data-product-portal-secrets"
     namespace = "services"
   }
 
   data = {
-    CLIENT_ID     = zitadel_application_oidc.portal.client_id
-    CLIENT_SECRET = zitadel_application_oidc.portal.client_secret
-    ISSUER        = "https://zitadel.exoscale.robberthofman.com"
+    OIDC_CLIENT_ID     =  var.portal_oidc_client_id
+    OIDC_CLIENT_SECRET = var.portal_oidc_client_secret
+    SMTP_USERNAME = var.portal_smtp_username 
+    SMTP_PASSWORD = var.portal_smtp_password
+
   }
   type = "Opaque"
+}
+
+resource "kubernetes_config_map" "trino_frontend_oidc" {
+  metadata {
+    name      = "frontend"
+    namespace = "services"
+  }
+
+  data = {
+    "config.js": <<EOF
+      const config = (() => {
+      return {
+          API_BASE_URL: "https://portal.exoscale.robberthofman.com",
+          OIDC_ENABLED: true,
+          OIDC_CLIENT_ID: ${var.portal_oidc_client_id},
+          OIDC_CLIENT_SECRET: ${var.portal_oidc_client_secret},
+          OIDC_AUTHORITY: "https://zitadel.exoscale.robberthofman.com",
+          OIDC_REDIRECT_URI: "https://portal.exoscale.robberthofman.com/",
+          OIDC_POST_LOGOUT_REDIRECT_URI: "https://portal.exoscale.robberthofman.com/logout/",
+          THEME_CONFIGURATION: "datamindedthemeconfig",
+      }
+  })();
+  EOF
+  }
 }
