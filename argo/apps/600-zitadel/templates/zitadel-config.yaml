@@ -1,14 +1,13 @@
 apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
-    name: zitadel-credentials
+    name: zitadel-config
 spec:
     refreshInterval: 300s # Refresh every 5 minutes
     secretStoreRef:
         name: vault-backend
         kind: ClusterSecretStore
     target:
-        name: zitadel-credentials
         template:
             engineVersion: v2
             data:

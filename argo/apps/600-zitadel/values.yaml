@@ -20,9 +20,9 @@ zitadel:
     # Use External Secret with template that combines:
     # - PostgreSQL credentials from k8s-services ClusterSecretStore (Crunchy-generated secret)
     # - SMTP credentials from vault-backend ClusterSecretStore
-    configSecretName: zitadel-credentials
+    configSecretName: zitadel-config
     configSecretKey: config.yaml
-    dbSslCaCrtSecret: pg-certificate
+    # dbSslCaCrtSecret: pg-certificate
   ingress:
     enabled: true
     className: traefik
