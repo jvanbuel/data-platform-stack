@@ -23,6 +23,7 @@ resource "scaleway_rdb_instance" "main" {
     pn_id       = scaleway_vpc_private_network.private_1.id
     enable_ipam = true
   }
+  load_balancer {}
 }
 
 resource "scaleway_rdb_database" "main" {
