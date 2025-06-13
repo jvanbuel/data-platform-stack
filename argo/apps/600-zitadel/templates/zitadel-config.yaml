@@ -18,7 +18,7 @@ spec:
                             Format: text
 
                     Database:
-                        Postgres:
+                        postgres:
                             Host: "{{`{{ .postgres_host }}`}}"
                             Port: "{{`{{ .postgres_port }}`}}"
                             Database: "{{`{{ .postgres_dbname }}`}}"
