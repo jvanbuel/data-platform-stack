@@ -1,0 +1,6 @@
+cert-manager:
+  crds:
+    enabled: true # Enable CRDs installation
+    keep: true # Keep CRDs after uninstalling the chart
+  prometheus:
+    enabled: false
