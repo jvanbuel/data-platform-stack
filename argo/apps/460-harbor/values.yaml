@@ -1,11 +1,13 @@
 expose:
   type: ingress
   tls:
-    enabled: true
-    certResolver: letsencrypt
+    enabled: false
   ingress:
-    annotation:
-      traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt"
-      traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    ingressClassName: traefik
+    hosts:
+      core: harbor.upcloud.playground.dataminded.cloud
+    annotations:
+      nginx.ingress.kubernetes.io/ssl-redirect: "false"
 
+externalURL: http://harbor.upcloud.playground.dataminded.cloud
+
+harborAdminPassword: "Harbor12345"  # changeme
