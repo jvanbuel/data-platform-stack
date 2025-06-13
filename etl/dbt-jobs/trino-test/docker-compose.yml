@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  dbt:
+    image: jaffle
+    container_name: dbt
+    environment:
+      TARGET: dev
+    depends_on:
+      - postgres
+    #entrypoint: ["tail", "-f", "/dev/null"]  # keep container running for manual dbt commands
+    networks:
+      - dbt-net
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_USER: niels
+      POSTGRES_PASSWORD: somePassword
+      POSTGRES_DB: dbt
+    ports:
+      - "5432:5432"
+    networks:
+      - dbt-net
+
+networks:
+  dbt-net:

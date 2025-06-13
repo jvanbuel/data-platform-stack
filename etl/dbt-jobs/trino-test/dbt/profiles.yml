@@ -1,0 +1,21 @@
+trino:
+  outputs:
+    local:
+      type: trino
+      user: admin
+      method: none
+      host: localhost
+      password: ""
+      port: 8080
+      database: iceberg
+      schema: dataminded
+    cloud:
+      type: trino
+      user: admin
+      method: none
+      host: trino.services.svc.cluster.local
+      password: ""
+      port: 8080
+      database: iceberg
+      schema: dataminded
+  target: cloud
