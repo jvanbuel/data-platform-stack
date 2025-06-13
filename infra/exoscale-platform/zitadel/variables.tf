@@ -11,8 +11,8 @@ variable "portal_oidc_client_secret" {
 
 variable "portal_smtp_username" {
   description = "SMTP Username for the Data Product Portal"
-  type        = string  
-  
+  type        = string
+
 }
 
 variable "portal_smtp_password" {
