@@ -3,13 +3,20 @@ zitadel:
   zitadel:
     masterkey: x123456789012345678901234567891y
     configmapConfig:
+      # ExternalSecure: false
+      # ExternalDomain: "zitadel.cloudfleet.platform.5ha.re"
+      # TLS:
+      #   Enabled: false # TLS termination at ingress level
+      # ExternalPort: 443
       # Use External Secret with template that combines:
       # - PostgreSQL credentials from k8s-services ClusterSecretStore (Crunchy-generated secret)
 
-    # - SMTP credentials from vault-backend ClusterSecretStore
-    configSecretName: zitadel-config
-    configSecretKey: config.yaml
+      # - SMTP credentials from vault-backend ClusterSecretStore
+      # configSecretName: zitadel-config
+
+    # configSecretKey: config.yaml
     # dbSslCaCrtSecret: pg-certificate
+    envSecretName: zitadel-envs
   ingress:
     enabled: true
     className: traefik

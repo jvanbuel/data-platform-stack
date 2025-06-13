@@ -1,0 +1,87 @@
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+    name: zitadel-config
+spec:
+    refreshInterval: 300s # Refresh every 5 minutes
+    secretStoreRef:
+        name: vault-backend
+        kind: ClusterSecretStore
+    target:
+        template:
+            engineVersion: v2
+            data:
+                ZITADEL_LOG_LEVEL: debug
+                ZITADEL_EXTERNALPORT: 443
+                ZITADEL_EXTERNALSECURE: false
+                ZITADEL_EXTERNALDOMAIN: zitadel.cloudfleet.platform.5ha.re
+                ZITADEL_TLS_ENABLED: false
+                ZITADEL_DATABASE_POSTGRES_HOST: "{{`{{ .postgres_host }}`}}"
+                ZITADEL_DATABASE_POSTGRES_PORT: "{{`{{ .postgres_port }}`}}"
+                ZITADEL_DATABASE_POSTGRES_DATABASE: "{{`{{ .postgres_dbname }}`}}"
+                ZITADEL_DATABASE_POSTGRES_MAXOPENCONNS: 10
+                ZITADEL_DATABASE_POSTGRES_MAXIDLECONNS: 5
+                ZITADEL_DATABASE_POSTGRES_MAXCONNLIFETIME: 30m
+                ZITADEL_DATABASE_POSTGRES_MAXCONNIDLETIME: 5m
+                ZITADEL_DATABASE_POSTGRES_USER_USERNAME: "{{`{{ .postgres_user }}`}}"
+                ZITADEL_DATABASE_POSTGRES_USER_PASSWORD: "{{`{{ .postgres_password }}`}}"
+                ZITADEL_DATABASE_POSTGRES_USER_SSL_MODE: disable
+                ZITADEL_DATABASE_POSTGRES_ADMIN_EXISTINGDATABASE: zitadel
+                ZITADEL_DATABASE_POSTGRES_ADMIN_USERNAME: "{{`{{ .postgres_user }}`}}"
+                ZITADEL_DATABASE_POSTGRES_ADMIN_PASSWORD: "{{`{{ .postgres_password }}`}}"
+                ZITADEL_DATABASE_POSTGRES_ADMIN_SSL_MODE: disable
+                ZITADEL_FIRSTINSTANCE_ORG_HUMAN_USERNAME: "admin"
+                ZITADEL_FIRSTINSTANCE_ORG_HUMAN_PASSWORD: "SecureP@ssw0rd!"
+    data:
+      - secretKey: postgres_host
+        remoteRef:
+            key: my-cute-postgres-cluster-pguser-zitadel
+            property: host
+        sourceRef:
+            storeRef:
+                name: k8s-services
+                kind: ClusterSecretStore
+      - secretKey: postgres_port
+        remoteRef:
+            key: my-cute-postgres-cluster-pguser-zitadel
+            property: port
+        sourceRef:
+            storeRef:
+                name: k8s-services
+                kind: ClusterSecretStore
+      - secretKey: postgres_dbname
+        remoteRef:
+            key: my-cute-postgres-cluster-pguser-zitadel
+            property: dbname
+        sourceRef:
+            storeRef:
+                name: k8s-services
+                kind: ClusterSecretStore
+      - secretKey: postgres_user
+        remoteRef:
+            key: my-cute-postgres-cluster-pguser-zitadel
+            property: user
+        sourceRef:
+            storeRef:
+                name: k8s-services
+                kind: ClusterSecretStore
+      - secretKey: postgres_password
+        remoteRef:
+            key: my-cute-postgres-cluster-pguser-zitadel
+            property: password
+        sourceRef:
+            storeRef:
+                name: k8s-services
+                kind: ClusterSecretStore
+      - secretKey: smtp_host
+        remoteRef:
+            key: platform/smtp-credentials
+            property: host
+      - secretKey: smtp_username
+        remoteRef:
+            key: platform/smtp-credentials
+            property: username
+      - secretKey: smtp_password
+        remoteRef:
+            key: platform/smtp-credentials
+            property: password

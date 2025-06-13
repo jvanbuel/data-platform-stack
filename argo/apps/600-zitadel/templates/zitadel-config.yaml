@@ -48,11 +48,6 @@ spec:
                         Identification:
                             Hostname: "zitadel.cloudfleet.platform.5ha.re"
 
-                    ExternalSecure: true
-                    ExternalDomain: "zitadel.cloudfleet.platform.5ha.re"
-                    ExternalPort: 443
-                    TLS:
-                        Enabled: false  # TLS termination at ingress level
 
                     DefaultInstance:
                         DomainPolicy:
