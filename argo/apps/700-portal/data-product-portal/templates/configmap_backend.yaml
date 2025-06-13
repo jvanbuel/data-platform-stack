@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "data-product-portal.fullname" . }}
+data:
+  POSTGRES_USER: {{ ternary .Values.global.postgresql.auth.username .Values.database.username .Values.postgres_enabled | default .Values.database.username  }}
+  POSTGRES_PORT: {{ ternary .Values.global.postgresql.auth.port .Values.database.port .Values.postgres_enabled  | default .Values.database.port }}
+  POSTGRES_SERVER: {{ ternary .Values.global.postgresql.auth.server .Values.database.server .Values.postgres_enabled  | default .Values.database.server }}
+  POSTGRES_DB: {{ ternary .Values.global.postgresql.auth.database .Values.database.dbname .Values.postgres_enabled  | default .Values.database.dbname }}
+  CORS_ALLOWED_ORIGINS: {{ .Values.host }}
+  OIDC_AUTHORITY: {{ .Values.oidc.authority }}
+  OIDC_REDIRECT_URI: {{ .Values.oidc.redirect_uri }}
+  FRONTEND_CONFIG_BASE_URL: {{ .Values.host }}
+  {{- if .Values.oidc.enabled }}
+  OIDC_ENABLED: "true"
+  {{- else }}
+  OIDC_ENABLED: "false"
+  {{- end }}
+  {{- if .Values.smtp.no_login}}
+  SMTP_NO_LOGIN: "true"
+  {{- else }}
+  SMTP_NO_LOGIN: "false"
+  {{- end }}
+  HOST: {{ .Values.host }}
+  {{- if .Values.from_mail_address }}
+  FROM_MAIL_ADDRESS: {{ .Values.from_mail_address }}
+  {{- end }}
+  {{- if .Values.email_button_color }}
+  EMAIL_BUTTON_COLOR: {{ .Values.email_button_color }}
+  {{- end }}
+  {{- if .Values.webhook.url }}
+  WEBHOOK_URL: {{ .Values.webhook.url }}
+  {{- end }}
+  NAMESPACE_MAX_LENGTH: {{ .Values.namespace_max_length }}

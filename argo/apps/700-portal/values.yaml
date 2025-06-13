@@ -1,4 +1,4 @@
-# Default values for zitadel.
+# Default values for portal.
 data-product-portal:
   oidc:
     enabled: false
@@ -11,9 +11,15 @@ data-product-portal:
     hosts: 
       - host: portal.exoscale.robberthofman.com
         paths:
-          - path: /
-            pathType: Prefix
-  host: http://portal.exoscale.robberthofman.com
+        - path: /api
+          pathType: Prefix
+          name: data-product-portal
+          number: 5050
+        - path: /
+          pathType: Prefix
+          name: frontend
+          number: 8080
+  host: https://portal.exoscale.robberthofman.com
   api_key: 
     enabled: false
   namespace_max_length: '!!string 30'

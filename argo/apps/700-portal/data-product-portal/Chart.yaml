@@ -1,0 +1,11 @@
+apiVersion: v2
+appVersion: 1.16.0
+dependencies:
+- condition: postgres_enabled
+  name: postgresql
+  repository: '@bitnami'
+  version: ^15.1
+description: A Helm chart for Kubernetes
+name: data-product-portal
+type: application
+version: 0.3.1
