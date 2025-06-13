@@ -31,8 +31,7 @@ trino:
     enabled: true
     className: traefik
     annotations:
-      traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt"
+      traefik.ingress.kubernetes.io/router.entrypoints: web
     hosts: 
       - host: trino.upcloud.playground.dataminded.cloud
         paths:
