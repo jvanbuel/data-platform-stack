@@ -55,40 +55,40 @@ spec:
     data:
       - secretKey: postgres_host
         remoteRef:
-        key: my-cute-postgres-cluster-pguser-zitadel
-        property: host
+            key: my-cute-postgres-cluster-pguser-zitadel
+            property: host
         sourceRef:
             storeRef:
                 name: k8s-services
                 kind: ClusterSecretStore
       - secretKey: postgres_port
         remoteRef:
-        key: my-cute-postgres-cluster-pguser-zitadel
-        property: port
+            key: my-cute-postgres-cluster-pguser-zitadel
+            property: port
         sourceRef:
             storeRef:
                 name: k8s-services
                 kind: ClusterSecretStore
       - secretKey: postgres_dbname
         remoteRef:
-        key: my-cute-postgres-cluster-pguser-zitadel
-        property: dbname
+            key: my-cute-postgres-cluster-pguser-zitadel
+            property: dbname
         sourceRef:
             storeRef:
                 name: k8s-services
                 kind: ClusterSecretStore
       - secretKey: postgres_user
         remoteRef:
-        key: my-cute-postgres-cluster-pguser-zitadel
-        property: user
+            key: my-cute-postgres-cluster-pguser-zitadel
+            property: user
         sourceRef:
             storeRef:
                 name: k8s-services
                 kind: ClusterSecretStore
       - secretKey: postgres_password
         remoteRef:
-        key: my-cute-postgres-cluster-pguser-zitadel
-        property: password
+            key: my-cute-postgres-cluster-pguser-zitadel
+            property: password
         sourceRef:
             storeRef:
                 name: k8s-services
