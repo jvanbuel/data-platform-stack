@@ -6,6 +6,20 @@ metadata:
 spec:
   postgresVersion: 17
 
+  # PostgreSQL configuration to allow cluster-internal connections
+  postgresql:
+    parameters:
+      # Allow connections from cluster network
+      listen_addresses: '*'
+      max_connections: '200'
+    pg_hba:
+      # Allow connections from pods in the cluster (typical pod CIDR ranges)
+      - "host all all 172.16.0.0/12 md5"
+      # Allow connections from service network
+      - "host all all 10.0.0.0/8 md5"
+      # Default local connections
+      - "local all all md5"
+
   instances:
   - name: instance1
     replicas: 1
