@@ -54,12 +54,24 @@ spec:
                         {
                         "urls": ["https://k8s.gcr.io"],
                         "onDemand": true,
-                        "tlsVerify": true
+                        "tlsVerify": true,
+                        "content": [
+                            {
+                            "prefix": "**",
+                            "destination": "/k8s"
+                            }
+                        ]
                         },
                         {
                         "urls": ["https://docker.io/library"],
                         "onDemand": true,
-                        "tlsVerify": true
+                        "tlsVerify": true,
+                        "content": [
+                            {
+                            "prefix": "**",
+                            "destination": "/dockerhub"
+                            }
+                        ]
                         }
                     ]
                 }
