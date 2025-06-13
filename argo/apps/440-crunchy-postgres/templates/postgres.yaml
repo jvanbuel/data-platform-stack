@@ -6,6 +6,12 @@ metadata:
 spec:
   postgresVersion: 17
 
+  authentication:
+    rules:
+    - connection: host
+      databases: # all
+      hba: "host all all all md5"
+
   instances:
   - name: instance1
     replicas: 1
@@ -23,13 +29,6 @@ spec:
       limits:
         cpu: 2000m
         memory: 2Gi
-
-  patroni:
-    dynamicConfiguration:
-      postgresql:
-        parameters:
-          pg_hba:
-            - "host all all all md5"
 
   users:
   - name: trino
