@@ -4,11 +4,6 @@ from airflow.utils.dates import days_ago
 from datetime import timedelta
 from airflow.models import Variable
 
-# from kubernetes.client import models as k8s
-
-# init_environments = [k8s.V1EnvVar(name="TARGET", value="exoscale")]
-
-# Default args for DAG
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
