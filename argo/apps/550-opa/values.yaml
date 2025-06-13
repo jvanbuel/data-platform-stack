@@ -1,7 +1,12 @@
 # Custom values for the OPA Helm chart
 # Refer to the official OPA Helm chart documentation for available options.
 opa-kube-mgmt:
+  opa: {}
   useHttps: false
+
+  extraArgs:
+    - --log-level=debug
+    - --set=decision_logs.console=true
 
   authz:
   # Disable if you don't want authorization.
