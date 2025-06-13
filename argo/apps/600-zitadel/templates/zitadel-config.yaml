@@ -27,6 +27,11 @@ spec:
                                 Password: "{{`{{ .postgres_password }}`}}"
                                 SSL:
                                     Mode: disable
+                            Admin:
+                                Username: "{{`{{ .postgres_user }}`}}"
+                                Password: "{{`{{ .postgres_password }}`}}"
+                                SSL:
+                                    Mode: disable
 
                     Machine:
                         Identification:
