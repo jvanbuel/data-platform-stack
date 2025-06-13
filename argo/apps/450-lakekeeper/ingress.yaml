@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: lakekeeper-ingress-tls
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt"
+spec:
+  tls:
+  - hosts:
+    - lakekeeper.upcloud.playground.dataminded.cloud
+    secretName: tls-cert-lakekeeper.upcloud.playground.dataminded.cloud
+  rules:
+  - host: lakekeeper.upcloud.playground.dataminded.cloud
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: lakekeeper
+            port:
+              name: http
