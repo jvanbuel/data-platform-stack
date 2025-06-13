@@ -41,7 +41,7 @@ airflow:
 
     gitSync:
       enabled: true
-      repo: "https://github.com/datamindedbe/playground-inno-e2e-eu-dags.git"  # Replace with your repo
+      repo: "https://github.com/datamindedbe/playground-data-platform-stack.git"  # Replace with your repo
       branch: "main"  # Or whatever branch you want
       subPath: "dags"  # Path within the repo where DAGs are stored
       depth: 1
