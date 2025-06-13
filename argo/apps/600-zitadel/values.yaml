@@ -15,7 +15,7 @@ zitadel:
             FirstName: "Default"
             LastName: "Admin"
             Email:
-              Address: "admin@dataminded.com"
+              Address: "cloudfleet@5ha.re"
               Verified: true
     # Use External Secret with template that combines:
     # - PostgreSQL credentials from k8s-services ClusterSecretStore (Crunchy-generated secret)
