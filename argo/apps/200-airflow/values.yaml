@@ -24,7 +24,7 @@ airflow:
     web:
       enabled: true
       # Use Traefik Ingress controller
-      # ingressClassName: traefik # Use this if you have a default IngressClass
+      ingressClassName: traefik # Use this if you have a default IngressClass
       annotations:
         # Use Traefik's websecure entrypoint for HTTPS
         traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt"
@@ -35,9 +35,6 @@ airflow:
         # traefik.ingress.kubernetes.io/service.scheme: http # Usually not needed if port is 80/8080
       host: airflow.upcloud.playground.dataminded.cloud # Define the hostname
       path: / # Root path
-      tls:
-        - hosts:
-            - airflow.upcloud.playground.dataminded.cloud
 
   dags:
     persistence:
