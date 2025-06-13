@@ -1,7 +1,6 @@
 # Custom values for the Trino Helm chart
 # Values placed under the 'trino:' key will be passed to the subchart.
 trino:
-  additionalConfigProperties: []
   envFrom:
     - secretRef:
         name: s3-credentials
@@ -9,12 +8,6 @@ trino:
     - secretRef:
         name: pg-credentials
       prefix: PG_
-    - secretRef:
-        name: trino-oidc
-      prefix: OAUTH2_
-  server:
-    config:
-      authenticationType: OAUTH2
   catalogs:
     iceberg: |
       connector.name=iceberg
@@ -28,52 +21,11 @@ trino:
       s3.aws-secret-key=${ENV:S3_SECRET_ACCESS_KEY}
       iceberg.rest-catalog.security=NONE
       iceberg.rest-catalog.vended-credentials-enabled=true
-      fs.native-s3.enabled=true
-      s3.endpoint=${ENV:S3_ENDPOINT}
-      s3.region=${ENV:S3_REGION}
-      s3.aws-access-key=${ENV:S3_ACCESS_KEY_ID}
-      s3.aws-secret-key=${ENV:S3_SECRET_ACCESS_KEY}
-
-  coordinator:
-    additionalConfigFiles:
-      config.properties: |
-        internal-communication.shared-secret=123456
-        http-server.http.enabled=true
-        http-server.http.port=8080
-        http-server.authentication.type=OAUTH2
-        http-server.authentication.oauth2.oidc.discovery=true
-        http-server.authentication.oauth2.issuer=https://zitadel.exoscale.robberthofman.com
-        http-server.authentication.oauth2.client-id=${ENV:OAUTH2_CLIENT_ID}
-        http-server.authentication.oauth2.client-secret=${ENV:OAUTH2_CLIENT_SECRET}
-        coordinator=true
-        discovery.uri=http://localhost:8080
-        # Allow forwarded headers for proxy support
-        http-server.process-forwarded=true
-        web-ui.enabled: true
-        web-ui.authentication.type=oauth2
-
-  worker:
-    additionalConfigFiles:
-      config.properties: |
-        internal-communication.shared-secret=123456
-        discovery.uri=http://trino.services.svc:8080
-        http-server.http.enabled=true
-        http-server.http.port=8080
-
-  ingress:
-    enabled: true
-    className: traefik
-    annotations:
-      # Enable TLS with Let's Encrypt
-      traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt"
-    hosts: 
-      - host: trino.exoscale.robberthofman.com
-        paths:
-          - path: /
-            pathType: Prefix
-
-  accessControl:
-    type: properties
-    properties: |
-      access-control.name=opa
-      opa.policy.uri=https://opa.services.svc:8181/v1/data/trino/allow
+#      connector.name=iceberg
+#      iceberg.catalog.type=jdbc
+#      iceberg.jdbc-catalog.catalog-name=catalog
+#      iceberg.jdbc-catalog.driver-class=org.postgresql.Driver
+#      iceberg.jdbc-catalog.connection-url=jdbc:postgresql://${ENV:PG_HOST}:${ENV:PG_PORT}/catalog
+#      iceberg.jdbc-catalog.connection-user=${ENV:PG_USERNAME}
+#      iceberg.jdbc-catalog.connection-password=${ENV:PG_PASSWORD}
+#      iceberg.jdbc-catalog.default-warehouse-dir=s3://dp-stack-tf-os
