@@ -2,10 +2,6 @@
 data-product-portal:
   oidc:
     enabled: false
-    client_id: ${var.cognito_config.client_id}
-    client_secret: ${var.cognito_config.client_secret}
-    authority: https://${var.cognito_config.endpoint}
-    redirect_uri: https://${var.account_config.hostname}.${var.account_config.hosted_zone}/
   ingress:
     enabled: true
     className: traefik
@@ -25,3 +21,12 @@ data-product-portal:
     tag: 'fc7b5ef'
   frontendimage:
     tag: 'fc7b5ef'
+  global:
+    postgresql:
+      auth:
+        password: admin1234
+        database: data-product-portal
+        port: "!!string 5432"
+        server: data-product-portal-postgresql
+        username: postgres
+  postgres_enabled: true
