@@ -53,50 +53,55 @@ spec:
                                 From: "cloudfleet@5ha.re"
                                 FromName: "Cloudfleet Platform"
     data:
-    - secretKey: postgres_host
-      remoteRef:
-          key: my-cute-postgres-cluster-pguser-zitadel
-          property: host
-      secretStoreRef:
-          name: k8s-services
-          kind: ClusterSecretStore
-    - secretKey: postgres_port
-      remoteRef:
-          key: my-cute-postgres-cluster-pguser-zitadel
-          property: port
-      secretStoreRef:
-          name: k8s-services
-          kind: ClusterSecretStore
-    - secretKey: postgres_dbname
-      remoteRef:
-          key: my-cute-postgres-cluster-pguser-zitadel
-          property: dbname
-      secretStoreRef:
-          name: k8s-services
-          kind: ClusterSecretStore
-    - secretKey: postgres_user
-      remoteRef:
-          key: my-cute-postgres-cluster-pguser-zitadel
-          property: user
-      secretStoreRef:
-          name: k8s-services
-          kind: ClusterSecretStore
-    - secretKey: postgres_password
-      remoteRef:
-          key: my-cute-postgres-cluster-pguser-zitadel
-          property: password
-      secretStoreRef:
-          name: k8s-services
-          kind: ClusterSecretStore
-    - secretKey: smtp_host
-      remoteRef:
-          key: platform/smtp-credentials
-          property: host
-    - secretKey: smtp_username
-      remoteRef:
-          key: platform/smtp-credentials
-          property: username
-    - secretKey: smtp_password
-      remoteRef:
-          key: platform/smtp-credentials
-          property: password
+      - secretKey: postgres_host
+        remoteRef:
+        key: my-cute-postgres-cluster-pguser-zitadel
+        property: host
+        sourceRef:
+            storeRef:
+                name: k8s-services
+                kind: ClusterSecretStore
+      - secretKey: postgres_port
+        remoteRef:
+        key: my-cute-postgres-cluster-pguser-zitadel
+        property: port
+        sourceRef:
+            storeRef:
+                name: k8s-services
+                kind: ClusterSecretStore
+      - secretKey: postgres_dbname
+        remoteRef:
+        key: my-cute-postgres-cluster-pguser-zitadel
+        property: dbname
+        sourceRef:
+            storeRef:
+                name: k8s-services
+                kind: ClusterSecretStore
+      - secretKey: postgres_user
+        remoteRef:
+        key: my-cute-postgres-cluster-pguser-zitadel
+        property: user
+        sourceRef:
+            storeRef:
+                name: k8s-services
+                kind: ClusterSecretStore
+      - secretKey: postgres_password
+        remoteRef:
+        key: my-cute-postgres-cluster-pguser-zitadel
+        property: password
+        sourceRef:
+            storeRef:
+                name: k8s-services
+                kind: ClusterSecretStore
+      - secretKey: smtp_host
+        remoteRef:
+            key: platform/smtp-credentials
+            property: host
+      - secretKey: smtp_username
+        remoteRef:
+            key: platform/smtp-credentials
+            property: username
+      - secretKey: smtp_password
+        remoteRef:
+            key: platform/smtp-credentials
+            property: password
