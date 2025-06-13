@@ -1,3 +1,5 @@
 .idea
+.kube*
+.terraform*
 .env
 venv
