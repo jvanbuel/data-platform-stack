@@ -41,9 +41,9 @@ with DAG(
             'TARGET': 'cloud',
             'AWS_ACCESS_KEY_ID': Variable.get("AWS_ACCESS_KEY_ID"),
             'AWS_SECRET_ACCESS_KEY': Variable.get("AWS_SECRET_ACCESS_KEY"),
-            'S3_BUCKET': "",
-            'S3_REGION': "",
-            'S3_ENDPOINT': "",
+            'S3_BUCKET': Variable.get("S3_BUCKET"),
+            'S3_REGION': Variable.get("S3_REGION"),
+            'S3_ENDPOINT': Variable.get("S3_ENDPOINT"),
         },
         get_logs=True,
         is_delete_operator_pod=True,  # Clean up after running
