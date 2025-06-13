@@ -26,6 +26,9 @@ zitadel:
     annotations:
       # Enable TLS with Let's Encrypt
       traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt"
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
+      traefik.ingress.kubernetes.io/service.serversscheme: "h2c"
     hosts: 
       - host: zitadel.exoscale.robberthofman.com
         paths:

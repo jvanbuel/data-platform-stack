@@ -9,13 +9,14 @@ terraform {
 
 provider "zitadel" {
   # Configuration options
-  domain           = "localhost"
+  domain           = "zitadel.exoscale.robberthofman.com"
   insecure         = "true"
-  port             = "8200"
   jwt_profile_file = "token.json"
+  # token = "token.json"
 }
 
 provider "kubernetes" {
   config_path = "../app/exoscale.kubeconfig"
 
 }
+

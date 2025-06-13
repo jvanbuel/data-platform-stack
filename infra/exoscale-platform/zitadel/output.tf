@@ -3,7 +3,7 @@ output "trino_secret" {
   value = {
     CLIENT_ID     = zitadel_application_oidc.trino.client_id
     CLIENT_SECRET = zitadel_application_oidc.trino.client_secret
-    ISSUER = "http://localhost:8200"
+    ISSUER        = "http://localhost:8200"
 
   }
 
