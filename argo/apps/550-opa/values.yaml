@@ -1,26 +1,10 @@
 # Custom values for the OPA Helm chart
 # Refer to the official OPA Helm chart documentation for available options.
-opa:
-  opa:
-    args:
-      - "run"
-      - "--server" 
-      - "--addr=0.0.0.0:8181"
-      - "--log-level=info"
-      - "--log-format=json"
-      - "--authorization=off"
-      - "--ignore=.*"
-      - "/bootstrap"
+opa-kube-mgmt:
   useHttps: false
 
   authz:
   # Disable if you don't want authorization.
   # Mostly useful for debugging.
     enabled: false
-
-  bootstrapPolicies: 
-    - |
-      package system.authz
-      print("DEBUG - input:", input)
-      default allow = true
 
