@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: vault
-  namespace: argocd
+  namespace: argocd2
   finalizers:
     - argocd.argoproj.io/resources-finalizer # Use domain-qualified finalizer
 spec:

@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: trino
-  namespace: argocd
+  namespace: argocd2
   # Add finalizer to ensure that Helm release is deleted before the app
   finalizers:
     - argocd.argoproj.io/resources-finalizer # Use domain-qualified finalizer
