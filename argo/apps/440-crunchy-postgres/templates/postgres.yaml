@@ -29,7 +29,7 @@ spec:
       postgresql:
         parameters:
           pg_hba:
-            - "hostnossl all all all md5"
+            - "host all all all md5"
 
   users:
   - name: trino
