@@ -13,7 +13,7 @@ spec:
             data:
                 config.yaml: |
                     Log:
-                        Level: info
+                        Level: debug
                         Formatter:
                             Format: text
 
