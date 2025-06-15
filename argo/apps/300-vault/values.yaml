@@ -5,15 +5,16 @@ vault:
   # Run Vault in development mode (single node, in-memory storage - NOT FOR PRODUCTION)
   server:
     dev:
+      enabled: false
+    dataStorage:
       enabled: true
-
     # Ensure HA mode is disabled when running in dev mode
     ha:
       enabled: false
       # raft: # Raft is the default integrated storage, disable if using dev mode
       #   enabled: false
 
-    # Configure Ingress for the UI
+      # Configure Ingress for the UI
     ingress:
       enabled: true
       # ingressClassName: traefik # Use this if you have a default IngressClass
@@ -26,4 +27,5 @@ vault:
         # traefik.ingress.kubernetes.io/service.scheme: http # Usually not needed
       hosts:
         - host: vault.ovh.playground.dataminded.cloud
-
+      tls:
+      - secretName: vault-tls
