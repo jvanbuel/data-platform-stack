@@ -1,0 +1,7 @@
+.terraform
+*.tfstate
+terraform.tfvars
+.env
+terraform.tfstate*
+*.kubeconfig
+kubeconfig-dp-k8s.yaml
