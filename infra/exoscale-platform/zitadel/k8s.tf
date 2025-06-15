@@ -44,17 +44,18 @@ resource "kubernetes_config_map" "trino_frontend_oidc" {
     "config.js" : <<EOF
       const config = (() => {
       return {
-          API_BASE_URL: "https://portal.exoscale.robberthofman.com",
+          API_BASE_URL: "https://portal.exoscale.playground.dataminded.cloud",
           OIDC_ENABLED: true,
           OIDC_CLIENT_ID: "${var.portal_oidc_client_id}",
           OIDC_CLIENT_SECRET: "${var.portal_oidc_client_secret}",
           OIDC_AUDIENCE: "324195878824837124", 
-          OIDC_AUTHORITY: "https://zitadel.exoscale.robberthofman.com",
-          OIDC_REDIRECT_URI: "https://portal.exoscale.robberthofman.com/",
-          OIDC_POST_LOGOUT_REDIRECT_URI: "https://portal.exoscale.robberthofman.com/logout/",
+          OIDC_AUTHORITY: "https://zitadel.exoscale.playground.dataminded.cloud",
+          OIDC_REDIRECT_URI: "https://portal.exoscale.playground.dataminded.cloud/",
+          OIDC_POST_LOGOUT_REDIRECT_URI: "https://portal.exoscale.playground.dataminded.cloud/logout/",
           THEME_CONFIGURATION: "datamindedthemeconfig",
       }
   })();
   EOF
   }
 }
+

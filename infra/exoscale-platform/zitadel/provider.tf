@@ -9,7 +9,7 @@ terraform {
 
 provider "zitadel" {
   # Configuration options
-  domain           = "zitadel.exoscale.robberthofman.com"
+  domain           = "zitadel.exoscale.playground.dataminded.cloud"
   insecure         = "true"
   jwt_profile_file = "token.json"
   # token = "token.json"

@@ -4,7 +4,7 @@ zitadel:
     masterkey: x123456789012345678901234567891y
     configmapConfig:
       ExternalSecure: true
-      ExternalDomain: zitadel.exoscale.robberthofman.com
+      ExternalDomain: zitadel.exoscale.playground.dataminded.cloud
       TLS:
         Enabled: false
       FirstInstance:
@@ -30,7 +30,7 @@ zitadel:
       traefik.ingress.kubernetes.io/router.tls: "true"
       traefik.ingress.kubernetes.io/service.serversscheme: "h2c"
     hosts: 
-      - host: zitadel.exoscale.robberthofman.com
+      - host: zitadel.exoscale.playground.dataminded.cloud
         paths:
           - path: /
             pathType: Prefix

@@ -13,7 +13,7 @@ resource "zitadel_application_oidc" "trino" {
   org_id     = local.org_id
 
   name                      = "trino"
-  redirect_uris             = ["https://trino.exoscale.robberthofman.com/oauth2/callback"]
+  redirect_uris             = ["https://trino.exoscale.playground.dataminded.cloud/oauth2/callback"]
   response_types            = ["OIDC_RESPONSE_TYPE_CODE"]
   grant_types               = ["OIDC_GRANT_TYPE_AUTHORIZATION_CODE"]
   post_logout_redirect_uris = ["http://localhost"]
@@ -27,10 +27,11 @@ resource "zitadel_application_oidc" "portal" {
   org_id     = local.org_id
 
   name                      = "portal"
-  redirect_uris             = ["https://portal.exoscale.robberthofman.com/"]
+  redirect_uris             = ["https://portal.exoscale.playground.dataminded.cloud/"]
   response_types            = ["OIDC_RESPONSE_TYPE_CODE"]
   grant_types               = ["OIDC_GRANT_TYPE_AUTHORIZATION_CODE"]
   post_logout_redirect_uris = ["http://localhost"]
   dev_mode                  = true
   auth_method_type          = "OIDC_AUTH_METHOD_TYPE_BASIC"
 }
+

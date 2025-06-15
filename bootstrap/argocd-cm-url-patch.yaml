@@ -5,4 +5,4 @@ metadata:
   name: argocd-cm
 data:
   # Set the external URL so ArgoCD knows how it's being accessed
-  url: https://argocd.exoscale.robberthofman.com
+  url: https://argocd.exoscale.playground.dataminded.cloud

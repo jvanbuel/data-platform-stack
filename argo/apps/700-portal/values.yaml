@@ -2,12 +2,12 @@
 data-product-portal:
   oidc:
     enabled: true
-    authority: https://zitadel.exoscale.robberthofman.com
-    redirect_uri: https://portal.exoscale.robberthofman.com/
+    authority: https://zitadel.exoscale.playground.dataminded.cloud
+    redirect_uri: https://portal.exoscale.playground.dataminded.cloud/
   smtp:
     host: smtp.tem.scaleway.com
     port: '!!string 587'
-  from_mail_address: portal@exoscale.robberthofman.com
+  from_mail_address: portal@exoscale.playground.dataminded.cloud
   ingress:
     enabled: true
     className: traefik
@@ -15,7 +15,7 @@ data-product-portal:
       # Enable TLS with Let's Encrypt
       traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt"
     hosts: 
-      - host: portal.exoscale.robberthofman.com
+      - host: portal.exoscale.playground.dataminded.cloud
         paths:
         - path: /api
           pathType: Prefix
@@ -25,7 +25,7 @@ data-product-portal:
           pathType: Prefix
           name: frontend
           number: 8080
-  host: https://portal.exoscale.robberthofman.com
+  host: https://portal.exoscale.playground.dataminded.cloud
   api_key: 
     enabled: false
   namespace_max_length: '!!string 30'

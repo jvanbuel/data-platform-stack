@@ -2,7 +2,7 @@ from trino.auth import OAuth2Authentication
 from trino.dbapi import connect
 
 conn = connect(
-    host="trino.exoscale.robberthofman.com",
+    host="trino.exoscale.playground.dataminded.cloud",
     port=443,
     http_scheme="https",
     user=None,

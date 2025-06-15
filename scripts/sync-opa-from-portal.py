@@ -7,7 +7,7 @@ import requests
 
 # Configuration
 PORTAL_API_KEY = os.environ["PORTAL_API_KEY"]
-PORTAL_BASE_URL = "https://portal.exoscale.robberthofman.com"
+PORTAL_BASE_URL = "https://portal.exoscale.playground.dataminded.cloud"
 OPA_BASE_URL = "http://localhost:8181"
 
 
