@@ -10,3 +10,11 @@
   * Scaleway
   * UpCloud
   * Exoscale
+
+## Deployment
+* pick a provider in the infra folder
+ * run terraform apply and make sure to set the active kubernetes context 
+ * or alternatively, ensure you have a kubernetes cluster somewhere
+* follow the readme in the bootstrap folder
+* make sure all the services are running
+* deploy the Airflow DAGs
