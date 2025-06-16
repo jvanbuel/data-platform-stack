@@ -34,7 +34,7 @@ resource "aws_route53_record" "dkim_0001" {
   type    = "TXT"
   ttl     = 300
   name    = "${scaleway_tem_domain.this.project_id}._domainkey"
-  records = [for i in range(0, length(scaleway_tem_domain.this.dkim_config), 255) : substr(scaleway_tem_domain.this.dkim_config, i, 255)] # DKIM record is over 255 characters so we need to chunk it
+  records = [join("\" \"", compact(regexall(".{1,220}", scaleway_tem_domain.this.dkim_config)))] # DKIM record is over 255 characters so we need to chunk it
 }
 
 # MX
