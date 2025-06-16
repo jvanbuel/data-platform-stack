@@ -23,10 +23,8 @@ provider "aws" {
 }
 
 provider "scaleway" {
-  zone   = "fr-par-1" # TEM not available in ams,
-  region = "fr-par"   # see https://github.com/scaleway/terraform-provider-scaleway/issues/3163
-  #zone            = "nl-ams-1"
-  #region          = "nl-ams"
+  zone            = "nl-ams-1"
+  region          = "nl-ams"
   access_key      = var.scaleway_access_key
   secret_key      = var.scaleway_secret_key
   organization_id = var.scaleway_organization_id
