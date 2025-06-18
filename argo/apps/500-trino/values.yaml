@@ -14,21 +14,21 @@ trino:
   coordinator:
     resources:
       requests:
-        cpu: 500m
-        memory: 2Gi
+        cpu: 250m
+        memory: 1Gi
       limits:
-        cpu: 2000m
-        memory: 4Gi
+        cpu: 1000m
+        memory: 1Gi
   worker:
-    nodeSelector:
-      node.kubernetes.io/instance-type: "ccx33"
+    # nodeSelector:
+    #   node.kubernetes.io/instance-type: "ccx33"
     resources:
       requests:
-        cpu: 500m
-        memory: 4Gi
+        cpu: 250m
+        memory: 1Gi
       limits:
-        cpu: 2000m
-        memory: 8Gi
+        cpu: 1000m
+        memory: 1Gi
   envFrom:
   - secretRef:
       name: s3-credentials
