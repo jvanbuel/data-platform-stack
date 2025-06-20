@@ -7,7 +7,7 @@ terraform {
   }
 }
 resource "helm_release" "opa" {
-  chart = "${path.module}/../../../argo/apps/200-airflow"
-  name  = "airflow-wrapper"
+  chart = "${path.module}/../../../../argo/apps/200-airflow"
+  name  = "airflow"
   namespace = "services"
 }

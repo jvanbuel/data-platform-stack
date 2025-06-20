@@ -1,5 +1,5 @@
 locals {
-  org_id = "324185190329025154"
+  org_id = "325400678891586099"
 }
 resource "zitadel_project" "trino" {
   name   = "trino"

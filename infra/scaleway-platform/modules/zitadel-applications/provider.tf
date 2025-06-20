@@ -10,6 +10,6 @@ terraform {
 provider "zitadel" {
   domain           = "zitadel.exoscale.playground.dataminded.cloud"
   insecure         = "true"
-  jwt_profile_file = var.jwt_profile
+  jwt_profile_file = var.jwt_profile_file
 }
 

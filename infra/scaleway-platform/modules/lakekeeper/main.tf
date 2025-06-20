@@ -7,7 +7,7 @@ terraform {
   }
 }
 resource "helm_release" "lakekeeper" {
-  chart = "${path.module}/../../../argo/apps/450-lakekeeper"
-  name  = "lakekeeper-wrapper"
+  chart = "${path.module}/../../../../argo/apps/450-lakekeeper"
+  name  = "lakekeeper"
   namespace = "services"
 }

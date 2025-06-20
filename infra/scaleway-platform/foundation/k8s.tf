@@ -9,7 +9,7 @@ resource "scaleway_k8s_cluster" "k8s" {
 resource "scaleway_k8s_pool" "pool" {
   cluster_id = scaleway_k8s_cluster.k8s.id
   name       = "default-pool"
-  node_type  = "DEV1-M"
+  node_type  = "DEV1-L"
   size       = 3
 }
 
@@ -22,20 +22,19 @@ resource "local_sensitive_file" "kubeconfig" {
 provider "kubernetes" {
   config_path = local_sensitive_file.kubeconfig.filename
 }
+
 resource "kubernetes_namespace" "services" {
   metadata {
     name = "services"
   }
-}
 
-resource "kubernetes_namespace" "zitadel" {
-  metadata {
-    name = "zitadel"
-  }
+  depends_on = [scaleway_k8s_pool.pool]
 }
 
 resource "kubernetes_namespace" "traefik" {
   metadata {
     name = "traefik"
   }
+
+  depends_on = [scaleway_k8s_pool.pool]
 }

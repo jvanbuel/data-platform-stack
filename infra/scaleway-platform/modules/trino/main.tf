@@ -7,7 +7,7 @@ terraform {
   }
 }
 resource "helm_release" "trino" {
-  chart = "${path.module}/../../../argo/apps/500-trino"
-  name  = "trino-wrapper"
+  chart = "${path.module}/../../../../argo/apps/500-trino"
+  name  = "trino"
   namespace = "services"
 }

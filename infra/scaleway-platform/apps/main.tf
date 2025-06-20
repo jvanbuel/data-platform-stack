@@ -1,6 +1,6 @@
 module "zitadel-apps" {
   source = "../modules/zitadel-applications"
-  jwt_profile_file = var.zitadel_jwt_token
+  jwt_profile_file = var.zitadel_jwt_token_file
 }
 
 module "trino" {
@@ -18,6 +18,7 @@ module "opa" {
 module "lakekeeper" {
   source = "../modules/lakekeeper"
 }
-module "opa" {
+
+module "airflow" {
   source = "../modules/airflow"
 }

@@ -31,6 +31,19 @@ resource "scaleway_rdb_database" "main" {
   instance_id = scaleway_rdb_instance.main.id
 }
 
+
+resource "scaleway_rdb_database" "zitadel" {
+  name        = "zitadel"
+  instance_id = scaleway_rdb_instance.main.id
+}
+
+resource "scaleway_rdb_privilege" "zitadel" {
+  instance_id   = scaleway_rdb_instance.main.id
+  user_name     = "admin"
+  database_name = scaleway_rdb_database.zitadel.name
+  permission    = "all"
+}
+
 resource "scaleway_rdb_privilege" "main" {
   instance_id   = scaleway_rdb_instance.main.id
   user_name     = "admin"
