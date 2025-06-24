@@ -10,7 +10,7 @@ resource "scaleway_k8s_pool" "pool" {
   cluster_id = scaleway_k8s_cluster.k8s.id
   name       = "default-pool"
   node_type  = "DEV1-L"
-  size       = 3
+  size       = 1
 }
 
 resource "local_sensitive_file" "kubeconfig" {

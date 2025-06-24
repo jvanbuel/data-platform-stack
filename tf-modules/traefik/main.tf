@@ -7,7 +7,7 @@ terraform {
   }
 }
 resource "helm_release" "traefik" {
-  chart = "${path.module}/../../../../argo/apps/100-traefik"
+  chart = "${path.module}/../../argo/apps/100-traefik"
   name  = "traefik"
   namespace = "traefik"
   values = [

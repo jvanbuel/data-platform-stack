@@ -1,24 +1,23 @@
 module "zitadel-apps" {
-  source = "../modules/zitadel-applications"
-  jwt_profile_file = var.zitadel_jwt_token_file
+  source = "../../../tf-modules/zitadel-applications"
 }
 
 module "trino" {
-  source = "../modules/trino"
-}
-
-module "traefik" {
-  source = "../modules/traefik"
+  source = "../../../tf-modules/trino"
+  depends_on = [module.zitadel-apps]
 }
 
 module "opa" {
-  source = "../modules/opa"
+  source = "../../../tf-modules/opa"
+  depends_on = [module.zitadel-apps]
 }
 
 module "lakekeeper" {
-  source = "../modules/lakekeeper"
+  source = "../../../tf-modules/lakekeeper"
+  depends_on = [module.zitadel-apps]
 }
 
 module "airflow" {
-  source = "../modules/airflow"
+  source = "../../../tf-modules/airflow"
+  depends_on = [module.zitadel-apps]
 }

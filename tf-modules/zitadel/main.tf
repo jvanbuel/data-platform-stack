@@ -7,7 +7,7 @@ terraform {
   }
 }
 resource "helm_release" "zitadel" {
-  chart = "${path.module}/../../../../argo/apps/600-zitadel"
+  chart = "${path.module}/../../argo/apps/600-zitadel"
   name  = "zitadel"
   namespace = "services"
   values = [

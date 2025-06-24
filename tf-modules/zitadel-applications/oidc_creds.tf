@@ -1,18 +1,23 @@
-locals {
-  org_id = "325400678891586099"
+resource "zitadel_org" "dataminded" {
+  name = "dataminded"
 }
+
 resource "zitadel_project" "trino" {
   name   = "trino"
-  org_id = local.org_id
+  org_id = zitadel_org.dataminded.id
+  depends_on = [zitadel_org.dataminded]
 }
+
 resource "zitadel_project" "lakekeeper" {
   name   = "lakekeeper"
-  org_id = local.org_id
+  org_id = zitadel_org.dataminded.id
+
+  depends_on = [zitadel_org.dataminded]
 }
 
 resource "zitadel_application_oidc" "trino" {
   project_id = zitadel_project.trino.id
-  org_id     = local.org_id
+  org_id     = zitadel_org.dataminded.id
 
   name                      = "trino"
   redirect_uris             = ["https://trino.scaleway.playground.dataminded.cloud/oauth2/callback"]
@@ -24,8 +29,8 @@ resource "zitadel_application_oidc" "trino" {
 }
 
 resource "zitadel_application_oidc" "lakekeeper" {
-  project_id = zitadel_project.trino.id
-  org_id     = local.org_id
+  project_id = zitadel_project.lakekeeper.id
+  org_id     = zitadel_org.dataminded.id
 
   name                      = "lakekeeper"
   redirect_uris             = ["https://lakekeeper.scaleway.playground.dataminded.cloud/oauth2/callback"]
