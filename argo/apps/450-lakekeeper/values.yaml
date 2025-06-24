@@ -5,6 +5,12 @@ lakekeeper:
     extraEnvFrom:
       - secretRef:
           name: lakekeeper-custom-secrets #overwrite the external database credentials with our own settings
+    ingress:
+      host: lakekeeper.exoscale.playground.dataminded.cloud
+      ingressClassName: traefik
+      annotations:
+        traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt"
+        traefik.ingress.kubernetes.io/router.tls: "true"
   postgresql:
     enabled: false
 

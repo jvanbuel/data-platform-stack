@@ -15,10 +15,10 @@ resource "helm_release" "zitadel" {
 zitadel:
   zitadel:
     configmapConfig:
-      ExternalDomain: zitadel.scaleway.playground.dataminded.cloud
+      ExternalDomain: "zitadel.${var.domain}"
   ingress:
     hosts:
-      - host: zitadel.scaleway.playground.dataminded.cloud
+      - host: "zitadel.${var.domain}"
         paths:
           - path: /
             pathType: Prefix

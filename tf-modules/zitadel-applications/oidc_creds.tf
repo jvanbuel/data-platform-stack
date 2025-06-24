@@ -20,7 +20,7 @@ resource "zitadel_application_oidc" "trino" {
   org_id     = zitadel_org.dataminded.id
 
   name                      = "trino"
-  redirect_uris             = ["https://trino.scaleway.playground.dataminded.cloud/oauth2/callback"]
+  redirect_uris             = ["https://trino.${var.domain}/oauth2/callback"]
   response_types            = ["OIDC_RESPONSE_TYPE_CODE"]
   grant_types               = ["OIDC_GRANT_TYPE_AUTHORIZATION_CODE"]
   post_logout_redirect_uris = ["http://localhost"]
@@ -33,7 +33,7 @@ resource "zitadel_application_oidc" "lakekeeper" {
   org_id     = zitadel_org.dataminded.id
 
   name                      = "lakekeeper"
-  redirect_uris             = ["https://lakekeeper.scaleway.playground.dataminded.cloud/oauth2/callback"]
+  redirect_uris             = ["https://lakekeeper.${var.domain}/oauth2/callback"]
   response_types            = ["OIDC_RESPONSE_TYPE_CODE"]
   grant_types               = ["OIDC_GRANT_TYPE_AUTHORIZATION_CODE"]
   post_logout_redirect_uris = ["http://localhost"]

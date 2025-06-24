@@ -15,7 +15,7 @@ resource "helm_release" "traefik" {
 traefik:
   ingressRoute:
     dashboard:
-      matchRule: Host(`traefik.scaleway.playground.dataminded.cloud`)
+      matchRule: Host(`traefik.${var.domain}`)
 EOF
 ]
 }
