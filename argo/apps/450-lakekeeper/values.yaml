@@ -1,7 +1,7 @@
 lakekeeper:
   catalog:
     image:
-      tag: 0.9.1
+      tag: v0.9.1
     extraEnvFrom:
       - secretRef:
           name: lakekeeper-custom-secrets #overwrite the external database credentials with our own settings
