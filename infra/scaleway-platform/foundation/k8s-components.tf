@@ -15,14 +15,14 @@ data "scaleway_k8s_cluster" "cluster" {
 # We install this here as a dependency for many modules in apps.
 module "zitadel" {
   source = "../../../tf-modules/zitadel"
-
+  domain = "scaleway.playground.dataminded.cloud"
   depends_on = [kubernetes_namespace.services, scaleway_k8s_pool.pool]
 }
 
 # We install this here as a dependency for many modules in apps.
 module "traefik" {
   source = "../../../tf-modules/traefik"
-
+  domain = "scaleway.playground.dataminded.cloud"
   depends_on = [kubernetes_namespace.traefik, scaleway_k8s_pool.pool]
 }
 

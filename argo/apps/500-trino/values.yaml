@@ -38,6 +38,9 @@ trino:
 #      iceberg.jdbc-catalog.default-warehouse-dir=s3://dp-stack-tf-os
 
   coordinator:
+    additionalConfigFiles:
+      config.properties: |
+        internal-communication.shared-secret=123456
     resources:
       requests:
         cpu: 100m
@@ -50,6 +53,9 @@ trino:
         discovery.uri=http://trino.services.svc:8080
         http-server.http.enabled=true
         http-server.http.port=8080
+        http-server.authentication.oauth2.issuer=zitadel.exoscale.playground.dataminded.cloud
+        http-server.authentication.oauth2.client-id=${ENV:OAUTH2_CLIENT_ID}
+        http-server.authentication.oauth2.client-secret=${ENV:OAUTH2_CLIENT_ID}
     resources:
       requests:
         cpu: 100m
