@@ -38,3 +38,11 @@ resource "kubernetes_namespace" "traefik" {
 
   depends_on = [scaleway_k8s_pool.pool]
 }
+
+resource "kubernetes_namespace" "opa" {
+  metadata {
+    name = "opa"
+  }
+
+  depends_on = [scaleway_k8s_pool.pool]
+}
