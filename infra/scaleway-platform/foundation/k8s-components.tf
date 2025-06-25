@@ -12,7 +12,7 @@ data "scaleway_k8s_cluster" "cluster" {
 }
 
 
-# We install this here as a dependency for many modules in apps.
+# We install this here as they are a dependency for many modules in apps.
 module "zitadel" {
   source = "../../../tf-modules/zitadel"
   domain = "scaleway.playground.dataminded.cloud"

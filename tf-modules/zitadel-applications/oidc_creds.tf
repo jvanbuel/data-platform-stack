@@ -1,23 +1,20 @@
-resource "zitadel_org" "dataminded" {
-  name = "dataminded"
+data "zitadel_org" "default" {
+  id = "325930134207005293" # TODO replace with your default ziteadel org ID
 }
 
 resource "zitadel_project" "trino" {
   name   = "trino"
-  org_id = zitadel_org.dataminded.id
-  depends_on = [zitadel_org.dataminded]
+  org_id = data.zitadel_org.default.id
 }
 
 resource "zitadel_project" "lakekeeper" {
   name   = "lakekeeper"
-  org_id = zitadel_org.dataminded.id
-
-  depends_on = [zitadel_org.dataminded]
+  org_id = data.zitadel_org.default.id
 }
 
 resource "zitadel_application_oidc" "trino" {
   project_id = zitadel_project.trino.id
-  org_id     = zitadel_org.dataminded.id
+  org_id = data.zitadel_org.default.id
 
   name                      = "trino"
   redirect_uris             = ["https://trino.${var.domain}/oauth2/callback"]
@@ -30,7 +27,7 @@ resource "zitadel_application_oidc" "trino" {
 
 resource "zitadel_application_oidc" "lakekeeper" {
   project_id = zitadel_project.lakekeeper.id
-  org_id     = zitadel_org.dataminded.id
+  org_id = data.zitadel_org.default.id
 
   name                      = "lakekeeper"
   redirect_uris             = ["https://lakekeeper.${var.domain}/oauth2/callback"]

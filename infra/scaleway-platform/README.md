@@ -10,8 +10,7 @@ The bootstrap directory configures the state bucket and the backend for Terrafor
   - run `helm dependency build` for every application in the `argo/apps/...` directory.
 - go to the `bootstrap` directory, run `tofu init` and `tofu apply` to create the state bucket.
 - go to the `foundation` directory, run `tofu init` and `tofu apply` to create the foundational resources.
-  - change the org_id based on the resourceid found in the Zitadel UI: https://zitadel.scaleway.playground.dataminded.cloud/ui/console/org
-  - from here, will need to retrieve the `jwt_token` from the zitadel UI.
+  - Generate a `jwt_token` in the [Zitadel UI](https://zitadel.scaleway.playground.dataminded.cloud/ui/console/org) for programmatic access
 - go to the `apps` directory, run `tofu init` and `tofu apply` to create the applications.
 
 

@@ -6,6 +6,7 @@ lakekeeper:
       - secretRef:
           name: lakekeeper-custom-secrets #overwrite the external database credentials with our own settings
     ingress:
+      enabled: true
       host: lakekeeper.exoscale.playground.dataminded.cloud
       ingressClassName: traefik
       annotations:
