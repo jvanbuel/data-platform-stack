@@ -87,7 +87,12 @@ resource "kubernetes_secret" "database_secrets" {
     ICEBERG_REST__PG_DATABASE=scaleway_rdb_database.main.name
     ICEBERG_REST__PG_USER=scaleway_rdb_instance.main.user_name
     ICEBERG_REST__SECRETS_BACKEND="Postgres"
-    LAKEKEEPER__AUTHZ_BACKEND="allowall"
+    LAKEKEEPER__AUTHZ_BACKEND="openfga"
+    LAKEKEEPER__OPENFGA__ENDPOINT="http://lakekeeper-openfga.services.svc.cluster.local:8081"
+    LAKEKEEPER__UI__OPENID_PROVIDER_URI="https://zitadel.scaleway.playground.dataminded.cloud"
+    LAKEKEEPER__OPENID_PROVIDER_URI="https://zitadel.scaleway.playground.dataminded.cloud"
+    LAKEKEEPER__USE_X_FORWARDED_HEADERS=true
+    LAKEKEEPER__UI__OPENID_TOKEN_TYPE="id_token" #lakekeeper does not support opaque access tokens
   }
   depends_on = [kubernetes_namespace.services]
 }

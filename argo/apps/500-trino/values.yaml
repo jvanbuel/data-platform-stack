@@ -16,7 +16,7 @@ trino:
     config:
       authenticationType: OAUTH2
   catalogs:
-    iceberg: |
+    dataminded: |
       connector.name=iceberg
       iceberg.catalog.type=rest
       iceberg.rest-catalog.uri=http://lakekeeper.services.svc.cluster.local:8181/catalog
@@ -41,7 +41,14 @@ trino:
     additionalConfigFiles:
       config.properties: |
         internal-communication.shared-secret=123456
+        catalog.management=static
         http-server.process-forwarded=true
+        discovery.uri=http://trino:8080
+        http-server.http.enabled=true
+        http-server.http.port=8080
+        http-server.authentication.oauth2.issuer=https://zitadel.scaleway.playground.dataminded.cloud
+        http-server.authentication.oauth2.client-id=${ENV:OAUTH2_CLIENT_ID}
+        http-server.authentication.oauth2.client-secret=${ENV:OAUTH2_CLIENT_SECRET}
     resources:
       requests:
         cpu: 100m
@@ -50,12 +57,13 @@ trino:
   worker:
     additionalConfigFiles:
       config.properties: |
+        http-server.authentication.type=oauth2
         internal-communication.shared-secret=123456
         discovery.uri=http://trino.services.svc:8080
         http-server.http.enabled=true
         http-server.http.port=8080
         http-server.authentication.oauth2.scopes=openid
-        http-server.authentication.oauth2.issuer=https://zitadel.exoscale.playground.dataminded.cloud
+        http-server.authentication.oauth2.issuer=https://zitadel.scaleway.playground.dataminded.cloud
         http-server.authentication.oauth2.client-id=${ENV:OAUTH2_CLIENT_ID}
         http-server.authentication.oauth2.client-secret=${ENV:OAUTH2_CLIENT_SECRET}
     resources:
@@ -80,4 +88,7 @@ trino:
     type: properties
     properties: |
       access-control.name=opa
+      opa.log-requests=true
+      opa.log-responses=true
       opa.policy.uri=http://opa-opa-kube-mgmt.opa.svc:8181/v1/data/trino/allow
+      opa.policy.batched-uri=http://opa-opa-kube-mgmt.opa.svc:8181/v1/data/trino/batch

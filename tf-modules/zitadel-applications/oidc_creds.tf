@@ -45,3 +45,17 @@ resource "zitadel_application_oidc" "lakekeeper" {
   dev_mode                  = true
   auth_method_type          = "OIDC_AUTH_METHOD_TYPE_BASIC"
 }
+
+resource "zitadel_application_oidc" "lakekeeper_ui" {
+  project_id = zitadel_project.lakekeeper.id
+  org_id = data.zitadel_org.default.id
+
+  name                      = "lakekeeper-ui"
+  app_type                  = "OIDC_APP_TYPE_NATIVE"
+  redirect_uris             = ["https://lakekeeper.${var.domain}/ui/callback"]
+  response_types            = ["OIDC_RESPONSE_TYPE_CODE"]
+  auth_method_type          = "OIDC_AUTH_METHOD_TYPE_NONE"
+  grant_types               = ["OIDC_GRANT_TYPE_DEVICE_CODE", "OIDC_GRANT_TYPE_AUTHORIZATION_CODE"]
+  post_logout_redirect_uris = ["http://localhost"]
+  dev_mode                  = true
+}

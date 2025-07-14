@@ -41,3 +41,16 @@ resource "kubernetes_secret" "lakekeeper_oidc" {
 
   type = "Opaque"
 }
+
+resource "kubernetes_secret" "lakekeeper_ui_oidc" {
+  metadata {
+    name      = "lakekeeper-ui-oidc"
+    namespace = "services"
+  }
+
+  data = {
+    CLIENT_ID     = zitadel_application_oidc.lakekeeper_ui.client_id
+  }
+
+  type = "Opaque"
+}
