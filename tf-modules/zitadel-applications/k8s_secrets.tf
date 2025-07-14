@@ -13,6 +13,20 @@ resource "kubernetes_secret" "trino_oidc" {
   type = "Opaque"
 }
 
+resource "kubernetes_secret" "opa_oidc" {
+  metadata {
+    name      = "opa-credentials"
+    namespace = "opa"
+  }
+
+  data = {
+    CLIENT_ID     = zitadel_machine_user.trino-opa.client_id
+    CLIENT_SECRET = zitadel_machine_user.trino-opa.client_secret
+  }
+
+  type = "Opaque"
+}
+
 resource "kubernetes_secret" "lakekeeper_oidc" {
   metadata {
     name      = "lakekeeper-oidc"

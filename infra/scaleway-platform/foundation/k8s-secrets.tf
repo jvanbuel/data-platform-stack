@@ -91,3 +91,18 @@ resource "kubernetes_secret" "database_secrets" {
   }
   depends_on = [kubernetes_namespace.services]
 }
+
+resource "kubernetes_secret" "opa_secrets" {
+  metadata {
+    name = "opa-secrets"
+    namespace = "opa"
+  }
+  data = {
+    LAKEKEEPER_URL= "http://lakekeeper.services.svc.cluster.local:8181"
+    LAKEKEEPER_TOKEN_ENDPOINT="https://zitadel.scaleway.playground.dataminded.cloud/oauth/v2/token"
+    LAKEKEEPER_SCOPE="openid"
+    TRINO_LAKEKEEPER_CATALOG_NAME="dataminded"
+    LAKEKEEPER_LAKEKEEPER_WAREHOUSE="dataminded"
+  }
+  depends_on = [kubernetes_namespace.services]
+}

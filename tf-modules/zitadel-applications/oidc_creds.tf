@@ -25,6 +25,14 @@ resource "zitadel_application_oidc" "trino" {
   auth_method_type          = "OIDC_AUTH_METHOD_TYPE_BASIC"
 }
 
+resource "zitadel_machine_user" "trino-opa" {
+  org_id      = data.zitadel_org.default.id
+  user_name   = "trino-opa"
+  name        = "trino-opa"
+  description = "a machine user for opa to access Zitadle"
+  with_secret = true
+}
+
 resource "zitadel_application_oidc" "lakekeeper" {
   project_id = zitadel_project.lakekeeper.id
   org_id = data.zitadel_org.default.id
